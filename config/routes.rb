@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'airlines/index'
-
+  root 'airlines#index'
   get 'airlines/new'
 
   # The priority is based upon order of creation: first created -> highest priority.

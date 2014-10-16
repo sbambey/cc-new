@@ -10,6 +10,8 @@ gem 'jbuilder',             '2.1.3'
 gem 'rails-html-sanitizer', '1.0.1'
 gem 'sdoc',                 '0.4.0', group: :doc
 gem 'pg'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'
