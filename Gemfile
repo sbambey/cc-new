@@ -12,11 +12,16 @@ gem 'sdoc',                 '0.4.0', group: :doc
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'
   gem 'web-console', '2.0.0.beta3'
   gem 'spring',      '1.1.3'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -28,3 +33,5 @@ end
 group :production do
   gem 'rails_12factor', '0.0.2'
 end
+
+gem 'dotenv-rails', groups: [:development, :test]

@@ -1,0 +1,24 @@
+<div class="col-xs-12">
+
+	<h2 class="lighter"><%= "#{@fly.airline.name} - #{@fly.name}" %></h2>
+
+	<table class="table table-bordered table-thick-border standard-margin lighter">
+		<thead>
+			<tr>
+				<th>Position</th>
+				<th>Equipment</th>
+				<th>Base</th>
+				<th>Expires</th>
+				<th>More Info</th>
+			</tr>
+		</thead>
+		<tr>
+			<td><%= @fly.position %></td>
+			<td><%= @fly.equipment %></td>
+			<td><%= @fly.base %></td>
+			<td><%= @fly.expiration %></td>
+			<td><%= link_to "Click here", @fly.website, target: "_blank" %></td>
+		</tr>
+	</table>
+
+</div>

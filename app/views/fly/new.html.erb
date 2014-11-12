@@ -1,0 +1,28 @@
+<% provide(:title, 'New opportunity') %>
+<div class='col-xs-12'>
+	<h1>Add an opportunity</h1>
+	<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: 'form'}) do |f| %>
+	  
+	  <div class='form-group'>
+	    <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+	    <%= f.label :name, class: 'sr-only' %>
+	  </div>
+
+	  <div class='form-group'>
+	    <%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
+	    <%= f.label :position, class: 'sr-only' %>
+	  </div>
+
+	  <div class='form-group'>
+	    <%= f.text_field :expiration, class: 'form-control', placeholder: 'Expires' %>
+	    <%= f.label :expiration, class: 'sr-only' %>
+	  </div>
+
+	  <div class='form-group'>
+	    <%= f.text_field :website, class: 'form-control', placeholder: 'Website' %>
+	    <%= f.label :website, class: 'sr-only' %>
+	  </div>
+
+		<%= f.submit 'Add Opportunity', class: 'btn btn-default' %>
+	<% end %>
+</div>

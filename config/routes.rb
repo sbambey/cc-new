@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
+  get 'static_pages/home'
+
   root 'airlines#index'
-  get 'airlines/new'
+  resources :airlines, only: [:show, :new, :create] do
+    resources :fly
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

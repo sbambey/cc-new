@@ -1,0 +1,4 @@
+<% provide(:title, @airline.name) %>
+<% @airline.flies.each do |fly| %>
+	<p>- <%= link_to fly.name, airline_fly_path(@airline, fly) %><p>
+<% end %>

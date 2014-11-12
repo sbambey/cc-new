@@ -1,0 +1,4 @@
+<h1>Flies#index</h1>
+<% @flies.each do |fly| %>
+	<p><%= link_to fly.name, airline_fly_path(fly.airline_id, fly.id) %></p>
+<% end %>

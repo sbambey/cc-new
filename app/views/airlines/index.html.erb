@@ -1,14 +1,34 @@
 <% provide(:title, "Overview") %>
-<h1>Job Board</h1>
-<table class="table">
+<!--<div class="alert alert-info" role="alert">
+	<form class="form-inline" role="form">
+	  <div class="form-group">
+	  	Subscribe and be informed as soon as new opportunities become available:
+	    <div class="input-group input-email">
+	      <div class="input-group-addon">@</div>
+	      <input class="form-control" type="email" placeholder="Enter email">
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>-->
+
+<table class="table lighter">
 	<thead>
 		<tr>
+			<th></th>
+			<th></th>
 			<th>Airline</th>
 			<th>Hiring Status</th>
+			<th>Recent Position(s)</th>
 		</tr>
 	</thead>
+	<% @airlines.each do |airline| %>
 	<tr>
-		<td>Lufthansa</td>
-		<td>Active</td>
+		<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
+		<td><%= image_tag airline.logo.url, class: "airlines-index-logo" %></td>
+		<td><%= link_to(airline.name, airline_path(airline)) %></td>
+		<td><%= "Active" if airline.has_active_recruitment? %></td>
+		<td></td>
 	</tr>
+	<% end %>
 </table>
