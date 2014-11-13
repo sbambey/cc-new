@@ -6,7 +6,19 @@ class FlyController < ApplicationController
 
   def create
 
-  	@fly = Airline.friendly.find(params[:airline_id]).flies.new(fly_params)
+  	to_submit = fly_params
+
+  	requirements = to_submit['requirements']
+
+  	requirements_hash = {}
+
+  	requirements['category'].each_with_index do |item, index|
+  		requirements_hash[item] = requirements['specifics'][index]
+  	end
+
+  	to_submit['requirements'] = requirements_hash
+
+  	@fly = Airline.friendly.find(params[:airline_id]).flies.new(to_submit)
 
   	if @fly.save
   		flash[:success] = "Added opportunity successfully!"
@@ -27,6 +39,6 @@ class FlyController < ApplicationController
   private
 
   	def fly_params
-  		params.require(:fly).permit(:name, :position, :expiration, :website, :airline_id)
+  		params.require(:fly).permit(:name, :position, :equipment, :base, :expiration, :website, :intro, :content, :airline_id, :requirements => [:category => [], :specifics => []])
   	end
 end

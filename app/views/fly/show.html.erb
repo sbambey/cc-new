@@ -1,6 +1,6 @@
+<% provide(:title, "#{@fly.airline.name} - #{@fly.name}") %>
 <div class="col-xs-12">
-
-	<h2 class="lighter"><%= "#{@fly.airline.name} - #{@fly.name}" %></h2>
+	<h2 class="lighter"><%= image_tag @fly.airline.logo, class: "fly-show-logo" %><%= "#{@fly.airline.name} - #{@fly.name}" %></h2>
 
 	<table class="table table-bordered table-thick-border standard-margin lighter">
 		<thead>
@@ -21,4 +21,18 @@
 		</tr>
 	</table>
 
+	<%= @fly.intro.html_safe %>
+
+	<h3>Requirements</h3>
+
+	<table class="table table-bordered standard-margin lighter">
+		<% @fly.requirements.each do |key, value| %>
+			<tr>
+				<td><%= key %></td>
+				<td><%= value %></td>
+			</tr>
+		<% end %>
+	</table>
+
+	<%= @fly.content.html_safe %>
 </div>

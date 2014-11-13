@@ -25,8 +25,8 @@
 	<% @airlines.each do |airline| %>
 	<tr>
 		<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
-		<td><%= image_tag airline.logo.url, class: "airlines-index-logo" %></td>
-		<td><%= link_to(airline.name, airline_path(airline)) %></td>
+		<td><%= image_tag airline.logo, class: "airlines-index-logo" %></td>
+		<td><%= link_to airline.name, airline_path(airline) %></td>
 		<td><%= "Active" if airline.has_active_recruitment? %></td>
 		<td></td>
 	</tr>
