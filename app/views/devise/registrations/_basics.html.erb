@@ -1,0 +1,49 @@
+<div class="row standard-margin">
+  <div class="col-md-4 col-xs-12">
+    <%= content_tag :div, 
+    class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(:email).any?)] do %>
+
+      <%= f.label :email, class: "control-label" %>
+      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+      <% if resource.errors.full_messages_for(:email).any? %>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span class="error-explanation">
+          <%= resource.errors.full_messages_for(:email).first %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 col-xs-12">
+    <%= content_tag :div, 
+    class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(:password).any?)] do %>
+
+      <%= f.label :password, class: "control-label" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+      <% if resource.errors.full_messages_for(:password).any? %>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span class="error-explanation">
+          <%= resource.errors.full_messages_for(:password).first %>
+        </span>
+      <% elsif @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 col-xs-12">
+    <%= content_tag :div, class: ["form-group",
+    ("has-error has-feedback" if resource.errors.full_messages_for(:password_confirmation).any?)] do %>
+
+      <%= f.label :password_confirmation, class: "control-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control",
+        placeholder: "Re-enter Password" %>
+      <% if resource.errors.full_messages_for(:password_confirmation).any? %>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span class="error-explanation">
+          <%= resource.errors.full_messages_for(:password_confirmation).first %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -16,6 +16,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'friendly_id'
 gem 'ckeditor'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'

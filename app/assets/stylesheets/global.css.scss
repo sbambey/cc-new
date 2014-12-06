@@ -48,7 +48,10 @@
 /* Misc */
 
 .standard-margin {
-  margin-top:25px;
+  margin-top:20px;
+}
+.label-margin {
+  margin-top:10px;
 }
 
 .lighter {
@@ -60,4 +63,9 @@ td {
 th {
 	font-size: 17px;
 	font-weight:lighter;
+}
+
+/* Errors */
+.error-explanation {
+  color: $state-danger-text;
 }
