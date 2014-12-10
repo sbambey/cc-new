@@ -36,10 +36,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :language
       t.boolean :high_school_diploma
       t.boolean :post_secondary_degree
-      t.hstore :flight_time, array: true
-      t.hstore :rating, array: true
-      t.hstore :medical, array: true
-      t.hstore :additional, array: true
+      t.hstore :flight_time
+      t.hstore :rating
+      t.hstore :medical
+      t.hstore :additional
 
       t.timestamps
     end

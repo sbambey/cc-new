@@ -1,0 +1,16 @@
+<section id="additional">
+  <div class="container">
+    <div class="col-xs-12">
+
+      <h4>Additional Information</h4>
+
+      <% User.additional.each do |type, description| %>
+        <div class="checkbox standard-margin">
+          <label>
+            <%= f.check_box type %><p><%= description %></p>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

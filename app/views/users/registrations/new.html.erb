@@ -1,0 +1,30 @@
+<% provide(:title, "Register") %>
+
+<div id="title">
+  <div class="container">
+    <div class="col-xs-12">
+      <h2>Sign up</h2>
+      <p>Filling out all this information will allow us to accurately match you with a vast amount of pilot opportunities out there.</p>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/form_errors" %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <%= render partial: "general", locals: { f: f } %>
+
+  <%= render partial: "flight_time", locals: { f: f } %>
+
+  <%= render partial: "medical", locals: { f: f } %>
+
+  <%= render partial: "additional", locals: { f: f } %>
+
+  <div class="container">
+    <div class="col-xs-12">
+      <%= f.submit "Sign Up", class: "btn btn-default standard-margin" %>
+    </div>
+  </div>
+
+<% end %>

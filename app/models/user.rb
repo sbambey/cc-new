@@ -2,14 +2,14 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable 
+         :recoverable, :rememberable, :trackable, :validatable
 
   def self.flight_hour_types
   	{
-      total: "Total", total_pic: "Total Pilot-in-Command (PIC)", 
-      multi: "Total Multi-Engine", multi_pic: "Total Multi-Engine PIC",
-      turbine: "Total Turbine", tubine_pic: "Total Turbine PIC", 
-      turbofan: "Total Turbofan/Turboprop", turbofan_pic: "Total Turbofan/Turboprop PIC"
+      total_time: "Total Time", total_pic_time: "Total Pilot-in-Command (PIC)", 
+      multi_time: "Total Multi-Engine", multi_pic_time: "Total Multi-Engine PIC",
+      turbine_time: "Total Turbine", tubine_pic_time: "Total Turbine PIC", 
+      turbofan_time: "Total Turbofan/Turboprop", turbofan_pic_time: "Total Turbofan/Turboprop PIC"
     }
   end
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def self.medical_information
-  	{license: "I hold a valid ICAO class 1 medical license"}
+  	{medical_license: "I hold a valid ICAO class 1 medical license"}
   end
 
   def self.additional
@@ -31,13 +31,25 @@ class User < ActiveRecord::Base
     }
   end
 
-  def self.description(info)
-    info.collect {|type, desc| type}
+  def self.get_method(pairs)
+    pairs.collect {|method, desc| method}
   end
 
-  store_accessor :flight_time, *description(flight_hour_types)
-  store_accessor :rating, *description(ratings)
-  store_accessor :medical, *description(medical_information)
-  store_accessor :additional, *description(additional)
+  store_accessor :flight_time, *get_method(flight_hour_types)
+  store_accessor :rating, *get_method(ratings)
+  store_accessor :medical, *get_method(medical_information)
+  store_accessor :additional, *get_method(additional)
+
+  get_method(flight_hour_types).each do |method|
+    validates_presence_of method
+  end
+
+  def self.get_permissible_params
+    [:full_name, :nationality, :language, :birthdate, :high_school_diploma, :post_secondary_degree]
+      .concat(get_method(flight_hour_types))
+      .concat(get_method(ratings))
+      .concat(get_method(medical_information))
+      .concat(get_method(additional))
+  end
 
 end
