@@ -1,64 +1,79 @@
-<% provide(:title, 'New opportunity') %>
-<div class='col-xs-12'>
-	<h1>Add an opportunity</h1>
-	<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: 'form'}) do |f| %>
-	  
-		<h4>General</h4>
-		<div class="form-group">
-			<%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
-    	<%= f.label :name, class: 'sr-only' %>
-    </div>
+<% provide(:title, "New opportunity") %>
+<div class="container">
+	<div class="col-xs-12">
+		<h1>Add an opportunity</h1>
+		<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: "form"}) do |f| %>
+		  
+			<h4>General</h4>
+			<div class="form-group">
+				<%= f.text_field :name, class: "form-control", placeholder: "Opportnity Name" %>
+	    	<%= f.label :name, class: "sr-only" %>
+	    </div>
 
-		<h4>Head Table</h4>
-	  <table class="table table-bordered table-thick-border standard-margin">
-	  	<tr>
-				<td>
-			    <%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
-			    <%= f.label :position, class: 'sr-only' %>
-				</td>
-				<td>
-		    	<%= f.text_field :equipment, class: 'form-control', placeholder: 'Equipment' %>
-		    	<%= f.label :equipment, class: 'sr-only' %>
-			  </td>
-			  <td>
-		    	<%= f.text_field :base, class: 'form-control', placeholder: 'Base' %>
-		    	<%= f.label :base, class: 'sr-only' %>
-			  </td>
-				<td>
-			    <%= f.text_field :expiration, class: 'form-control', placeholder: 'Expires' %>
-			    <%= f.label :expiration, class: 'sr-only' %>
-				</td>
-				<td>
-			    <%= f.text_field :website, class: 'form-control', placeholder: 'Website' %>
-			    <%= f.label :website, class: 'sr-only' %>
-				</td>
-	  	</tr>
-	  </table>
+			<h4>Head Table</h4>
+		  <table class="table table-bordered table-thick-border standard-margin">
+		  	<tr>
+					<td>
+				    <%= f.text_field :position, class: "form-control", placeholder: "Position" %>
+				    <%= f.label :position, class: "sr-only" %>
+					</td>
+					<td>
+			    	<%= f.text_field :equipment, class: "form-control", placeholder: "Equipment" %>
+			    	<%= f.label :equipment, class: "sr-only" %>
+				  </td>
+				  <td>
+			    	<%= f.text_field :base, class: "form-control", placeholder: "Base" %>
+			    	<%= f.label :base, class: "sr-only" %>
+				  </td>
+					<td>
+				    <%= f.text_field :expiration, class: "form-control", placeholder: "Expires" %>
+				    <%= f.label :expiration, class: "sr-only" %>
+					</td>
+					<td>
+				    <%= f.text_field :website, class: "form-control", placeholder: "Website" %>
+				    <%= f.label :website, class: "sr-only" %>
+					</td>
+		  	</tr>
+		  </table>
 
-	  <h4>Intro</h4>
-	  <%= f.cktext_area :intro, value: '<h3>Intro</h3>' %>
+		  <h4>Intro</h4>
+		  <%= f.cktext_area :intro, value: "<h3>Intro</h3>" %>
 
-	  <h4 class="standard-margin">Requirements</h4>
-	  <table class="table table-bordered table-thick-border lighter">
-	  	<thead>
-	  		<th>Category</th>
-	  		<th>Value</th>
-	  	</thead>
+		  <h4 class="standard-margin">Requirements</h4>
+		  <table class="table table-bordered table-thick-border lighter" id="requirements">
+		  	<thead>
+		  		<th>Category</th>
+		  		<th>Value</th>
+		  	</thead>
 
-	  	<tr>
-	  		<td><%= text_field_tag 'fly[requirements][category][]', nil, placeholder: 'Category', class: 'form-control' %></td>
-	  		<td><%= text_field_tag 'fly[requirements][specifics][]', nil, placeholder: 'Value', class: 'form-control' %></td>
-	  	</tr>
+		  	<% FLIGHT_HOUR_TYPES.each do |type, description| %>
+			  	<tr>
+			  		<td>
+			  			<%= text_field_tag "fly[requirements][category][#{type}]", description, placeholder: "Category", 
+			  						class: "form-control", id: "disabledInput", disabled: true %>
+			  		</td>
+			  		<td>
+			  			<%= text_field_tag "fly[requirements][specifics][]", nil, placeholder: "Value", class: "form-control" %>
+			  		</td>
+			  	</tr>
+			  <% end %>
 
-	  	<tr>
-	  		<td><%= text_field_tag 'fly[requirements][category][]', nil, placeholder: 'Category', class: 'form-control' %></td>
-	  		<td><%= text_field_tag 'fly[requirements][specifics][]', nil, placeholder: 'Value', class: 'form-control' %></td>
-	  	</tr>
-	  </table>
+		  	<tr id="hidden_field">
+		  		<td>
+		  			<%= text_field_tag "fly[requirements][category][]", nil, placeholder: "Category", class: "form-control" %>
+		  			<a href="#" class="remove_field">[x] Remove requirement</a>
+		  		</td>
+		  		<td><%= text_field_tag "fly[requirements][specifics][]", nil, placeholder: "Value", 
+		  							class: "form-control" %></td>
+		  	</tr>
+		  </table>
 
-	  <h4 class="standard-margin">Content</h4>
-	  <%= f.cktext_area :content %>
+		  <a href="#" class="add_fields">[+] Add Requirement</a>
 
-		<%= f.submit 'Add Opportunity', class: 'btn btn-default standard-margin' %>
-	<% end %>
+		  <h4 class="standard-margin">Content</h4>
+		  <%= f.cktext_area :content %>
+
+			<%= f.submit "Add Opportunity", class: "btn btn-default standard-margin" %>
+		<% end %>
+	</div>
 </div>

@@ -4,7 +4,7 @@
 
       <h4>Medical Information</h4>
 
-      <% User.medical_information.each do |method, description| %>
+      <% MEDICAL_INFORMATION.each do |method, description| %>
         <div class="checkbox standard-margin">
           <label>
             <%= f.check_box method %><p><%= description %></p>

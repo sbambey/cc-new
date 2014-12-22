@@ -4,7 +4,7 @@
 
       <h4>Additional Information</h4>
 
-      <% User.additional.each do |type, description| %>
+      <% ADDITIONAL.each do |type, description| %>
         <div class="checkbox standard-margin">
           <label>
             <%= f.check_box type %><p><%= description %></p>

@@ -14,16 +14,16 @@
 	}
 	
 	section:nth-of-type(2) {
-		background:#d1ded1;
+		background:#d1c9ce;
 		
 		& > .container > div {
-			border-left:10px solid #c6cfc7;
+			border-left:10px solid #c4adbc;
 			margin-right:-10px;
 	
 			table {
-				max-width:370px;
+				max-width:740px;
 			}
-			tr > td:nth-child(2) {
+			tr > td:nth-child(2n) {
 				/*width of input +16px from input padding*/
 				max-width:136px;
 				.form-group {

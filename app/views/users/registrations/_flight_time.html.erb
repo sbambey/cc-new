@@ -7,28 +7,30 @@
       <p>Please enter all times in <em>decimal hours</em> (ie. 5.5, rather than 5:30)</p>
 
       <table class="table table-bordered table-thick-border table-black-border standard-margin">
-        <% User.flight_hour_types.each do |type, description| %>
+        <% FLIGHT_HOUR_TYPES.each_slice(2) do |group| %>
           <tr>
-            <td><%= f.label type, description, class: "control-label label-margin" %></td>
-            <td>
-              <%= content_tag :div, 
-                class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(type).any?)] do %> 
-                
-                  <%= f.text_field type, class: "form-control" %>
-                
-                  <% if resource.errors.full_messages_for(type).any? %>
-                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                    <span class="error-explanation">
-                      <%= resource.errors[type].first.capitalize %>
-                    </span>
+            <% group.each do |type, description| %>
+                <td><%= f.label type, description, class: "control-label label-margin" %></td>
+                <td>
+                  <%= content_tag :div, 
+                    class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(type).any?)] do %> 
+                    
+                      <%= f.text_field type, class: "form-control" %>
+                    
+                      <% if resource.errors.full_messages_for(type).any? %>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                        <span class="error-explanation">
+                          <%= resource.errors[type].first.capitalize %>
+                        </span>
+                      <% end %>
                   <% end %>
-              <% end %>
-            </td>
+                </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
-
-      <% User.ratings.each do |type, description| %>
+      
+      <% RATINGS.each do |type, description| %>
         <div class="checkbox standard-margin">
           <label>
             <%= f.check_box type %><p><%= description %></p>

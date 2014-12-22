@@ -1,38 +1,42 @@
 <% provide(:title, "#{@fly.airline.name} - #{@fly.name}") %>
-<div class="col-xs-12">
-	<h2 class="lighter"><%= image_tag @fly.airline.logo, class: "fly-show-logo" %><%= "#{@fly.airline.name} - #{@fly.name}" %></h2>
+<div class="container">
+	<div class="col-xs-12">
+		<h2 class="lighter">
+			<%= image_tag @fly.airline.logo, class: "fly-show-logo" %><%= "#{@fly.airline.name} - #{@fly.name}" %>
+		</h2>
 
-	<table class="table table-bordered table-thick-border standard-margin lighter">
-		<thead>
+		<table class="table table-bordered table-thick-border standard-margin lighter">
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Equipment</th>
+					<th>Base</th>
+					<th>Expires</th>
+					<th>More Info</th>
+				</tr>
+			</thead>
 			<tr>
-				<th>Position</th>
-				<th>Equipment</th>
-				<th>Base</th>
-				<th>Expires</th>
-				<th>More Info</th>
+				<td><%= @fly.position %></td>
+				<td><%= @fly.equipment %></td>
+				<td><%= @fly.base %></td>
+				<td><%= @fly.expiration %></td>
+				<td><%= link_to "Click here", @fly.website, target: "_blank" %></td>
 			</tr>
-		</thead>
-		<tr>
-			<td><%= @fly.position %></td>
-			<td><%= @fly.equipment %></td>
-			<td><%= @fly.base %></td>
-			<td><%= @fly.expiration %></td>
-			<td><%= link_to "Click here", @fly.website, target: "_blank" %></td>
-		</tr>
-	</table>
+		</table>
 
-	<%= @fly.intro.html_safe %>
+		<%= @fly.intro.html_safe %>
 
-	<h3>Requirements</h3>
+		<h3>Requirements</h3>
 
-	<table class="table table-bordered standard-margin lighter">
-		<% @fly.requirements.each do |key, value| %>
-			<tr>
-				<td><%= key %></td>
-				<td><%= value %></td>
-			</tr>
-		<% end %>
-	</table>
+		<table class="table table-bordered standard-margin lighter">
+			<% @fly.requirements.each do |key, value| %>
+				<tr>
+					<td><%= key %></td>
+					<td><%= value %></td>
+				</tr>
+			<% end %>
+		</table>
 
-	<%= @fly.content.html_safe %>
+		<%= @fly.content.html_safe %>
+	</div>
 </div>
