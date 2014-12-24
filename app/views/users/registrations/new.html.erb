@@ -13,13 +13,13 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <%= render partial: "general", locals: { f: f } %>
+  <%= render partial: "shared/general", locals: { f: f } %>
 
-  <%= render partial: "flight_time", locals: { f: f } %>
+  <%= render partial: "shared/flight_time", locals: { f: f } %>
 
-  <%= render partial: "medical", locals: { f: f } %>
+  <%= render partial: "shared/medical", locals: { f: f } %>
 
-  <%= render partial: "additional", locals: { f: f } %>
+  <%= render partial: "shared/additional", locals: { f: f } %>
 
   <div class="container">
     <div class="col-xs-12">

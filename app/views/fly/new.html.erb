@@ -2,13 +2,17 @@
 <div class="container">
 	<div class="col-xs-12">
 		<h1>Add an opportunity</h1>
-		<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: "form"}) do |f| %>
-		  
+	</div>
+</div>
+<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: "form"}) do |f| %>
+  
+  <div class="container">
+  	<div class="col-xs-12">
 			<h4>General</h4>
 			<div class="form-group">
 				<%= f.text_field :name, class: "form-control", placeholder: "Opportnity Name" %>
-	    	<%= f.label :name, class: "sr-only" %>
-	    </div>
+		  	<%= f.label :name, class: "sr-only" %>
+		  </div>
 
 			<h4>Head Table</h4>
 		  <table class="table table-bordered table-thick-border standard-margin">
@@ -36,44 +40,34 @@
 		  	</tr>
 		  </table>
 
-		  <h4>Intro</h4>
-		  <%= f.cktext_area :intro, value: "<h3>Intro</h3>" %>
-
-		  <h4 class="standard-margin">Requirements</h4>
-		  <table class="table table-bordered table-thick-border lighter" id="requirements">
-		  	<thead>
-		  		<th>Category</th>
-		  		<th>Value</th>
-		  	</thead>
-
-		  	<% FLIGHT_HOUR_TYPES.each do |type, description| %>
-			  	<tr>
-			  		<td>
-			  			<%= text_field_tag "fly[requirements][category][#{type}]", description, placeholder: "Category", 
-			  						class: "form-control", id: "disabledInput", disabled: true %>
-			  		</td>
-			  		<td>
-			  			<%= text_field_tag "fly[requirements][specifics][]", nil, placeholder: "Value", class: "form-control" %>
-			  		</td>
-			  	</tr>
-			  <% end %>
-
-		  	<tr id="hidden_field">
-		  		<td>
-		  			<%= text_field_tag "fly[requirements][category][]", nil, placeholder: "Category", class: "form-control" %>
-		  			<a href="#" class="remove_field">[x] Remove requirement</a>
-		  		</td>
-		  		<td><%= text_field_tag "fly[requirements][specifics][]", nil, placeholder: "Value", 
-		  							class: "form-control" %></td>
-		  	</tr>
-		  </table>
-
-		  <a href="#" class="add_fields">[+] Add Requirement</a>
-
-		  <h4 class="standard-margin">Content</h4>
-		  <%= f.cktext_area :content %>
-
-			<%= f.submit "Add Opportunity", class: "btn btn-default standard-margin" %>
-		<% end %>
+		  <!--<h4>Intro</h4>
+		  <%= f.cktext_area :intro, value: "<h3>Intro</h3>" %>-->
+		</div>
 	</div>
-</div>
+
+  <%= render partial: "shared/flight_time", locals: { f: f, resource: @fly } %>
+
+  <%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>
+
+  <%= render partial: "shared/additional", locals: { f: f, resource: @fly } %>
+
+	<!--<tr id="hidden_field">
+		<td>
+			<%= text_field_tag "fly[requirements][category][]", nil, placeholder: "Category", class: "form-control" %>
+			<a href="#" class="remove_field">[x] Remove requirement</a>
+		</td>
+		<td><%= text_field_tag "fly[requirements][value][]", nil, placeholder: "Value", 
+							class: "form-control" %></td>
+	</tr>
+
+  <a href="#" class="add_fields">[+] Add Requirement</a>-->
+
+  <!--<h4 class="standard-margin">Content</h4>
+  <%= f.cktext_area :content %>-->
+
+	<div class="container">
+		<div class="col-xs-12">
+			<%= f.submit "Add Opportunity", class: "btn btn-default standard-margin" %>
+		</div>
+	</div>
+<% end %>

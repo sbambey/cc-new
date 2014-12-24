@@ -4,5 +4,16 @@ class Fly < ActiveRecord::Base
 
 	belongs_to :airline
 
-	serialize :requirements, Hash
+	store_accessor :requirements, *FLIGHT_HOUR_TYPES.keys
+	store_accessor :requirements, *RATINGS.keys
+	store_accessor :requirements, *MEDICAL_INFORMATION.keys
+	store_accessor :requirements, *ADDITIONAL.keys
+
+	def self.permissible_params
+		FLIGHT_HOUR_TYPES.keys
+      .concat(RATINGS.keys)
+      .concat(MEDICAL_INFORMATION.keys)
+      .concat(ADDITIONAL.keys)
+  end
+
 end

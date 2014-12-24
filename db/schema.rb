@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20141130223845) do
 
   create_table "airlines", force: true do |t|
     t.string   "name"
+    t.string   "country"
+    t.string   "slug"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "logo_file_name"
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(version: 20141130223845) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "has_active_recruitment", default: false
-    t.string   "slug"
-    t.string   "country"
   end
 
   add_index "airlines", ["slug"], name: "index_airlines_on_slug", using: :btree
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20141130223845) do
     t.string   "position"
     t.string   "expiration"
     t.string   "website"
-    t.integer  "airline_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "slug"
     t.string   "equipment"
     t.string   "base"
     t.text     "intro"
-    t.text     "requirements"
     t.text     "content"
+    t.hstore   "requirements"
+    t.string   "slug"
+    t.integer  "airline_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree

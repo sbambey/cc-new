@@ -10,21 +10,21 @@
         <% FLIGHT_HOUR_TYPES.each_slice(2) do |group| %>
           <tr>
             <% group.each do |type, description| %>
-                <td><%= f.label type, description, class: "control-label label-margin" %></td>
-                <td>
-                  <%= content_tag :div, 
-                    class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(type).any?)] do %> 
-                    
-                      <%= f.text_field type, class: "form-control" %>
-                    
-                      <% if resource.errors.full_messages_for(type).any? %>
-                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span class="error-explanation">
-                          <%= resource.errors[type].first.capitalize %>
-                        </span>
-                      <% end %>
-                  <% end %>
-                </td>
+              <td><%= f.label type, description, class: "control-label label-margin" %></td>
+              <td>
+                <%= content_tag :div, 
+                  class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(type).any?)] do %> 
+                  
+                    <%= f.text_field type, class: "form-control" %>
+                  
+                    <% if resource.errors.full_messages_for(type).any? %>
+                      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                      <span class="error-explanation">
+                        <%= resource.errors[type].first.capitalize %>
+                      </span>
+                    <% end %>
+                <% end %>
+              </td>
             <% end %>
           </tr>
         <% end %>

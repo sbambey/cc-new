@@ -6,25 +6,25 @@ class FlyController < ApplicationController
 
   def create
 
-  	to_submit = fly_params
+    #categories = fly_params["requirements"]["category"]
+    #values = fly_params["requirements"]["value"]
 
-  	requirements = to_submit['requirements']
+  	#requirements_hash = {}
 
-  	requirements_hash = {}
+  	#categories.each_with_index do |item, index|
+    #  key = FLIGHT_HOUR_TYPES.key(item)
+  	#	requirements_hash[key] = values[index]
+  	#end
 
-  	requirements['category'].each_with_index do |item, index|
-  		requirements_hash[item] = requirements['specifics'][index]
-  	end
+  	#fly_params["requirements"] = requirements_hash
 
-  	to_submit['requirements'] = requirements_hash
-
-  	@fly = Airline.friendly.find(params[:airline_id]).flies.new(to_submit)
+  	@fly = Airline.friendly.find(params[:airline_id]).flies.new(fly_params)
 
   	if @fly.save
   		flash[:success] = "Added opportunity successfully!"
   		redirect_to airline_fly_path(@fly.airline, @fly)
   	else
-  		render 'new'
+  		render "new"
   	end
   end
 
@@ -39,6 +39,6 @@ class FlyController < ApplicationController
   private
 
   	def fly_params
-  		params.require(:fly).permit(:name, :position, :equipment, :base, :expiration, :website, :intro, :content, :airline_id, :requirements => [:category => [], :specifics => []])
+  		params.require(:fly).permit(:name, :position, :equipment, :base, :expiration, :website, :intro, :content, :airline_id, *User.permissible_params)
   	end
 end
