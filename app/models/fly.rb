@@ -1,13 +1,14 @@
 class Fly < ActiveRecord::Base
+	include Hstoreable
 	extend FriendlyId
 	friendly_id :name, use: [:slugged, :history]
 
 	belongs_to :airline
 
-	store_accessor :requirements, *FLIGHT_HOUR_TYPES.keys
-	store_accessor :requirements, *RATINGS.keys
-	store_accessor :requirements, *MEDICAL_INFORMATION.keys
-	store_accessor :requirements, *ADDITIONAL.keys
+	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
+	store_accessor :rating, *RATINGS.keys
+	store_accessor :medical, *MEDICAL_INFORMATION.keys
+	store_accessor :additional, *ADDITIONAL.keys
 
 	def self.permissible_params
 		FLIGHT_HOUR_TYPES.keys

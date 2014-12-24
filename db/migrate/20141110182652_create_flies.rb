@@ -9,7 +9,10 @@ class CreateFlies < ActiveRecord::Migration
       t.string :base
       t.text :intro
       t.text :content
-      t.hstore :requirements
+      t.hstore :flight_time
+      t.hstore :rating
+      t.hstore :medical
+      t.hstore :additional
       t.string :slug
       t.index :slug
       t.belongs_to :airline

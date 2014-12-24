@@ -41,11 +41,14 @@ ActiveRecord::Schema.define(version: 20141130223845) do
     t.string   "base"
     t.text     "intro"
     t.text     "content"
-    t.hstore   "requirements"
+    t.hstore   "flight_time"
+    t.hstore   "rating"
+    t.hstore   "medical"
+    t.hstore   "additional"
     t.string   "slug"
     t.integer  "airline_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree
