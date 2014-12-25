@@ -22,12 +22,12 @@
 			<th>Recent Position(s)</th>
 		</tr>
 	</thead>
-	<% @airlines.each do |airline| %>
+	<% Fly.matching_conditions_met(current_user).each do |fly| %>
 	<tr>
-		<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
-		<td><%= image_tag airline.logo, class: "airlines-index-logo" %></td>
-		<td><%= link_to airline.name, airline_path(airline) %></td>
-		<td><%= "Active" if airline.has_active_recruitment? %></td>
+		<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
+		<td><%= image_tag fly.airline.logo, class: "airlines-index-logo" %></td>
+		<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+		<td><%= "Active" if fly.airline.has_active_recruitment? %></td>
 		<td></td>
 	</tr>
 	<% end %>

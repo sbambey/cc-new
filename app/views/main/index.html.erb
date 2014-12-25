@@ -1,0 +1,45 @@
+<% provide(:title, "Overview") %>
+<!--<div class="alert alert-info" role="alert">
+	<form class="form-inline" role="form">
+	  <div class="form-group">
+	  	Subscribe and be informed as soon as new opportunities become available:
+	    <div class="input-group input-email">
+	      <div class="input-group-addon">@</div>
+	      <input class="form-control" type="email" placeholder="Enter email">
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>-->
+<% if user_signed_in? %>
+	<div class="container">
+		<div class="col-xs-12">
+			<table class="table lighter">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>Opportunity</th>
+						<th>Hiring Status</th>
+						<th>Recent Position(s)</th>
+					</tr>
+				</thead>
+				<% @flies.each do |fly| %>
+				<tr>
+					<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
+					<td><%= image_tag fly.airline.logo, class: "airlines-index-logo" %></td>
+					<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+					<td><%= "Active" if fly.airline.has_active_recruitment? %></td>
+					<td></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+<% else %>
+	<div class="container">
+		<div class="col-xs-12">
+			<p>SHOW HOMEPAGE</p>
+		</div>
+	</div>
+<% end %>

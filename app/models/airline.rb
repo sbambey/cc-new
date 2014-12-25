@@ -13,4 +13,8 @@ class Airline < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
 	validates :name, presence: true
+
+	def has_active_recruitment?
+		self.flies.present?
+	end
 end

@@ -21,13 +21,12 @@ ActiveRecord::Schema.define(version: 20141130223845) do
     t.string   "name"
     t.string   "country"
     t.string   "slug"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "has_active_recruitment", default: false
   end
 
   add_index "airlines", ["slug"], name: "index_airlines_on_slug", using: :btree

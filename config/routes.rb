@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'main/index'
+
   devise_for :users, controllers: { registrations: "users/registrations" }
   get 'static_pages/home'
 
-  root 'airlines#index'
-  resources :airlines, only: [:show, :new, :create] do
+  root 'main#index'
+  resources :airlines, only: [:index, :show, :new, :create] do
     resources :fly
   end
 
