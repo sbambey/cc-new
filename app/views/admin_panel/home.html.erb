@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="col-xs-12">
+
+		<h2>Admin Notices</h2>
+
+		<table class="table lighter">
+			<thead>
+				<tr>
+					<th>Airline</th>
+					<th>Fly</th>
+					<th>Status</th>
+					<th>Missing fields</th>
+					<th>Scraped at</th>
+					<th>Staging</th>
+				</tr>
+			</thead>
+			<% @admin_notices.all.each do |notice| %>
+				<tr class="<%= notice.status %>">
+					<td>
+						<%= link_to image_tag(notice.airline.logo, class: "airlines-index-logo"), airline_path(notice.airline) %>
+					</td>
+					<td><%= link_to notice.fly.name, airline_fly_path(notice.airline, notice.fly) %></td>
+					<td><%= notice.status %></td>
+					<td><%= notice.missing_fields.map(&:inspect).join(", ") %></td>
+					<td><%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %></td>
+					<td><%= notice.status == "success" ? "n/a" : "Staged" %></td>
+				</tr>
+			<% end %>
+		</table>
+
+	</div>
+</div>
