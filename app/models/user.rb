@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def self.checkbox_params
-    RATINGS.keys
+    [:high_school_diploma, :post_secondary_degree]
+      .concat(RATINGS.keys)
       .concat(MEDICAL_INFORMATION.keys)
       .concat(ADDITIONAL.keys)
   end
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
   store_accessor :additional, *ADDITIONAL.keys
 
   ## validations
-  permissible_params.each do |param|
+  [:full_name, :nationality, :language, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|
     validates_presence_of param
   end
 
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   checkbox_params.each do |attribute|
-    validates attribute, inclusion: ["1", "0"]
+    validates attribute, inclusion: ["1", "0", true, false]
   end
 
 end

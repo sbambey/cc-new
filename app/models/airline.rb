@@ -3,6 +3,7 @@ class Airline < ActiveRecord::Base
 	friendly_id :name, use: [:slugged, :history]
 
 	has_many :flies
+	has_many :scrape_nodes
 
 	has_attached_file :logo, styles: {
     thumb: '100x100>',

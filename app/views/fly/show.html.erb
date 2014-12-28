@@ -3,6 +3,9 @@
 	<div class="col-xs-12">
 		<h2 class="lighter">
 			<%= image_tag @fly.airline.logo, class: "fly-show-logo" %><%= "#{@fly.airline.name} - #{@fly.name}" %>
+			<%=  " - <em>Staged</em>".html_safe if @fly.staged %>
+			<%= link_to("Unstage", unstage_airline_fly_path(@fly.airline, @fly),
+			:method => :put, class: "btn btn-default btn-sm btn-navbar") if @fly.staged %>
 		</h2>
 
 		<table class="table table-bordered table-thick-border standard-margin lighter">
@@ -19,7 +22,7 @@
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
-				<td><%= @fly.expiration %></td>
+				<td><%= @fly.posting_expiry_as_string %></td>
 				<td><%= link_to "Click here", @fly.website, target: "_blank" %></td>
 			</tr>
 		</table>

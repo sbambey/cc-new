@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
 
-  get 'main/index'
+  resources :scrape_nodes, only: [:create, :destroy]
+  resources :admin_notices, only: [:create, :destroy]
+  resources :staged_fly, only: [:create, :destroy]
+
+  devise_for :admins
 
   devise_for :users, controllers: { registrations: "users/registrations" }
   get 'static_pages/home'
 
   root 'main#index'
   resources :airlines, only: [:index, :show, :new, :create] do
-    resources :fly
+    resources :fly do
+      member do
+        put "unstage"
+      end
+    end
   end
+
+  get 'admin_panel/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

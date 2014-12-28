@@ -14,26 +14,35 @@
 <% if user_signed_in? %>
 	<div class="container">
 		<div class="col-xs-12">
-			<table class="table lighter">
-				<thead>
+			<% if @flies.empty? %>
+				<div class="alert alert-warning" role="alert">
+					Currently no opportunities were found given your information.
+					<%= link_to "Edit your information", edit_user_registration_path %>
+				</div>
+			<% else %>
+				<table class="table lighter">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Opportunity</th>
+							<th>Posting Date</th>
+							<th>Posting Expiry</th>
+							<th>Recent Position(s)</th>
+						</tr>
+					</thead>
+					<% @flies.each do |fly| %>
 					<tr>
-						<th></th>
-						<th></th>
-						<th>Opportunity</th>
-						<th>Hiring Status</th>
-						<th>Recent Position(s)</th>
+						<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
+						<td><%= image_tag fly.airline.logo, class: "airlines-index-logo" %></td>
+						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+						<td><%= fly.posting_date_as_string %></td>
+						<td><%= fly.posting_expiry_as_string %></td>
+						<td></td>
 					</tr>
-				</thead>
-				<% @flies.each do |fly| %>
-				<tr>
-					<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
-					<td><%= image_tag fly.airline.logo, class: "airlines-index-logo" %></td>
-					<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
-					<td><%= "Active" if fly.airline.has_active_recruitment? %></td>
-					<td></td>
-				</tr>
-				<% end %>
-			</table>
+					<% end %>
+				</table>
+			<% end %>
 		</div>
 	</div>
 <% else %>

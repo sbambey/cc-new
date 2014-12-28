@@ -5,6 +5,7 @@ class Fly < ActiveRecord::Base
 	friendly_id :name, use: [:slugged, :history]
 
 	belongs_to :airline
+	has_many :admin_notices, dependent: :destroy
 
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
 	store_accessor :rating, *RATINGS.keys

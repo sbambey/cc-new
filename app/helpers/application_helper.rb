@@ -8,6 +8,8 @@ module ApplicationHelper
 			"success"
 		elsif key == "alert"
 			"danger"
+		else
+			key
 		end
 	end
 
@@ -15,7 +17,7 @@ module ApplicationHelper
 		return "" if flash.empty?
 		flash.each do |key, value|
 			key = convert_if_devise_key(key)
-	    return "<div class='alert alert-#{key} standard-margin'>#{value}</div>".html_safe
+	    return "<div class='alert alert-#{key}' role='alert'>#{value}</div>".html_safe
 	  end
 	end
 end
