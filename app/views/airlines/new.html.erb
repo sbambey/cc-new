@@ -1,23 +1,46 @@
-<% provide(:title, 'New Airline') %>
-<div class='col-xs-12'>
-	<h1>Add an airline</h1>
-	<%= form_for(@airline, :html => {role: 'form'}) do |f| %>
-	  
-	  <div class='form-group'>
-	    <%= f.text_field :name, class: 'form-control', placeholder: 'Airline name' %>
-	    <%= f.label :name, class: 'sr-only' %>
-	  </div>
+<% provide(:title, "New Airline") %>
+<div class="container">
+	<div class="col-md-4">
+		<h1>Add an airline</h1>
+		<%= form_for(@airline, :html => {role: "form"}) do |f| %>
+		  
+		  <div class="form-group">
+		    <%= f.text_field :name, class: "form-control", placeholder: "Airline name" %>
+		    <%= f.label :name, class: "sr-only" %>
+		  </div>
 
-	  <div class='form-group'>
-	    <%= f.text_field :country, class: 'form-control', placeholder: 'Country' %>
-	    <%= f.label :country, class: 'sr-only' %>
-	  </div>
+		  <div class="form-group">
+		    <%= f.text_field :country, class: "form-control", placeholder: "Country" %>
+		    <%= f.label :country, class: "sr-only" %>
+		  </div>
 
-		<div class='form-group'>  	  
-			<%= f.file_field :logo %>
-			<%= f.label :logo, class: 'sr-only' %>	
-	  </div>
+		  <div class="form-group">
+		    <%= f.text_field :recruitment_overview_page, class: "form-control", placeholder: "Recruitment overview page" %>
+		    <%= f.label :recruitment_overview_page, class: "sr-only" %>
+		  </div>
 
-		<%= f.submit 'Add Airline', class: 'btn btn-default' %>
-	<% end %>
+		  <div class="form-group">
+		    <%= f.text_field :content_selector, class: "form-control", placeholder: "Content selector" %>
+		    <%= f.label :content_selector, class: "sr-only" %>
+		  </div>
+
+		  <div class="form-group">
+		    <%= f.text_field :title_selector, class: "form-control", placeholder: "Title selector" %>
+		    <%= f.label :title_selector, class: "sr-only" %>
+		  </div>
+
+		  <div class="checkbox standard-margin">
+      	<label>
+        	<%= f.check_box :untracked %><p>Untracked?</p>
+        </label>
+      </div>
+
+			<div class="form-group">  	  
+				<%= f.file_field :logo %>
+				<%= f.label :logo, class: "sr-only" %>	
+		  </div>
+
+			<%= f.submit "Add Airline", class: "btn btn-default" %>
+		<% end %>
+	</div>
 </div>

@@ -1,11 +1,8 @@
-<% provide(:title, "#{@fly.airline.name} - #{@fly.name}") %>
+<% provide(:title, "#{@fly.name}") %>
 <div class="container">
 	<div class="col-xs-12">
 		<h2 class="lighter">
-			<%= image_tag @fly.airline.logo, class: "fly-show-logo" %><%= "#{@fly.airline.name} - #{@fly.name}" %>
-			<%=  " - <em>Staged</em>".html_safe if @fly.staged %>
-			<%= link_to("Unstage", unstage_airline_fly_path(@fly.airline, @fly),
-			:method => :put, class: "btn btn-default btn-sm btn-navbar") if @fly.staged %>
+			<%= image_tag @fly.airline.logo, class: "airline-heading-logo" %><%= "#{@fly.name}" %>
 		</h2>
 
 		<table class="table table-bordered table-thick-border standard-margin lighter">
@@ -15,59 +12,55 @@
 					<th>Equipment</th>
 					<th>Base</th>
 					<th>Expires</th>
-					<th>More Info</th>
+					<th>Website</th>
 				</tr>
 			</thead>
 			<tr>
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
-				<td><%= @fly.posting_expiry_as_string %></td>
-				<td><%= link_to "Click here", @fly.website, target: "_blank" %></td>
+				<td><%= @fly.posting_expiry_as_string ? @fly.posting_expiry_as_string : "When filled" %></td>
+				<td><%= link_to abbreviate(@fly.website), @fly.website, target: "_blank" %></td>
 			</tr>
 		</table>
 
+		<%= @fly.intro.html_safe %>
+
+		<%= @fly.content.html_safe %>
+	</div>
+
+	<div class="col-xs-12 col-md-6">
+		
 		<h3>Flight Time</h3>
+		<% if @fly.flight_time_requirements.any? %>
+	
+			<table class="table table-bordered standard-margin lighter">
+				<% @fly.flight_time_requirements.each do |key, value| %>
+					<tr>
+						<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
+						<td><%= value %> hrs</td>
+					</tr>
+				<% end %>
+			</table>
+		<% else %>
+			<p>No specific flight time requirements.</p>
+		<% end %>
 
-		<table class="table table-bordered standard-margin lighter">
-			<% @fly.flight_time.each do |key, value| %>
-				<tr>
-					<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
-					<td><%= value %></td>
-				</tr>
-			<% end %>
-		</table>
-
-		<table class="table table-bordered standard-margin lighter">
-			<% @fly.rating.each do |key, value| %>
-				<tr>
-					<td><%= RATINGS[key.to_sym] %></td>
-					<td><%= Fly.to_sb(value) %></td>
-				</tr>
-			<% end %>
-		</table>
+		<% @fly.rating.each do |type, value| %>
+			<%= bool_field(type, value, RATINGS) %>
+		<% end %>
 
 		<h3>Medical Requirements</h3>
 
-		<table class="table table-bordered standard-margin lighter">
-			<% @fly.medical.each do |key, value| %>
-				<tr>
-					<td><%= MEDICAL_INFORMATION[key.to_sym] %></td>
-					<td><%= Fly.to_sb(value) %></td>
-				</tr>
-			<% end %>
-		</table>
+		<% @fly.medical.each do |type, value| %>
+			<%= bool_field(type, value, MEDICAL_INFORMATION) %>
+		<% end %>
 
 		<h3>Additional Requirements</h3>
 
-		<table class="table table-bordered standard-margin lighter">
-			<% @fly.additional.each do |key, value| %>
-				<tr>
-					<td><%= ADDITIONAL[key.to_sym] %></td>
-					<td><%= Fly.to_sb(value) %></td>
-				</tr>
-			<% end %>
-		</table>
+		<% @fly.additional.each do |type, value| %>
+			<%= bool_field(type, value, ADDITIONAL) %>
+		<% end %>
 
 	</div>
 </div>

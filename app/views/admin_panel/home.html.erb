@@ -3,30 +3,68 @@
 
 		<h2>Admin Notices</h2>
 
-		<table class="table lighter">
-			<thead>
-				<tr>
-					<th>Airline</th>
-					<th>Fly</th>
-					<th>Status</th>
-					<th>Missing fields</th>
-					<th>Scraped at</th>
-					<th>Staging</th>
-				</tr>
-			</thead>
-			<% @admin_notices.all.each do |notice| %>
-				<tr class="<%= notice.status %>">
-					<td>
-						<%= link_to image_tag(notice.airline.logo, class: "airlines-index-logo"), airline_path(notice.airline) %>
-					</td>
-					<td><%= link_to notice.fly.name, airline_fly_path(notice.airline, notice.fly) %></td>
-					<td><%= notice.status %></td>
-					<td><%= notice.missing_fields.map(&:inspect).join(", ") %></td>
-					<td><%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %></td>
-					<td><%= notice.status == "success" ? "n/a" : "Staged" %></td>
-				</tr>
-			<% end %>
-		</table>
+		<% if @node_sets.any? %>
+			<table class="table lighter">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Airline</th>
+						<th>Opportunity</th>
+						<th>Scraped Page</th>
+						<th>Status</th>
+						<th>Scraped at</th>
+						<th>Notice</th>
+					</tr>
+				</thead>
+				<% @node_sets.each do |node_set| %>
 
+					<% airline = node_set.airline %>
+					<% parent = node_set.parent %>
+					<% notice = parent.notice %>
+
+					<tr class="<%= notice.status %>">
+						<td>></td>
+						<td><%= link_to image_tag(airline.logo, class: "airline-table-logo"), airline_path(airline) %></td>
+
+						<td><%= link_to airline.name, airline_path(airline) %></td>
+
+						<td><%= link_to abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page %></td>
+
+						<td><%= notice.status %></td>
+						
+						<td><%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %></td>
+						<td><%= '<span class="label label-danger">Content untracked</span>'.html_safe if parent.html.nil? %></td>
+					</tr>
+
+					<% node_set.children.each do |child| %>
+
+						<tr>
+							<td></td>
+							<td></td>
+
+							<% fly = child.scrapeable %>
+							<% set = child.node_set %>
+							<% notice = child.notice %>
+
+							<td class="<%= notice.status %>"><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
+
+							<td class="<%= notice.status %>"><%= link_to abbreviate(fly.website), fly.website %></td>
+
+							<td class="<%= notice.status %>"><%= notice.status %></td>
+							
+							<td class="<%= notice.status %>">
+								<%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %>
+							</td>
+							<td class="<%= notice.status %>"></td>
+						</tr>
+
+					<% end %>
+
+					
+				<% end %>
+			</table>
+		<% else %>
+			<p>There are currently no notices to display</p>
+		<% end %>
 	</div>
 </div>

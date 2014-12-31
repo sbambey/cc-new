@@ -30,8 +30,8 @@
 			    	<%= f.label :base, class: "sr-only" %>
 				  </td>
 					<td>
-				    <%= f.text_field :expiration, class: "form-control", placeholder: "Expires" %>
-				    <%= f.label :expiration, class: "sr-only" %>
+				    <%= f.text_field :posting_expiry_as_string, class: "form-control", placeholder: "Expires" %>
+				    <%= f.label :posting_expiry_as_string, class: "sr-only" %>
 					</td>
 					<td>
 				    <%= f.text_field :website, class: "form-control", placeholder: "Website" %>
@@ -40,8 +40,8 @@
 		  	</tr>
 		  </table>
 
-		  <!--<h4>Intro</h4>
-		  <%= f.cktext_area :intro, value: "<h3>Intro</h3>" %>-->
+		  <h4>Intro</h4>
+		  <%= f.text_area :intro, class: "tinymce", rows: 10, cols: 120 %>
 		</div>
 	</div>
 
@@ -62,8 +62,34 @@
 
   <a href="#" class="add_fields">[+] Add Requirement</a>-->
 
-  <!--<h4 class="standard-margin">Content</h4>
-  <%= f.cktext_area :content %>-->
+  <div class="container">
+  	<div class="col-xs-12">
+		  <h4 class="standard-margin">Content</h4>
+		  <%= f.text_area :content, class: "tinymce", rows: 30, cols: 120 %>
+		</div>
+	</div>
+
+  <div class="container">
+  	<div class="col-md-4">
+
+  		<h4>Automatic consistency monitoring</h4>
+
+  		<%= render partial: "shared/text_field", 
+	      locals: { 
+	        f: f, 
+	        attribute: :content_selector, 
+	        args: {
+	          placeholder: "Content selector"
+	        } 
+	      } %>
+
+	    <div class="checkbox standard-margin">
+      	<label>
+        	<%= f.check_box :untracked %><p>Untracked?</p>
+        </label>
+      </div>
+  	</div>
+  </div>
 
 	<div class="container">
 		<div class="col-xs-12">
@@ -71,3 +97,4 @@
 		</div>
 	</div>
 <% end %>
+<%= tinymce %>

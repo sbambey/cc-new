@@ -1,18 +1,28 @@
 class ScrapeNode < ActiveRecord::Base
-	belongs_to :airline
-	has_one :admin_notice
+	belongs_to :node_set, class_name: "ScrapeNodeSet", foreign_key: "scrape_node_set_id"
+	belongs_to :scrapeable, polymorphic: true
+	has_one :notice, class_name: "AdminNotice", dependent: :destroy
 	serialize :titles, Array
 
-	def same_as_previous?
-		previous_node = self.class.where("id < ?", id).last
+	TYPES = { parent: 1, child: 0 }
 
-		if html == previous_node.try(:html)
-			return {html: true, titles: true}
-		elsif titles == previous_node.try(:titles)
-			return {html: false, titles: true}
+	def parent?
+		self.node_type == TYPES[:parent] ? true : false
+	end
+
+	def new_notice(matched_node)
+
+		notice = AdminNotice.new(listable: scrapeable, node: self)
+
+		if html == matched_node.try(:html) && titles == matched_node.try(:titles)
+			notice.status = AdminNotice::STATUSES[:success]
+		elsif html == matched_node.try(:html) || titles == matched_node.try(:titles) 
+			notice.status = AdminNotice::STATUSES[:warning]
 		else
-			return {html: false, titles: false}
+			notice.status = AdminNotice::STATUSES[:danger]
 		end
+
+		return notice
 	end
 
 end

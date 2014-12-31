@@ -10,6 +10,6 @@ class ScrapeNodeController < ApplicationController
   private
 
   	def scrape_node_params
-  		params.require(:scrape_node).permit(:html, :fly_count, :titles => [], :airline_id)
+  		params.require(:scrape_node).permit(:node_type, :html, :titles => [], :fly_id, :scrape_node_set_id)
   	end
 end

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :admin_notices
+
   def self.checkbox_params
     [:high_school_diploma, :post_secondary_degree]
       .concat(RATINGS.keys)

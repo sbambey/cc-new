@@ -25,6 +25,6 @@ class AirlinesController < ApplicationController
   private
 
   	def airline_params
-  		params.require(:airline).permit(:logo, :name)
+  		params.require(:airline).permit(:name, :country, :recruitment_overview_page, :content_selector, :title_selector, :untracked,  :logo)
   	end
 end

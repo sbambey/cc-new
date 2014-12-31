@@ -1,12 +1,14 @@
 class CreateAdminNotices < ActiveRecord::Migration
   def change
     create_table :admin_notices do |t|
-      t.text :missing_fields
+      t.text :fly_name
       t.string :status
+      t.string :edited_by_name
+      t.string :edited_by_email
       t.boolean :dismissed, default: false
-      t.integer :fly_id
-      t.integer :airline_id
+      t.references :listable, polymorphic: true, index: true
       t.integer :scrape_node_id
+      t.integer :user_id
 
       t.timestamps null: false
     end

@@ -16,7 +16,8 @@ class CreateFlies < ActiveRecord::Migration
       t.string :posting_expiry_as_string
       t.date :posting_date_as_date
       t.date :posting_expiry_as_date
-      t.boolean :staged
+      t.text :content_selector
+      t.boolean :untracked
       t.belongs_to :airline
       t.string :slug
       t.index :slug

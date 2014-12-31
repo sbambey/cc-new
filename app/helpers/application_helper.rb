@@ -13,6 +13,10 @@ module ApplicationHelper
 		end
 	end
 
+	def abbreviate(text)
+		text[0...20] + "..."
+	end
+
 	def flash_messages
 		return "" if flash.empty?
 		flash.each do |key, value|

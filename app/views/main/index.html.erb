@@ -34,7 +34,7 @@
 					<% @flies.each do |fly| %>
 					<tr>
 						<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
-						<td><%= image_tag fly.airline.logo, class: "airlines-index-logo" %></td>
+						<td><%= image_tag fly.airline.logo, class: "airline-table-logo" %></td>
 						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
 						<td><%= fly.posting_date_as_string %></td>
 						<td><%= fly.posting_expiry_as_string %></td>

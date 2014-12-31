@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'scrape_node_set/create'
+
+  get 'scrape_node_set/destroy'
+
   resources :scrape_nodes, only: [:create, :destroy]
   resources :admin_notices, only: [:create, :destroy]
   resources :staged_fly, only: [:create, :destroy]

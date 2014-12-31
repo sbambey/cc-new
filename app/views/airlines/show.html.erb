@@ -1,4 +1,11 @@
 <% provide(:title, @airline.name) %>
-<% @airline.flies.each do |fly| %>
-	<p>- <%= link_to fly.name, airline_fly_path(@airline, fly) %><p>
-<% end %>
+<div class="container">
+	<div class="col-xs-12">
+		<h2 class="lighter"><%= image_tag @airline.logo, class: "airline-heading-logo" %><%= @airline.name %></h2>
+		<% @airline.flies.each do |fly| %>
+			<p>- <%= link_to fly.name, airline_fly_path(@airline, fly) %><p>
+		<% end %>
+		<%= link_to "Add opportunity", new_airline_fly_path(@airline), class: "btn btn-default" %>
+	</div>
+</div>
+

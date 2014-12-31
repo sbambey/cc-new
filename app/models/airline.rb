@@ -3,7 +3,10 @@ class Airline < ActiveRecord::Base
 	friendly_id :name, use: [:slugged, :history]
 
 	has_many :flies
-	has_many :scrape_nodes
+
+	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
+	has_many :node_sets, class_name: "ScrapeNodeSet", dependent: :destroy
+	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
 
 	has_attached_file :logo, styles: {
     thumb: '100x100>',
