@@ -18,27 +18,26 @@
 #  logo_updated_at           :datetime
 #
 
-class Airline < ActiveRecord::Base
-	extend FriendlyId
-	friendly_id :name, use: [:slugged, :history]
+require "rails_helper"
 
-	has_many :flies
+feature "Creating an airline" do
 
-	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
-	has_many :node_sets, class_name: "ScrapeNodeSet", dependent: :destroy
-	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
+	given(:admin) { create(:admin) }
+	given(:airline) { build(:airline) }
 
-	has_attached_file :logo, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
+	before do 
+		manual_sign_in admin
+		visit new_airline_path
+	end
+	
+	scenario "with proper information" do
+		fill_in "Airline name", with: airline.name
+		fill_in "Country", with: airline.country
+		find(:css, "#airline_untracked").set(airline.untracked)
+		click_button "Add airline"
 
-  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
-
-	validates :name, presence: true
-
-	def has_active_recruitment?
-		self.flies.present?
+		expect(page).to have_content "Created airline successfully!"
+		expect(page).to have_content airline.name
 	end
 end
+

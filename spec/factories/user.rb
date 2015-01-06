@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  full_name              :string
+#  birthdate              :date
+#  nationality            :string
+#  language               :string
+#  high_school_diploma    :boolean
+#  post_secondary_degree  :boolean
+#  flight_time            :hstore
+#  rating                 :hstore
+#  medical                :hstore
+#  additional             :hstore
+#  created_at             :datetime
+#  updated_at             :datetime
+#  admin                  :boolean
+#
+
 FactoryGirl.define do
   factory :user, class: User do
     sequence(:email){|n| "testuser#{n}@cockpitcareers.com" }
@@ -15,5 +45,9 @@ FactoryGirl.define do
 	  medical { {"medical_license" => "1"} }
 	  additional { {"work_right" => "1", "valid_passport" => "1", "background_check" => "1", "drug_test" => "1", 
 	  	"drivers_license" => "1"} }
+
+	  factory :admin do
+	  	admin true
+	  end
   end
 end

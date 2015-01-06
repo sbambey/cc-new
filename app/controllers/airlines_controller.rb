@@ -1,4 +1,6 @@
 class AirlinesController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_admin, only: [:new, :create]
+
   def index
   	@airlines = Airline.all
   end
@@ -11,7 +13,8 @@ class AirlinesController < ApplicationController
   	@airline = Airline.new(airline_params)
 
   	if @airline.save
-  		redirect_to root_path
+      flash[:success] = "Created airline successfully!"
+  		redirect_to airline_path(@airline)
   	else
   		render 'new'
   	end

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: scrape_node_sets
+#
+#  id         :integer          not null, primary key
+#  airline_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ScrapeNodeSet < ActiveRecord::Base
 	belongs_to :airline
 	has_many :nodes, class_name: "ScrapeNode", dependent: :destroy

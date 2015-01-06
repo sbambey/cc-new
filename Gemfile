@@ -28,6 +28,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'yaml_db'
+  gem 'annotate', '~> 2.6.5'
+  gem 'launchy'
+  gem 'guard-rspec'
 end
 
 #group :test do

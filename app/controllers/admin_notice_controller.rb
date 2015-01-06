@@ -10,6 +10,6 @@ class AdminNoticeController < ApplicationController
   private
 
   	def admin_notice_params
-  		params.require(:admin_notice).permit(:missing_fields => [], :fly_id, :airline_id, :scrape_node_id)
+  		params.require(:admin_notice).permit(:airline_id, :listable_id, :scrape_node_id)
   	end
 end

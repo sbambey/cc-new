@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: scrape_nodes
+#
+#  id                 :integer          not null, primary key
+#  node_type          :integer
+#  html               :text
+#  titles             :text
+#  scrapeable_id      :integer
+#  scrapeable_type    :string
+#  scrape_node_set_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 class ScrapeNode < ActiveRecord::Base
 	belongs_to :node_set, class_name: "ScrapeNodeSet", foreign_key: "scrape_node_set_id"
 	belongs_to :scrapeable, polymorphic: true
