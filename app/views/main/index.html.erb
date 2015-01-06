@@ -14,10 +14,9 @@
 <% if user_signed_in? %>
 	<div class="container">
 		<div class="col-xs-12">
-			<% if @flies.empty? %>
+			<% if @airlines.empty? %>
 				<div class="alert alert-warning" role="alert">
-					Currently no opportunities were found given your information.
-					<%= link_to "Edit your information", edit_user_registration_path %>
+					There currently is no airlines with active recruitment.
 				</div>
 			<% else %>
 				<table class="table lighter">
@@ -25,20 +24,18 @@
 						<tr>
 							<th></th>
 							<th></th>
-							<th>Opportunity</th>
-							<th>Posting Date</th>
-							<th>Posting Expiry</th>
-							<th>Recent Position(s)</th>
+							<th>Airline</th>
+							<th>Hiring Status</th>
+							<th>Newest opportunity</th>
 						</tr>
 					</thead>
-					<% @flies.each do |fly| %>
+					<% @airlines.each do |airline| %>
 					<tr>
-						<td><%= image_tag("boarding.gif", class: "boarding") if fly.airline.has_active_recruitment? %></td>
-						<td><%= image_tag fly.airline.logo, class: "airline-table-logo" %></td>
-						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
-						<td><%= fly.posting_date_as_string %></td>
-						<td><%= fly.posting_expiry_as_string %></td>
-						<td></td>
+						<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
+						<td><%= image_tag airline.logo, class: "airline-table-logo" %></td>
+						<td><%= link_to airline.name, airline_path(airline) %></td>
+						<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
+						<td><%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) %></td>
 					</tr>
 					<% end %>
 				</table>
@@ -61,25 +58,25 @@
 			<hr class="medium">
 
 				<table class="table lighter">
-				<thead>
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Airline</th>
+							<th>Hiring Status</th>
+							<th>Newest opportunity</th>
+						</tr>
+					</thead>
+					<% @airlines.each do |airline| %>
 					<tr>
-						<th></th>
-						<th></th>
-						<th>Airline</th>
-						<th>Hiring Status</th>
-						<th>Newest opportunity</th>
+						<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
+						<td><%= image_tag airline.logo, class: "airline-table-logo" %></td>
+						<td><%= link_to airline.name, airline_path(airline) %></td>
+						<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
+						<td><%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) %></td>
 					</tr>
-				</thead>
-				<% @airlines.each do |airline| %>
-				<tr>
-					<td><%= image_tag("boarding.gif", class: "boarding") if airline.has_active_recruitment? %></td>
-					<td><%= image_tag airline.logo, class: "airline-table-logo" %></td>
-					<td><%= link_to airline.name, airline_path(airline) %></td>
-					<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
-					<td><%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) %></td>
-				</tr>
-				<% end %>
-			</table>
+					<% end %>
+				</table>
 
 		</div>
 	</div>
