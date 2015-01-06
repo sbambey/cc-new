@@ -40,4 +40,3 @@ feature "Creating an airline" do
 		expect(page).to have_content airline.name
 	end
 end
-

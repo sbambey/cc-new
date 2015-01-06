@@ -35,44 +35,16 @@ class FlyController < ApplicationController
     @fly = Fly.friendly.find(params[:id])
   end
 
-  def index
-  	@flies = Fly.all
-  end
+  #def index
+  #	@flies = Fly.all
+  #end
 
-  def destroy
-    @fly = Fly.friendly.find(params[:id])
-    @fly.destroy
-    flash[:success] = "Opportunity deleted successfully!"
-    redirect_to root_path
-  end
-
-  # == Schema Information
-#
-# Table name: flies
-#
-#  id                       :integer          not null, primary key
-#  name                     :string
-#  position                 :string
-#  website                  :string
-#  equipment                :string
-#  base                     :string
-#  intro                    :text
-#  content                  :text
-#  flight_time              :hstore
-#  rating                   :hstore
-#  medical                  :hstore
-#  additional               :hstore
-#  posting_date_as_string   :string
-#  posting_expiry_as_string :string
-#  posting_date_as_date     :date
-#  posting_expiry_as_date   :date
-#  content_selector         :text
-#  untracked                :boolean
-#  airline_id               :integer
-#  slug                     :string
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
-#
+  #def destroy
+  #  @fly = Fly.friendly.find(params[:id])
+  #  @fly.destroy
+  #  flash[:success] = "Opportunity deleted successfully!"
+  #  redirect_to root_path
+  #end
 
   private
 

@@ -8,7 +8,11 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
-	<%= render 'layouts/header' %>
+	<% if user_signed_in? %>
+		<%= render "layouts/signed_in_header" %>
+	<% else %>
+		<%= render "layouts/signed_out_header" %>
+	<% end %>
 
 	<div class="container">
 

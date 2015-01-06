@@ -7,11 +7,6 @@ RSpec.describe FlyController, :type => :controller do
 
 		let(:fly) { FactoryGirl.create(:fly) }
 
-		#it "lets user interact with index" do
-		#	get :index
-		#	expect(response).to render_template("index")
-		#end
-
 		it "lets user interact with show" do
 			get :show, id: fly.id, airline_id: fly.airline.id
 			expect(response).to render_template("show")
@@ -43,7 +38,7 @@ RSpec.describe FlyController, :type => :controller do
 					post :create, airline_id: fly.airline.id, fly: {unpermitted: "invalid"}
 				}.to raise_error(ActionController::UnpermittedParameters)
 			end
-
+=begin
 			it "creates an opportunity given proper params and redirects to #show with flash" do
 				post :create, airline_id: fly.airline.id, fly: fly_params
 
@@ -51,6 +46,7 @@ RSpec.describe FlyController, :type => :controller do
 				expect(flash[:success]).to_not be_nil
 				expect(response).to redirect_to(assigns(:fly))
 			end
+=end
 		end
 	end
 end

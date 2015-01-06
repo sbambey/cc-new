@@ -25,7 +25,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'capybara'
   gem 'yaml_db'
   gem 'annotate', '~> 2.6.5'

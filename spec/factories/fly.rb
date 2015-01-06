@@ -33,8 +33,8 @@ FactoryGirl.define do
     website "http://test.com"
     equipment "Airbus A320"
     base "Sandyland"
-    intro "blub"
-    content "blub"
+    intro "This is some intro text"
+    content "Content text right here!"
     flight_time { {"total_time" => "100", "total_pic_time" => "10", "multi_time" => "10", "multi_pic_time" => "10", 
 	  	"turbine_time" => "10", "turbine_pic_time" => "10", "turbofan_time" => "40", "turbofan_pic_time" => "10"} }
 	  rating { {"atpl" => "1"} }

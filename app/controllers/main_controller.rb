@@ -1,5 +1,5 @@
 class MainController < ApplicationController
   def index
-  	@flies = Fly.matching_conditions_met(current_user) if user_signed_in?
+  	@airlines = Airline.all.order("id desc").limit(10)
   end
 end
