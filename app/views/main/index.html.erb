@@ -35,7 +35,9 @@
 						<td><%= image_tag airline.logo, class: "airline-table-logo" %></td>
 						<td><%= link_to airline.name, airline_path(airline) %></td>
 						<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
-						<td><%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) %></td>
+						<td>
+							<%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) unless airline.flies.empty? %>
+						</td>
 					</tr>
 					<% end %>
 				</table>
@@ -73,7 +75,9 @@
 						<td><%= image_tag airline.logo, class: "airline-table-logo" %></td>
 						<td><%= link_to airline.name, airline_path(airline) %></td>
 						<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
-						<td><%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) %></td>
+						<td>
+							<%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) unless airline.flies.empty? %>
+						</td>
 					</tr>
 					<% end %>
 				</table>

@@ -34,11 +34,13 @@ class Airline < ActiveRecord::Base
     medium: '300x300>'
   }
 
+  scope :untracked, -> { where(no_track: false) }
+
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
 	validates :name, presence: true
 
 	def has_active_recruitment?
-		self.flies.present?
+		self.flies.where("no_match = ?", false).any?
 	end
 end

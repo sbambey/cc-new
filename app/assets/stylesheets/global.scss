@@ -77,11 +77,19 @@ th {
 
 .airline-table-logo {
   height:20px;
+  display: block;
+  margin: 0 auto;
 }
 
 .airline-heading-logo {
   height:30px;
   margin: 0 20px 10px 0;
+}
+
+.boarding {
+  margin:0 auto 4px auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Errors */

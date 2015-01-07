@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228221410) do
+ActiveRecord::Schema.define(version: 20150106225835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "admin_notices", force: true do |t|
+  create_table "admin_notices", force: :cascade do |t|
     t.text     "fly_name"
     t.string   "status"
     t.string   "edited_by_name"
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20141228221410) do
     t.datetime "updated_at",                      null: false
   end
 
-  add_index "admin_notices", ["listable_id", "listable_type"], name: "index_admin_notices_on_listable_id_and_listable_type", using: :btree
+  add_index "admin_notices", ["listable_type", "listable_id"], name: "index_admin_notices_on_listable_type_and_listable_id", using: :btree
 
-  create_table "admins", force: true do |t|
+  create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -51,16 +51,16 @@ ActiveRecord::Schema.define(version: 20141228221410) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
-  create_table "airlines", force: true do |t|
+  create_table "airlines", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
     t.text     "recruitment_overview_page"
     t.text     "content_selector"
     t.text     "title_selector"
-    t.boolean  "untracked"
+    t.boolean  "no_track",                  default: false
     t.string   "slug"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20141228221410) do
 
   add_index "airlines", ["slug"], name: "index_airlines_on_slug", using: :btree
 
-  create_table "flies", force: true do |t|
+  create_table "flies", force: :cascade do |t|
     t.string   "name"
     t.string   "position"
     t.string   "website"
@@ -86,16 +86,17 @@ ActiveRecord::Schema.define(version: 20141228221410) do
     t.date     "posting_date_as_date"
     t.date     "posting_expiry_as_date"
     t.text     "content_selector"
-    t.boolean  "untracked"
+    t.boolean  "no_track",                 default: false
     t.integer  "airline_id"
     t.string   "slug"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "no_match"
   end
 
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree
 
-  create_table "friendly_id_slugs", force: true do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
@@ -108,13 +109,13 @@ ActiveRecord::Schema.define(version: 20141228221410) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "scrape_node_sets", force: true do |t|
+  create_table "scrape_node_sets", force: :cascade do |t|
     t.integer  "airline_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scrape_nodes", force: true do |t|
+  create_table "scrape_nodes", force: :cascade do |t|
     t.integer  "node_type"
     t.text     "html"
     t.text     "titles"
@@ -125,9 +126,9 @@ ActiveRecord::Schema.define(version: 20141228221410) do
     t.datetime "updated_at",         null: false
   end
 
-  add_index "scrape_nodes", ["scrapeable_id", "scrapeable_type"], name: "index_scrape_nodes_on_scrapeable_id_and_scrapeable_type", using: :btree
+  add_index "scrape_nodes", ["scrapeable_type", "scrapeable_id"], name: "index_scrape_nodes_on_scrapeable_type_and_scrapeable_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

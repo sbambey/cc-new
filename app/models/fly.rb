@@ -41,12 +41,28 @@ class Fly < ActiveRecord::Base
 	store_accessor :medical, *MEDICAL_INFORMATION.keys
 	store_accessor :additional, *ADDITIONAL.keys
 
-	def flight_time_requirements
+	def requirements_by_type(type, constant)
 		reqs = {}
-		self.flight_time.each do |type, value|
+		self.send(type).each do |type, value|
 			reqs[type] = value unless value == "0"
-		end
-		return self.class.order_according_to_hstore_keys(FLIGHT_HOUR_TYPES, reqs)
+		end 
+		return self.class.order_according_to_hstore_keys(constant, reqs)
+	end
+
+	def flight_time_requirements
+		requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)
+	end
+
+	def rating_requirements
+		requirements_by_type(:rating, RATINGS)
+	end
+
+	def medical_requirements
+		requirements_by_type(:medical, MEDICAL_INFORMATION)
+	end
+
+	def additional_requirements
+		requirements_by_type(:additional, ADDITIONAL)
 	end
 
 	def self.matching_conditions_met(user)

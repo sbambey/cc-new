@@ -30,10 +30,8 @@
 	</div>
 
 	<div class="col-xs-12 col-md-6">
-		
-		<h3>Flight Time</h3>
 		<% if @fly.flight_time_requirements.any? %>
-	
+			<h3>Flight Time</h3>
 			<table class="table table-bordered standard-margin lighter">
 				<% @fly.flight_time_requirements.each do |key, value| %>
 					<tr>
@@ -42,24 +40,26 @@
 					</tr>
 				<% end %>
 			</table>
-		<% else %>
-			<p>No specific flight time requirements.</p>
 		<% end %>
 
-		<% @fly.rating.each do |type, value| %>
+		<% @fly.rating_requirements.each do |type, value| %>
 			<%= bool_field(type, value, RATINGS) %>
 		<% end %>
 
-		<h3>Medical Requirements</h3>
+		<% if @fly.medical_requirements.any? %>
+			<h3>Medical Requirements</h3>
 
-		<% @fly.medical.each do |type, value| %>
-			<%= bool_field(type, value, MEDICAL_INFORMATION) %>
+			<% @fly.medical.each do |type, value| %>
+				<%= bool_field(type, value, MEDICAL_INFORMATION) %>
+			<% end %>
 		<% end %>
 
-		<h3>Additional Requirements</h3>
+		<% if @fly.additional_requirements.any? %>
+			<h3>Additional Requirements</h3>
 
-		<% @fly.additional.each do |type, value| %>
-			<%= bool_field(type, value, ADDITIONAL) %>
+			<% @fly.additional.each do |type, value| %>
+				<%= bool_field(type, value, ADDITIONAL) %>
+			<% end %>
 		<% end %>
 
 	</div>

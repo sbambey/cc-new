@@ -1,5 +1,5 @@
 class MainController < ApplicationController
   def index
-  	@airlines = Airline.all.order("id desc").limit(10)
+  	@airlines = Airline.all.order("id desc")
   end
 end

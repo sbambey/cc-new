@@ -6,7 +6,7 @@ class CreateAirlines < ActiveRecord::Migration
       t.text :recruitment_overview_page
       t.text :content_selector
       t.text :title_selector
-      t.boolean :untracked
+      t.boolean :no_track, default: false
       t.string :slug
       t.index :slug
 
