@@ -7,17 +7,18 @@
 		max-width: 300px;
 	}
 
-	.jumbotron > p {
-		font-size: 18px;
+	.jumbotron {
+	& > p {
+			font-size: 18px;
+		}
+		.small {
+			font-size: 14px;
+		}
 	}
 
 	.bg-orange {
 	  color: white;
 	  background-color: #f0ad4e;
-	}
-
-	.small {
-		font-size: 14px;
 	}
 
 	.jumbotron {
