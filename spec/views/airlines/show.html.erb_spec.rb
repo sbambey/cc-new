@@ -10,6 +10,7 @@ RSpec.describe "airlines/show", :type => :view do
 
   	render
 
-  	expect(rendered).to match /#{fly.name}/
+  	expect(rendered).to have_content(airline.name)
+  	expect(rendered).to have_content(fly.name)
   end
 end

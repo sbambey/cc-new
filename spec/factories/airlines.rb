@@ -22,6 +22,6 @@ FactoryGirl.define do
   factory :airline, class: Airline do
     name "Test Airline"
     country "United States of America"
-    untracked true
+    no_track true
   end
 end

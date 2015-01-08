@@ -45,7 +45,29 @@ FactoryGirl.define do
 	  posting_date_as_date Date.yesterday
 	  posting_expiry_as_string "10th of Feb 2080"
 	  posting_expiry_as_date Date.today
-	  untracked true
+	  no_track true
+	  airline
+  end
+
+  factory :fly_without_requirements, class: Fly do
+    name "Test Opportunity"
+    position "First Officer"
+    website "http://test.com"
+    equipment "Airbus A320"
+    base "Sandyland"
+    intro "This is some intro text"
+    content "Content text right here!"
+    flight_time { {"total_time" => "0", "total_pic_time" => "0", "multi_time" => "0", "multi_pic_time" => "0", 
+	  	"turbine_time" => "0", "turbine_pic_time" => "0", "turbofan_time" => "0", "turbofan_pic_time" => "0"} }
+	  rating { {"atpl" => "0"} }
+	  medical { {"medical_license" => "0"} }
+	  additional { {"work_right" => "0", "valid_passport" => "0", "background_check" => "0", "drug_test" => "0", 
+	  	"drivers_license" => "0"} }
+	  posting_date_as_string "10th of Jan 2080"
+	  posting_date_as_date Date.yesterday
+	  posting_expiry_as_string "10th of Feb 2080"
+	  posting_expiry_as_date Date.today
+	  no_track true
 	  airline
   end
 end

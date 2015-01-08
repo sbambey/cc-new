@@ -1,6 +1,9 @@
 class FlyController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect_unless_admin, except: [:show]
+  before_action :authenticate_user!, :redirect_unless_admin, except: [:show]
+
+  def show
+    @fly = Fly.friendly.find(params[:id])
+  end
 
   def new
   	@airline = Airline.friendly.find(params[:airline_id])
@@ -8,19 +11,6 @@ class FlyController < ApplicationController
   end
 
   def create
-
-    #categories = fly_params["requirements"]["category"]
-    #values = fly_params["requirements"]["value"]
-
-  	#requirements_hash = {}
-
-  	#categories.each_with_index do |item, index|
-    #  key = FLIGHT_HOUR_TYPES.key(item)
-  	#	requirements_hash[key] = values[index]
-  	#end
-
-  	#fly_params["requirements"] = requirements_hash
-
   	@fly = Airline.friendly.find(params[:airline_id]).flies.new(fly_params)
 
   	if @fly.save
@@ -31,24 +21,9 @@ class FlyController < ApplicationController
   	end
   end
 
-  def show
-    @fly = Fly.friendly.find(params[:id])
-  end
-
-  #def index
-  #	@flies = Fly.all
-  #end
-
-  #def destroy
-  #  @fly = Fly.friendly.find(params[:id])
-  #  @fly.destroy
-  #  flash[:success] = "Opportunity deleted successfully!"
-  #  redirect_to root_path
-  #end
-
   private
 
   	def fly_params
-  		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :intro, :content, :posting_expiry_as_string, :content_selector, :untracked, :no_match, :airline_id, *Fly.permissible_params)
+  		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :intro, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, *Fly.permissible_params)
   	end
 end

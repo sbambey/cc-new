@@ -33,7 +33,7 @@ feature "Creating an airline" do
 	scenario "with proper information" do
 		fill_in "Airline name", with: airline.name
 		fill_in "Country", with: airline.country
-		find(:css, "#airline_untracked").set(airline.untracked)
+		find(:css, "#airline_no_track").set(airline.no_track)
 		click_button "Add airline"
 
 		expect(page).to have_content "Created airline successfully!"
