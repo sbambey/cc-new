@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :admins
 
   devise_for :users, controllers: { registrations: "users/registrations" }
-  get 'static_pages/home'
 
   root 'main#index'
   resources :airlines, only: [:index, :show, :new, :create] do

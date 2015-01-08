@@ -66,7 +66,7 @@ describe User, :type => :model do
 		# empty
 	end
 
-	describe "responds to class methods" do
+	describe "responds to class methods and scopes" do
 		subject { User }
 		#it { is_expected.to respond_to(:extract_attribute) }
 		it { is_expected.to respond_to(:permissible_params) }

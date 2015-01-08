@@ -46,6 +46,7 @@ FactoryGirl.define do
 	  posting_expiry_as_string "10th of Feb 2080"
 	  posting_expiry_as_date Date.today
 	  no_track true
+	  no_match false
 	  airline
   end
 
@@ -68,6 +69,7 @@ FactoryGirl.define do
 	  posting_expiry_as_string "10th of Feb 2080"
 	  posting_expiry_as_date Date.today
 	  no_track true
+	  no_match false
 	  airline
   end
 end
