@@ -41,6 +41,7 @@ FactoryGirl.define do
 	  medical { {"medical_license" => "1"} }
 	  additional { {"work_right" => "1", "valid_passport" => "1", "background_check" => "1", "drug_test" => "1", 
 	  	"drivers_license" => "1"} }
+	  added_requirements { ["some requirement", "some other requirement"] }
 	  posting_date_as_string "10th of Jan 2080"
 	  posting_date_as_date Date.yesterday
 	  posting_expiry_as_string "10th of Feb 2080"
@@ -64,6 +65,7 @@ FactoryGirl.define do
 	  medical { {"medical_license" => "0"} }
 	  additional { {"work_right" => "0", "valid_passport" => "0", "background_check" => "0", "drug_test" => "0", 
 	  	"drivers_license" => "0"} }
+	  added_requirements { ["some requirement", "some other requirement"] }
 	  posting_date_as_string "10th of Jan 2080"
 	  posting_date_as_date Date.yesterday
 	  posting_expiry_as_string "10th of Feb 2080"

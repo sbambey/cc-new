@@ -31,6 +31,8 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:drug_test)
 		is_expected.to respond_to(:drivers_license)
 
+		is_expected.to respond_to(:added_requirements)
+
 		is_expected.to respond_to(:posting_date_as_string)
 		is_expected.to respond_to(:posting_expiry_as_string)
 		is_expected.to respond_to(:posting_date_as_date)

@@ -2,11 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-	$('form').on 'click', '.remove_field', (event) ->
-		$(this).parent().parent().remove()
+	$('form').on 'click', '.remove-field', (event) ->
+		$(this).parent().find('input[type=checkbox]').each ->
+			if this.checked
+				$(this).next().remove()
+				$(this).remove()
 		event.preventDefault()
 
-	$('form').on 'click', '.add_fields', (event) ->
-		clone = $(this).parent().find("#requirements #hidden_field").clone().removeAttr("id")
-		clone.appendTo($("#requirements"))
+	$('form').on 'click', '.add-field', (event) ->
+		new_input = $('<input type="checkbox"><input class="form-control" type="text" name="fly[added_requirements][]" placeholder="Added requirement">')
+		new_input.appendTo($("#to-append"))
 		event.preventDefault()

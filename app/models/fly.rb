@@ -8,6 +8,8 @@ class Fly < ActiveRecord::Base
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
 
+	serialize :added_requirements, Array
+
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
 	store_accessor :rating, *RATINGS.keys
 	store_accessor :medical, *MEDICAL_INFORMATION.keys

@@ -55,6 +55,15 @@
 
   <%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>
 
+  <div class="container">
+  	<div class="col-xs-12">
+  		<h4>Additional requirements</h4>
+	  	<div id="to-append"></div>
+	  	<a href="#" class="add-field">[+] Add a requirement</a>
+	  	<a href="#" class="remove-field">[-] Remove selected</a>
+	  </div>
+	</div>
+
   <%= render partial: "shared/additional", locals: { f: f, resource: @fly } %>
 
 	<!--<tr id="hidden_field">
