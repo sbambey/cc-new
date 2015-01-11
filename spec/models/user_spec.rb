@@ -53,13 +53,9 @@ describe User, :type => :model do
   	is_expected.to respond_to(:turbine_pic_time)
   	is_expected.to respond_to(:turbofan_time)
   	is_expected.to respond_to(:turbofan_pic_time)
-  	is_expected.to respond_to(:atpl)
+
+  	is_expected.to respond_to(:rating)
   	is_expected.to respond_to(:medical_license)
-  	is_expected.to respond_to(:work_right)
-  	is_expected.to respond_to(:valid_passport)
-  	is_expected.to respond_to(:background_check)
-  	is_expected.to respond_to(:drug_test)
-  	is_expected.to respond_to(:drivers_license)
 	end
 
 	it "responds to instance methods" do
@@ -186,54 +182,28 @@ describe User, :type => :model do
 		end
 	end
 
-	describe "#atpl" do
-		context "when given a value other than true/false" do
-			before { user.atpl = "foo" }
+	describe "#rating" do
+		context "when given a value other than RATINGS" do
+			before { user.rating = "foo" }
 			it { is_expected.to_not be_valid }
+		end
+
+		context "when given ''" do
+			before { user.rating = "" }
+			it { is_expected.to be_valid }
 		end
 	end
 
 	#medical
 	describe "#medical_license" do
-		context "when given a value other than true/false" do
+		context "when given a value other than MEDICAL_LICENSES" do
 			before { user.medical_license = "foo" }
 			it { is_expected.to_not be_valid }
 		end
-	end
 
-	#additional
-	describe "#work_right" do
-		context "when given a value other than true/false" do
-			before { user.work_right = "foo" }
-			it { is_expected.to_not be_valid }
-		end
-	end
-
-	describe "#valid_passport" do
-		context "when given a value other than true/false" do
-			before { user.valid_passport = "foo" }
-			it { is_expected.to_not be_valid }
-		end
-	end
-
-	describe "#background_check" do
-		context "when given a value other than true/false" do
-			before { user.background_check = "foo" }
-			it { is_expected.to_not be_valid }
-		end
-	end
-
-	describe "#drug_test" do
-		context "when given a value other than true/false" do
-			before { user.drug_test = "foo" }
-			it { is_expected.to_not be_valid }
-		end
-	end
-
-	describe "#drivers_license" do
-		context "when given a value other than true/false" do
-			before { user.drivers_license = "foo" }
-			it { is_expected.to_not be_valid }
+		context "when given ''" do
+			before { user.medical_license = "" }
+			it { is_expected.to be_valid }
 		end
 	end
 

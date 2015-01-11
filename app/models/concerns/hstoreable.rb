@@ -3,10 +3,6 @@ module Hstoreable
 
 	module ClassMethods
 
-		def true?(string_value)
-			true if string_value == "1"
-		end
-
 		def order_according_to_hstore_keys(ordered, unordered)
 			new_ordered = {}
 			ordered.each do |type, value|

@@ -96,3 +96,13 @@ th {
 .error-explanation {
   color: $state-danger-text;
 }
+
+/* User and Fly creation */
+#flight-time select, #medical select {
+  margin-bottom: 15px;
+}
+
+/* Disqus */
+#disqus_thread {
+  margin-top:50px;
+}

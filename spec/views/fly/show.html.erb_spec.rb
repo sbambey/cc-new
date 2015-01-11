@@ -11,14 +11,11 @@ RSpec.describe "fly/show", :type => :view do
 
 	  	render
 
-	  	expect(rendered).to have_content("Flight Time")
+	  	expect(rendered).to have_content("Required flight time")
 	  	expect(rendered).to have_content(fly.total_time)
 
-	  	expect(rendered).to have_content("Medical Requirements")
+	  	expect(rendered).to have_content("Required medical license")
 	  	expect(rendered).to have_content(fly.medical_license)
-
-	  	expect(rendered).to have_content("Additional Requirements")
-	  	expect(rendered).to have_content(fly.work_right)
 	  end
 	end
 
@@ -33,7 +30,6 @@ RSpec.describe "fly/show", :type => :view do
 
 			expect(rendered).to_not have_content("Flight Time")
 	  	expect(rendered).to_not have_content("Medical Requirements")
-	  	expect(rendered).to_not have_content("Additional Requirements")
 	  end
 	end
 end

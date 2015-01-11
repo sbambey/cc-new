@@ -2,15 +2,13 @@
   <div class="container">
     <div class="col-xs-12">
 
-      <h4>Medical Information</h4>
+      <h4>Medical Certificate</h4>
 
-      <% MEDICAL_INFORMATION.each do |method, description| %>
-        <div class="checkbox standard-margin">
-          <label>
-            <%= f.check_box method %><p><%= description %></p>
-          </label>
-        </div>
-      <% end %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+      		<%= f.select :medical_license, MEDICAL_LICENSES.values, {include_blank: true}, class: "form-control" %>
+      	</div>
+      </div>
 
     </div>
   </div>

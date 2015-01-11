@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111041910) do
+ActiveRecord::Schema.define(version: 20150111193825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,12 +75,9 @@ ActiveRecord::Schema.define(version: 20150111041910) do
     t.string   "website"
     t.string   "equipment"
     t.string   "base"
-    t.text     "intro"
-    t.text     "content"
     t.hstore   "flight_time"
-    t.hstore   "rating"
-    t.hstore   "medical"
-    t.hstore   "additional"
+    t.string   "rating"
+    t.string   "medical_license"
     t.string   "posting_date_as_string"
     t.string   "posting_expiry_as_string"
     t.date     "posting_date_as_date"
@@ -147,9 +144,8 @@ ActiveRecord::Schema.define(version: 20150111041910) do
     t.boolean  "high_school_diploma"
     t.boolean  "post_secondary_degree"
     t.hstore   "flight_time"
-    t.hstore   "rating"
-    t.hstore   "medical"
-    t.hstore   "additional"
+    t.string   "rating"
+    t.string   "medical_license"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"

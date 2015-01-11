@@ -55,15 +55,9 @@ feature "Creating a fly" do
 		fill_in "Total Turbofan/Turboprop", with: fly.turbofan_time
 		fill_in "Total Turbofan/Turboprop PIC", with: fly.turbofan_pic_time
 
-		find(:css, "#fly_atpl").set(fly.atpl)
+		select fly.rating, from: "fly_rating"
 
-		find(:css, "#fly_medical_license").set(fly.medical_license)
-
-		find(:css, "#fly_work_right").set(fly.work_right)
-		find(:css, "#fly_valid_passport").set(fly.valid_passport)
-		find(:css, "#fly_background_check").set(fly.background_check)
-		find(:css, "#fly_drug_test").set(fly.drug_test)
-		find(:css, "#fly_drivers_license").set(fly.drivers_license)
+		select fly.medical_license, from: "fly_medical_license"
 
 		fill_in "Content selector", with: fly.content_selector
 

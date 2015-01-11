@@ -23,13 +23,9 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:turbine_pic_time)
 		is_expected.to respond_to(:turbofan_time)
 		is_expected.to respond_to(:turbofan_pic_time)
-		is_expected.to respond_to(:atpl)
+
+		is_expected.to respond_to(:rating)
 		is_expected.to respond_to(:medical_license)
-		is_expected.to respond_to(:work_right)
-		is_expected.to respond_to(:valid_passport)
-		is_expected.to respond_to(:background_check)
-		is_expected.to respond_to(:drug_test)
-		is_expected.to respond_to(:drivers_license)
 
 		is_expected.to respond_to(:added_requirements)
 
@@ -61,4 +57,29 @@ describe Fly, :type => :model do
 	describe "responds to class methods and scopes" do
 		
 	end
+
+	describe "#rating" do
+		context "when given a value other than RATINGS or ''" do
+			before { fly.rating = "foo" }
+			it { is_expected.to_not be_valid }
+		end
+
+		context "when given ''" do
+			before { fly.rating = "" }
+			it { is_expected.to be_valid }
+		end
+	end
+
+	describe "#medical_license" do
+		context "when given a value other than MEDICAL_LICENSES" do
+			before { fly.medical_license = "foo" }
+			it { is_expected.to_not be_valid }
+		end
+
+		context "when given ''" do
+			before { fly.medical_license = "" }
+			it { is_expected.to be_valid }
+		end
+	end
+
 end

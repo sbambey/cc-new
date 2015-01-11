@@ -46,8 +46,6 @@
 		  	</tr>
 		  </table>
 
-		  <h4>Intro</h4>
-		  <%= f.text_area :intro, class: "tinymce", rows: 10, cols: 120 %>
 		</div>
 	</div>
 
@@ -62,26 +60,6 @@
 	  	<a href="#" class="add-field">[+] Add a requirement</a>
 	  	<a href="#" class="remove-field">[-] Remove selected</a>
 	  </div>
-	</div>
-
-  <%= render partial: "shared/additional", locals: { f: f, resource: @fly } %>
-
-	<!--<tr id="hidden_field">
-		<td>
-			<%= text_field_tag "fly[requirements][category][]", nil, placeholder: "Category", class: "form-control" %>
-			<a href="#" class="remove_field">[x] Remove requirement</a>
-		</td>
-		<td><%= text_field_tag "fly[requirements][value][]", nil, placeholder: "Value", 
-							class: "form-control" %></td>
-	</tr>
-
-  <a href="#" class="add_fields">[+] Add Requirement</a>-->
-
-  <div class="container">
-  	<div class="col-xs-12">
-		  <h4 class="standard-margin">Content</h4>
-		  <%= f.text_area :content, class: "tinymce", rows: 30, cols: 120 %>
-		</div>
 	</div>
 
   <div class="container">
@@ -112,4 +90,3 @@
 		</div>
 	</div>
 <% end %>
-<%= tinymce %>

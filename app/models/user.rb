@@ -38,23 +38,14 @@ class User < ActiveRecord::Base
 
   def self.checkbox_params
     [:high_school_diploma, :post_secondary_degree]
-      .concat(RATINGS.keys)
-      .concat(MEDICAL_INFORMATION.keys)
-      .concat(ADDITIONAL.keys)
   end
 
   def self.permissible_params
-    [:full_name, :nationality, :language, :birthdate, :high_school_diploma, :post_secondary_degree]
+    [:full_name, :nationality, :language, :birthdate, :high_school_diploma, :post_secondary_degree, :rating, :medical_license]
       .concat(FLIGHT_HOUR_TYPES.keys)
-      .concat(RATINGS.keys)
-      .concat(MEDICAL_INFORMATION.keys)
-      .concat(ADDITIONAL.keys)
   end
 
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
-  store_accessor :rating, *RATINGS.keys
-  store_accessor :medical, *MEDICAL_INFORMATION.keys
-  store_accessor :additional, *ADDITIONAL.keys
 
   ## validations
   [:full_name, :nationality, :language, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|
@@ -66,6 +57,9 @@ class User < ActiveRecord::Base
   FLIGHT_HOUR_TYPES.keys.each do |type|
     validates_numericality_of type
   end
+
+  validates :rating, inclusion: [*RATINGS.values, ""]
+  validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 
   checkbox_params.each do |attribute|
     validates attribute, inclusion: ["1", "0", true, false]

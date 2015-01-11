@@ -25,6 +25,6 @@ class FlyController < ApplicationController
   private
 
   	def fly_params
-  		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :intro, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, *Fly.permissible_params, :added_requirements => [])
+  		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :rating, :medical_license, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, *Fly.permissible_params, :added_requirements => [])
   	end
 end
