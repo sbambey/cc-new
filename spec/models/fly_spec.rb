@@ -12,8 +12,6 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:website)
 		is_expected.to respond_to(:equipment)
 		is_expected.to respond_to(:base)
-		is_expected.to respond_to(:intro)
-		is_expected.to respond_to(:content)
 
 		is_expected.to respond_to(:total_time)
 		is_expected.to respond_to(:total_pic_time)
@@ -23,6 +21,9 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:turbine_pic_time)
 		is_expected.to respond_to(:turbofan_time)
 		is_expected.to respond_to(:turbofan_pic_time)
+		is_expected.to respond_to(:night_time)
+  	is_expected.to respond_to(:instrument_time)
+  	is_expected.to respond_to(:x_country_time)
 
 		is_expected.to respond_to(:rating)
 		is_expected.to respond_to(:medical_license)

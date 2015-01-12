@@ -4,7 +4,7 @@
 		<h1>Add an opportunity</h1>
 	</div>
 </div>
-<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: "form"}) do |f| %>
+<%= form_for([@airline, @fly], url: airline_fly_path(@airline, @fly), :html => {role: "form"}) do |f| %>
   
   <div class="container">
   	<div class="col-xs-12">
@@ -54,15 +54,27 @@
   <%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>
 
   <div class="container">
-  	<div class="col-xs-12">
+  	<div class="col-xs-12 col-md-12">
   		<h4>Additional requirements</h4>
-	  	<div id="to-append"></div>
+	  	<div id="to-append">
+	  		
+	  		<% @fly.added_requirements.each do |req| %>
+
+	  			<div class="input-group added-input">
+			      <span class="input-group-addon">
+			        <input type="checkbox">
+			      </span>
+			      <input type="text" name="fly[added_requirements][]" value="<%= req %>" class="form-control">
+			    </div>
+
+	  		<% end %>
+	  	</div>
 	  	<a href="#" class="add-field">[+] Add a requirement</a>
 	  	<a href="#" class="remove-field">[-] Remove selected</a>
 	  </div>
 	</div>
 
-  <div class="container">
+  <div class="container standard-margin">
   	<div class="col-md-4">
 
   		<h4>Automatic consistency monitoring</h4>
@@ -86,7 +98,7 @@
 
 	<div class="container">
 		<div class="col-xs-12">
-			<%= f.submit "Add opportunity", class: "btn btn-default standard-margin submit-btn" %>
+			<%= f.submit "Edit opportunity", class: "btn btn-default submit-btn" %>
 		</div>
 	</div>
 <% end %>

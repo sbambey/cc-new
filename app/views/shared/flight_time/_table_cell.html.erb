@@ -1,0 +1,18 @@
+<% resource = f.object %>
+<td><%= f.label args[:type], FLIGHT_HOUR_TYPES[args[:type]], class: "control-label label-margin" %></td>
+<td>
+  <%= content_tag :div, 
+    class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(args[:type]).any?)] do %> 
+    
+    <%= f.text_field args[:type], value: (("0" if action_name == "new") || resource.send(args[:type])), 
+          class: "form-control" %>
+  
+    <% if resource.errors.full_messages_for(args[:type]).any? %>
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      <span class="error-explanation">
+        <%= resource.errors[args[:type]].first.capitalize %>
+      </span>
+    <% end %>
+  <% end %>
+</td>
+<%= '<td colspan="2"></td>'.html_safe if args[:empty_cell].presence %>

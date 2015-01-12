@@ -40,11 +40,10 @@ FactoryGirl.define do
 	  high_school_diploma 1
 	  post_secondary_degree 1
 	  flight_time { {"total_time" => "100", "total_pic_time" => "10", "multi_time" => "10", "multi_pic_time" => "10", 
-	  	"turbine_time" => "10", "turbine_pic_time" => "10", "turbofan_time" => "40", "turbofan_pic_time" => "10"} }
+	  	"turbine_time" => "10", "turbine_pic_time" => "10", "turbofan_time" => "40", "turbofan_pic_time" => "10",
+	  	"night_time" => "0", "instrument_time" => "0", "x_country_time" => "0" } }
 	  rating RATINGS[:atpl_unrestricted]
 	  medical_license MEDICAL_LICENSES[:one]
-	  additional { {"work_right" => "1", "valid_passport" => "1", "background_check" => "1", "drug_test" => "1", 
-	  	"drivers_license" => "1"} }
 
 	  factory :admin do
 	  	admin true

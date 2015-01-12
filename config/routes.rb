@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root 'main#index'
   resources :airlines, only: [:index, :show, :new, :create] do
-    resources :fly, only: [:show, :new, :create]
+    resources :fly, only: [:show, :new, :create, :edit, :update]
   end
 
   get 'admin_panel/home'

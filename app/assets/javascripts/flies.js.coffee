@@ -2,14 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-	$('form').on 'click', '.remove-field', (event) ->
+	$('html').on 'click', '.remove-field', (event) ->
 		$(this).parent().find('input[type=checkbox]').each ->
 			if this.checked
-				$(this).next().remove()
-				$(this).remove()
+				$(this).closest(".input-group").remove()
 		event.preventDefault()
 
-	$('form').on 'click', '.add-field', (event) ->
-		new_input = $('<input type="checkbox"><input class="form-control" type="text" name="fly[added_requirements][]" placeholder="Added requirement">')
+	$('html').on 'click', '.add-field', (event) ->
+		new_input = $(
+			'<div class="input-group added-input">' +
+				'<span class="input-group-addon">' +
+					'<input type="checkbox">' +
+				'</span>' +
+			  '<input type="text" name="fly[added_requirements][]" class="form-control" placeholder="Added requirement">' +
+			'</div>')
 		new_input.appendTo($("#to-append"))
 		event.preventDefault()

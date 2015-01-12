@@ -22,6 +22,28 @@ class FlyController < ApplicationController
   	end
   end
 
+  def edit
+    @airline = Airline.friendly.find(params[:airline_id])
+    @fly = Fly.friendly.find(params[:id])
+  end
+
+  def update
+
+    @airline = Airline.friendly.find(params[:airline_id])
+    @fly = @airline.flies.friendly.find(params[:id])
+
+    to_update = fly_params
+
+    to_update[:added_requirements] = [] if to_update[:added_requirements].nil?
+
+    if @fly.update_attributes(to_update)
+      flash[:success] = "Updated opportunity successfully"
+      redirect_to airline_fly_path(@airline, @fly)
+    else
+      render "edit"
+    end
+  end
+
   private
 
   	def fly_params

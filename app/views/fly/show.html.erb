@@ -3,6 +3,7 @@
 	<div class="col-xs-12">
 		<h2 class="lighter">
 			<%= image_tag @fly.airline.logo, class: "airline-heading-logo" %><%= "#{@fly.name}" %>
+			<%= link_to("Edit", edit_airline_fly_path(@fly.airline, @fly), class: "btn btn-default") if current_user.try(:admin?) %>
 		</h2>
 
 		<table class="table table-bordered table-thick-border standard-margin">
@@ -28,8 +29,9 @@
 
 	<div class="col-xs-12 col-md-6">
 		<h3>Required rating</h3>
-		<p><%= @fly.rating.present? ? @fly.rating : "None" %></p>
-	
+		<table class="table table-bordered standard-margin lighter">
+			<tr><td><%= @fly.rating.present? ? @fly.rating : "Not specified" %></td></tr>
+		</table>
 		
 		<h3>Required flight time</h3>
 		<% if @fly.flight_time_requirements.any? %>
@@ -42,11 +44,15 @@
 				<% end %>
 			</table>
 		<% else %>
-			<p>None</p>
+			<table class="table table-bordered standard-margin lighter">
+				<tr><td>As required by rating</td></tr>
+			</table>
 		<% end %>
 
 		<h3>Required medical license</h3>
-		<p><%= @fly.medical_license.present? ? @fly.medical_license : "None" %></p>
+		<table class="table table-bordered standard-margin lighter">
+			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
+		</table>
 
 		<% if @fly.added_requirements.present? %>
 			<h3>Other requriements</h3>

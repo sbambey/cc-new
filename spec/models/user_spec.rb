@@ -53,6 +53,9 @@ describe User, :type => :model do
   	is_expected.to respond_to(:turbine_pic_time)
   	is_expected.to respond_to(:turbofan_time)
   	is_expected.to respond_to(:turbofan_pic_time)
+  	is_expected.to respond_to(:night_time)
+  	is_expected.to respond_to(:instrument_time)
+  	is_expected.to respond_to(:x_country_time)
 
   	is_expected.to respond_to(:rating)
   	is_expected.to respond_to(:medical_license)
