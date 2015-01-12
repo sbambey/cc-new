@@ -1,7 +1,7 @@
 <% provide(:title, "#{@fly.name}") %>
 <div class="container">
 	<div class="col-xs-12">
-		<h2 class="lighter">
+		<h2>
 			<%= image_tag @fly.airline.logo, class: "airline-heading-logo" %><%= "#{@fly.name}" %>
 			<%= link_to("Edit", edit_airline_fly_path(@fly.airline, @fly), class: "btn btn-default") if current_user.try(:admin?) %>
 		</h2>
@@ -29,13 +29,13 @@
 
 	<div class="col-xs-12 col-md-6">
 		<h3>Required rating</h3>
-		<table class="table table-bordered standard-margin lighter">
+		<table class="table table-bordered standard-margin">
 			<tr><td><%= @fly.rating.present? ? @fly.rating : "Not specified" %></td></tr>
 		</table>
 		
 		<h3>Required flight time</h3>
 		<% if @fly.flight_time_requirements.any? %>
-			<table class="table table-bordered standard-margin lighter">
+			<table class="table table-bordered standard-margin">
 				<% @fly.flight_time_requirements.each do |key, value| %>
 					<tr>
 						<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
@@ -44,13 +44,13 @@
 				<% end %>
 			</table>
 		<% else %>
-			<table class="table table-bordered standard-margin lighter">
+			<table class="table table-bordered standard-margin">
 				<tr><td>As required by rating</td></tr>
 			</table>
 		<% end %>
 
 		<h3>Required medical license</h3>
-		<table class="table table-bordered standard-margin lighter">
+		<table class="table table-bordered standard-margin">
 			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
 		</table>
 
