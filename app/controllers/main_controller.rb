@@ -3,7 +3,7 @@ class MainController < ApplicationController
   	if user_signed_in?
   		@flies = find_matched_flies
   	else
-  		@airlines = Airlines.all
+  		@airlines = Airline.all
   	end
   end
 
