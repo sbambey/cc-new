@@ -14,9 +14,9 @@
 <% if user_signed_in? %>
 	<div class="container">
 		<div class="col-xs-12">
-			<% if @airlines.empty? %>
+			<% if @flies.empty? %>
 				<div class="alert alert-warning" role="alert">
-					There currently is no airlines with active recruitment.
+					We were not able to find opportunities applicable to the flight hours provided.
 				</div>
 			<% else %>
 				<table class="table">
@@ -30,14 +30,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @airlines.each do |airline| %>
+						<% @flies.each do |fly| %>
 						<tr>
-							<td><%= image_tag("boarding4.gif", class: "boarding") if airline.has_active_recruitment? %></td>
-							<td><%= display_image(airline.logo) %></td>
-							<td><%= link_to airline.name, airline_path(airline) %></td>
-							<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
+							<td><%= image_tag("boarding4.gif", class: "boarding") %></td>
+							<td><%= display_image(fly.airline.logo) %></td>
+							<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
+							<td><%= fly.airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
 							<td>
-								<%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) unless airline.flies.empty? %>
+								<%= link_to fly.name, airline_fly_path(fly.airline, fly) %>
 							</td>
 						</tr>
 						<% end %>
