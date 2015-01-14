@@ -11,7 +11,6 @@ class FlyController < ApplicationController
   end
 
   def create
-
   	@fly = Airline.friendly.find(params[:airline_id]).flies.new(fly_params)
 
   	if @fly.save

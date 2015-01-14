@@ -20,6 +20,7 @@
 
 class Airline < ActiveRecord::Base
 	extend FriendlyId
+
 	friendly_id :name, use: [:slugged, :history]
 
 	has_many :flies
@@ -43,4 +44,8 @@ class Airline < ActiveRecord::Base
 	def has_active_recruitment?
 		self.flies.where("no_match = ?", false).any?
 	end
+
+	def should_generate_new_friendly_id?
+    name_changed?
+  end
 end

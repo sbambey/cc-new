@@ -1,8 +1,4 @@
 module ApplicationHelper
-	def active?(path)
-		"active" if current_page?(path)
-	end
-
 	def convert_if_devise_key(key)
 		if key == "notice"
 			"success"
@@ -10,6 +6,12 @@ module ApplicationHelper
 			"danger"
 		else
 			key
+		end
+	end
+
+	def display_image(img)
+		if img.present?
+			image_tag img, class: "airline-table-logo"
 		end
 	end
 

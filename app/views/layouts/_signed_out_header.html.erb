@@ -1,13 +1,25 @@
-<div class="page-masthead">
+<nav class="navbar">
   <div class="container">
-    <nav class="page-nav">
-      <a class="page-nav-item <%= active?(root_path) %>" href="<%= root_path %>">Home</a>
-      
-      <%= link_to "Login", new_user_session_path, class: "page-nav-item #{active?(new_user_session_path)}" %>
-      <%= link_to "Register", new_user_registration_path, class: "page-nav-item #{active?(new_user_registration_path)}" %>
-      <!--<p class="navbar-text navbar-right">
-    	 Click here to be informed about new opportunities.
-      </p>-->
-    </nav>
-  </div>
-</div>
+    <div class="col-xs-12">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "CockpitCareers", root_path, class: "navbar-brand" %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>

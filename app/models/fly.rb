@@ -35,4 +35,7 @@ class Fly < ActiveRecord::Base
 		FLIGHT_HOUR_TYPES.keys
   end
 
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
 end

@@ -8,6 +8,9 @@
 	}
 
 	.jumbotron {
+		padding-top: 10px;
+		padding-bottom: 30px;
+
 	& > p {
 			font-size: 18px;
 		}
@@ -16,13 +19,8 @@
 		}
 	}
 
-	.bg-orange {
-	  color: white;
-	  background-color: #f0ad4e;
+	tbody > tr> td {
+    vertical-align: middle;
 	}
 
-	.jumbotron {
-		padding-top: 10px;
-		padding-bottom: 30px;
-	}
 }
