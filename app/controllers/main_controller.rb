@@ -8,6 +8,7 @@ class MainController < ApplicationController
   end
 
   private
+  
   	def find_matched_flies
   		FlyMatchingService.new({
   			flight_time: current_user.flight_time

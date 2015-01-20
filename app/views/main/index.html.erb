@@ -11,6 +11,7 @@
 	  <button type="submit" class="btn btn-default">Submit</button>
 	</form>
 </div>-->
+
 <% if user_signed_in? %>
 	<div class="container">
 		<div class="col-xs-12">
@@ -19,73 +20,35 @@
 					We were not able to find opportunities applicable to the flight hours provided.
 				</div>
 			<% else %>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Welcome to your personal JobBoard! Below are opportunities that you are currently eligible for.
+					</div>
+				</div>
+
 				<table class="table">
 					<thead>
 						<tr>
 							<th></th>
 							<th></th>
 							<th>Airline</th>
-							<th>Hiring Status</th>
-							<th>Newest opportunity</th>
+							<th>Opportunity</th>
+							<th>Last updated</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @flies.each do |fly| %>
 						<tr>
-							<td><%= image_tag("boarding4.gif", class: "boarding") %></td>
+							<td><%= image_tag("boarding6.gif", class: "boarding") %></td>
 							<td><%= display_image(fly.airline.logo) %></td>
 							<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
-							<td><%= fly.airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
-							<td>
-								<%= link_to fly.name, airline_fly_path(fly.airline, fly) %>
-							</td>
+							<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+							<td><%= "#{time_ago_in_words(fly.updated_at)} ago" %></td>
 						</tr>
 						<% end %>
 					</tbody>
 				</table>
 			<% end %>
-		</div>
-	</div>
-<% else %>
-  <div class="container">
-		<div class="col-xs-12">
-			<div class="jumbotron text-center">
-				<h2>Welcome</h2>
-				<hr class="small">
-				<p>CockpitCareers allows aspiring pilots to track employment opportunities available to them.</p>
-
-				<p>Simply give us your current experience and flight hours and we will match you with opportunities from around the world.</p>
-				<p class="small">Note: CockpitCareers is in an early test phase</p>
-				<%= link_to "Get started", new_user_registration_path, class: "btn btn-danger btn-lg" %>
-			</div>
-			<h3 class="text-center">Here are some airlines currently recruiting</h3>
-			<hr class="medium">
-
-				<table class="table">
-					<thead>
-						<tr>
-							<th></th>
-							<th></th>
-							<th>Airline</th>
-							<th>Hiring Status</th>
-							<th>Newest opportunity</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @airlines.each do |airline| %>
-						<tr>
-							<td><%= image_tag("boarding4.gif", class: "boarding") if airline.has_active_recruitment? %></td>
-							<td><%= display_image(airline.logo) %></td>
-							<td><%= link_to airline.name, airline_path(airline) %></td>
-							<td><%= airline.has_active_recruitment? ? "Active" : "Inactive" %></td>
-							<td>
-								<%= link_to airline.flies.last.name, airline_fly_path(airline, airline.flies.last) unless airline.flies.empty? %>
-							</td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-
 		</div>
 	</div>
 <% end %>

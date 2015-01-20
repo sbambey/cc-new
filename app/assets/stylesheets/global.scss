@@ -57,6 +57,14 @@
 
 
 
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+
 /* Misc */
 
 .standard-margin {
@@ -73,8 +81,13 @@ th {
 	font-size: 17px;
 }
 
-.submit-btn {
+.btn-submit {
   margin-bottom: 40px;
+}
+
+.real-footer {
+  border-top: 1px solid #ccc;
+  padding: 20px;
 }
 
 /* Logo */

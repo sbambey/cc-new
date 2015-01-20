@@ -1,4 +1,12 @@
 module ApplicationHelper
+	def full_title(title)
+		if title.present?
+			"CockpitCareers | #{title}"
+		else
+			"CockpitCareers"
+		end
+	end
+
 	def convert_if_devise_key(key)
 		if key == "notice"
 			"success"
@@ -9,9 +17,9 @@ module ApplicationHelper
 		end
 	end
 
-	def display_image(img)
+	def display_image(img, class_name = "airline-table-logo")
 		if img.present?
-			image_tag img, class: "airline-table-logo"
+			image_tag img, class: class_name
 		end
 	end
 
@@ -26,4 +34,8 @@ module ApplicationHelper
 	    return "<div class='alert alert-#{key}' role='alert'>#{value}</div>".html_safe
 	  end
 	end
+
+	def display_landing_page?
+  	params[:controller].eql?("landing") and params[:action].eql?("show")
+  end
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'landing/show'
+
   resources :scrape_nodes, only: [:create, :destroy]
   resources :admin_notices, only: [:create, :destroy]
 
@@ -6,10 +8,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  root 'main#index'
-  resources :airlines, only: [:index, :show, :new, :create] do
+  resources :main, only: [:index]
+  resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end
 
   get 'admin_panel/home'
+  root 'landing#show'
 end

@@ -24,6 +24,21 @@ class AirlinesController < ApplicationController
   	end
   end
 
+  def edit
+    @airline = Airline.friendly.find(params[:id])
+  end
+
+  def update
+    @airline = Airline.friendly.find(params[:id])
+
+    if @airline.update_attributes(airline_params)
+      flash[:success] = "Updated airline successfully"
+      redirect_to airline_path(@airline)
+    else
+      render "edit"
+    end
+  end
+
   private
 
   	def airline_params

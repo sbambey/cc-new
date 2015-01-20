@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CockpitCareers | <%= yield(:title) %></title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
 
-	<% if user_signed_in? %>
-		<%= render "layouts/signed_in_header" %>
-	<% else %>
-		<%= render "layouts/signed_out_header" %>
-	<% end %>
-
-	<div class="container">
-
-		<div class="col-xs-12">
-			<%= flash_messages %>
+	<% if !display_landing_page? %>
+		<% if user_signed_in? %>
+			<%= render "layouts/signed_in_header" %>
+		<% else %>
+			<%= render "layouts/signed_out_header" %>
+		<% end %>
+		<div class="container">
+			<div class="col-xs-12">
+				<%= flash_messages %>
+			</div>
 		</div>
-		
-	</div>
+	<% end %>
 	<%= yield %>
+
+	<%= render "layouts/footer" %>
     
 </body>
 </html>

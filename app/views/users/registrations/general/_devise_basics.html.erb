@@ -18,13 +18,16 @@
     </div>
   </div>
 <% end %>
+
+<% resource[:email].present? ? email = resource[:email] : email = @email %>
+
 <div class="row">
   <div class="col-md-4 col-xs-12">
     <%= content_tag :div, 
     class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(:email).any?)] do %>
 
       <%= f.label :email, class: "control-label" %>
-      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+      <%= f.email_field :email, autofocus: true, value: email, class: "form-control", placeholder: "Email" %>
       <% if resource.errors.full_messages_for(:email).any? %>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <span class="error-explanation">

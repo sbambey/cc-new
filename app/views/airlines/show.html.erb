@@ -1,11 +1,14 @@
 <% provide(:title, @airline.name) %>
 <div class="container">
 	<div class="col-xs-12">
-		<h2 class="lighter"><%= image_tag @airline.logo, class: "airline-heading-logo" %><%= @airline.name %></h2>
+		<h2>
+			<%= display_image @airline.logo, "airline-heading-logo" %><%= @airline.name %>
+			<%= link_to("Edit", edit_airline_path(@airline), class: "btn btn-default") if current_user.try(:admin?) %>
+		</h2>
 		<% @airline.flies.each do |fly| %>
 			<p>- <%= link_to fly.name, airline_fly_path(@airline, fly) %><p>
 		<% end %>
-		<%= link_to "Add opportunity", new_airline_fly_path(@airline), class: "btn btn-default" %>
+		<%= link_to "Add opportunity", new_airline_fly_path(@airline), class: "btn btn-default btn-submit" %>
 	</div>
 </div>
 
