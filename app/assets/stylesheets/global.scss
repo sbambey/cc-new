@@ -109,6 +109,17 @@ th {
   margin: 0 auto;
 }
 
+#flight-time .checkbox {
+  margin-top:0;
+}
+
+.block-label {
+  display: block;
+  &:nth-of-type(n+2):not(.hidden) {
+    margin-top:5px;
+  }
+}
+
 /* Errors */
 .error-explanation {
   color: $state-danger-text;

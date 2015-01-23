@@ -43,9 +43,11 @@ class User < ActiveRecord::Base
   def self.permissible_params
     [:full_name, :nationality, :language, :birthdate, :high_school_diploma, :post_secondary_degree, :rating, :medical_license]
       .concat(FLIGHT_HOUR_TYPES.keys)
+      .concat(FLIGHT_EXPERIENCE.keys)
   end
 
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
+  store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
   ## validations
   [:full_name, :nationality, :language, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|

@@ -11,6 +11,7 @@ class Fly < ActiveRecord::Base
 	serialize :added_requirements, Array
 
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
+	store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
 	validates :rating, inclusion: [*RATINGS.values, ""]
   validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
@@ -27,12 +28,8 @@ class Fly < ActiveRecord::Base
 		requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)
 	end
 
-	def self.matching_conditions_met(user)
-		Fly.where("#{user.total_time.to_i} >= (flight_time -> 'total_time')::int")
-	end
-
 	def self.permissible_params
-		FLIGHT_HOUR_TYPES.keys
+		FLIGHT_HOUR_TYPES.keys.concat(FLIGHT_EXPERIENCE.keys)
   end
 
   def should_generate_new_friendly_id?

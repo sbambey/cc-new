@@ -32,6 +32,14 @@
 		<table class="table table-bordered standard-margin">
 			<tr><td><%= @fly.rating.present? ? @fly.rating : "Not specified" %></td></tr>
 		</table>
+
+		<% if @fly.flight_experience.present? %>
+			<div class="standard-margin" id="flight-experience">
+				<% @fly.flight_experience.each do |key, value| %>
+					<%= with_glyph(FLIGHT_EXPERIENCE[key.to_sym]) if value == "1" %>
+				<% end %>
+			</div>
+		<% end %>
 		
 		<h3>Required flight time</h3>
 		<% if @fly.flight_time_requirements.any? %>
@@ -55,7 +63,7 @@
 		</table>
 
 		<% if @fly.added_requirements.present? %>
-			<h3>Other requriements</h3>
+			<h3>Other requirements</h3>
 			<% @fly.added_requirements.each do |req| %>
 				<%= with_glyph(req) %>
 			<% end %>

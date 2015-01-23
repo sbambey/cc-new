@@ -18,9 +18,7 @@ module ApplicationHelper
 	end
 
 	def display_image(img, class_name = "airline-table-logo")
-		if img.present?
-			image_tag img, class: class_name
-		end
+		img.present? ? image_tag(img, class: class_name) : ""
 	end
 
 	def abbreviate(text)

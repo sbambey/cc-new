@@ -31,7 +31,7 @@ class ScrapeNode < ActiveRecord::Base
 
 		if html == matched_node.try(:html) && titles == matched_node.try(:titles)
 			notice.status = AdminNotice::STATUSES[:success]
-		elsif node_type == TYPES[:parent] && (html == matched_node.try(:html) || titles == matched_node.try(:titles))
+		elsif node_type == TYPES[:parent] && (html == matched_node.try(:html) || (titles == matched_node.try(:titles) && titles != []))
 			notice.status = AdminNotice::STATUSES[:warning]
 		else
 			notice.status = AdminNotice::STATUSES[:danger]

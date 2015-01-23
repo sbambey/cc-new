@@ -2,7 +2,7 @@ class FlyMatchingService
 	include Hstoreable
 
 	def initialize(params)
-		@flight_time = strip_zero_times(params[:flight_time])
+		@flight_time = params[:flight_time]
 	end
 
 	def flies
