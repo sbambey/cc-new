@@ -1,14 +1,29 @@
 <% provide(:title, @airline.name) %>
 <div class="container">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-md-8">
+
 		<h2>
 			<%= display_image @airline.logo, "airline-heading-logo" %><%= @airline.name %>
 			<%= link_to("Edit", edit_airline_path(@airline), class: "btn btn-default") if current_user.try(:admin?) %>
 		</h2>
-		<% @airline.flies.each do |fly| %>
-			<p>- <%= link_to fly.name, airline_fly_path(@airline, fly) %><p>
+
+		<% if @airline.flies.present? %>
+			<table class="table table-bordered table-thick-border standard-margin">
+				<thead>
+					<tr>
+						<th>Opportunities</th>
+					</tr>
+				</thead>
+				<% @airline.flies.each do |fly| %>
+					<tr>
+						<td><%= link_to fly.name, airline_fly_path(@airline, fly) %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% else %>
+			<p>This airline currently has no opportunities</p>
 		<% end %>
-		<%= link_to "Add opportunity", new_airline_fly_path(@airline), class: "btn btn-default btn-submit" %>
+
 	</div>
 </div>
 
