@@ -55,7 +55,7 @@
 
 					<%= form_tag new_user_registration_path, method: :get, class: "form-inline email-form" do %>
 						<%= text_field_tag "email", nil, class: "form-control email-field", placeholder: "E-Mail Address" %>
-						<%= button_tag "Get started", name: nil, class: "btn btn-default" %>
+						<%= button_tag "Get started - free", name: nil, class: "btn btn-default" %>
 					<% end %>
 
 					<%= image_tag "background1.png", class: "img-responsive" %>
@@ -105,7 +105,10 @@
 			<div class="offer-tile">
 				<%= image_tag "envelop.svg", class: "offer-logo" %>
 				<h3>JobPost</h3>
-				<p>Receive updates. Once a week, you will receive an e-mail including all new opportunities that you are eligible for. </p>
+				<p>
+					Receive updates. Once a week, you will receive an e-mail including all new opportunities that you are eligible for.
+				</p>
+				<p><em>Coming soon.</em></p>
 			</div>
 		</div>
 
@@ -154,18 +157,22 @@
 
 
 
-<section id="pricing">
+<section id="showreel">
 	<div class="container">
-		<div class="col-xs-12 col-md-8 col-md-offset-2">
-			<div class="pricing-wrapper">
-				<div class="pricing-logo-wrapper">
-					<%= image_tag "coin-dollar.svg", class: "pricing-logo" %>
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<div class="showreel-wrapper">
+				<div class="showreel-logo-wrapper">
+					<%= image_tag "airplane.svg", class: "showreel-logo" %>
 				</div>
-				<h2>Pricing</h2>
 				<p class="lead">
-					Early adopters pay 4.99$/month or 49.99$/year. <br />
-					This cost will never increase as we expand. A thank you for your early loyalty.
+					We currently have <em><%= @flies_count %> opportunities</em> from a total of <em><%= @airlines_count %> airlines</em>
 				</p>
+				<p class="lead"><u>Airlines include</u></p>
+				<% @airline_images.each do |image| %>
+					<%= display_image image, "airline-heading-logo" %>
+				<% end %>
+				<p class="lead">and many more</p>
+				<%= link_to "Try it free", new_user_registration_path, class: "btn btn-lg btn-danger" %>
 			</div>
 		</div>
 	</div>

@@ -33,6 +33,8 @@ class FlyController < ApplicationController
 
     to_update = fly_params
 
+    to_update[:updated] = true
+
     to_update[:added_requirements] = [] if to_update[:added_requirements].nil?
 
     if @fly.update_attributes(to_update)

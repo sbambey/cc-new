@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="col-xs-12">
 		<h2>
-			<%= image_tag @fly.airline.logo, class: "airline-heading-logo" %><%= "#{@fly.name}" %>
+			<%= display_image @fly.airline.logo, "airline-heading-logo" %><%= "#{@fly.name}" %>
 			<%= link_to("Edit", edit_airline_fly_path(@fly.airline, @fly), class: "btn btn-default") if current_user.try(:admin?) %>
 		</h2>
 

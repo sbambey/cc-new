@@ -29,15 +29,15 @@
       <h4>Ratings</h4>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= f.select :rating, RATINGS.values, {include_blank: true}, class: "form-control" %>
+          <%= f.select :rating, RATINGS.values, {include_blank: true}, class: "form-control rating-select" %>
         </div>
       </div>
 
       <div class="checkbox hidden">
         <% FLIGHT_EXPERIENCE.each do |key, value| %>
-            <label class="block-label hidden" id="check_<%= key %>">
-              <%= f.check_box key %> <%= value %>
-            </label> 
+          <label class="block-label hidden" id="check_<%= key %>">
+            <%= f.check_box key %> <%= value %>
+          </label> 
         <% end %>
       </div> 
     </div>

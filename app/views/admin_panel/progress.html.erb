@@ -1,0 +1,25 @@
+<%= render "header" %>
+<div class="container">
+	<div class="col-xs-12">
+
+		<h2>Unfinished flies</h2>
+
+		<% if @flies.any? %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Airline</th>
+						<th>Fly</th>
+					</tr>
+				</thead>
+				<% @flies.each do |fly| %>
+					<tr>
+						<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
+
+						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+</div>

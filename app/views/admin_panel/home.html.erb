@@ -1,3 +1,4 @@
+<%= render "header" %>
 <div class="container">
 	<div class="col-xs-12">
 
@@ -33,7 +34,7 @@
 						<td><%= notice.status %></td>
 						
 						<td><%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %></td>
-						<td><%= '<span class="label label-danger">Content untracked</span>'.html_safe if parent.html.nil? %></td>
+						<td><%= '<span class="label label-danger">Content untracked</span>'.html_safe if parent.html.blank? %></td>
 					</tr>
 
 					<% node_set.children.each do |child| %>

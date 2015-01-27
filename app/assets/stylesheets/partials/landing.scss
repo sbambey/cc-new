@@ -51,7 +51,7 @@
 	}
 
 	section:nth-of-type(1), section:nth-of-type(3) {
-	  background-color: #DDD8B8;
+	  background-color: #FCDDBC;
 	  padding: 40px 0;
 	}
 
@@ -71,21 +71,20 @@
 		margin: 0 auto 0 auto;
 	}
 
-	#pricing {
+	#showreel {
 		text-align: center;
 	}
-	.pricing-wrapper {
-		margin: 40px 0 40px;
+	.showreel-wrapper {
+		margin: 0;
+		padding: 20px 0;
 		border-radius: 5px;
-		border: 1px solid black;
 	}
-	.pricing-logo-wrapper {
-		margin: 20px auto 0 auto;
+	.showreel-logo-wrapper {
+		margin: 0 auto 20px auto;
 		height: 90px;
 		width: 90px;
 	}
-	.pricing-logo {
-		margin-left: 3px;
+	.showreel-logo {
 		height: 80px;
 	}
 

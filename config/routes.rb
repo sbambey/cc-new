@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end
 
-  get 'admin_panel/home'
+  get "admin_panel/home"
+  get "admin_panel/progress"
+  get "admin_panel/untracked"
   root 'landing#show'
 end

@@ -1,0 +1,22 @@
+<%= render "header" %>
+<div class="container">
+	<div class="col-xs-12">
+
+		<h2>Untracked flies</h2>
+
+		<% if @airlines.any? %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Airline</th>
+					</tr>
+				</thead>
+				<% @airlines.each do |airline| %>
+					<tr>
+						<td><%= link_to airline.name, airline_path(airline) %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+</div>

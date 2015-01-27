@@ -1,5 +1,5 @@
 jQuery ->
-	$("html").on "change", "#user_rating", (event) ->
+	$("html").on "change", ".rating-select", (event) ->
 		$(".checkbox, #check_instrument, #check_atp_qualifications, #check_atp_written, #check_multi_engine").addClass("hidden")
 		if $(this).val() == "Commercial pilot"
 			$(".checkbox, #check_instrument, #check_atp_qualifications, #check_atp_written, #check_multi_engine").removeClass("hidden")
@@ -8,9 +8,9 @@ jQuery ->
 
 ready = ->
 	jQuery ->
-		if $("#user_rating").val() == "Commercial pilot"
+		if $(".rating-select").val() == "Commercial pilot"
 			$(".checkbox, #check_instrument, #check_atp_qualifications, #check_atp_written, #check_multi_engine").removeClass("hidden")
-		if $("#user_rating").val() == "Restricted ATPL" || $("#user_rating").val() == "Unrestricted ATPL"
+		if $(".rating-select").val() == "Restricted ATPL" || $(".rating-select").val() == "Unrestricted ATPL"
 			$(".checkbox, #check_multi_engine").removeClass("hidden")
 
 $(document).ready(ready)
