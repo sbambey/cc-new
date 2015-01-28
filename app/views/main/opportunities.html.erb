@@ -1,0 +1,25 @@
+<% provide(:title, "Opportunities") %>
+<div class="container">
+	<div class="col-xs-12">
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Airlines</th>
+					<th>Opportunity</th>
+					<th>Base</th>
+				</tr>
+			</thead>
+			<% @airlines.each do |airline| %>
+				<% airline.flies.each do |fly| %>
+					<tr>
+						<td><%= display_image airline.logo %></td>
+						<td><%= link_to airline.name, airline_path(airline) %></td>
+						<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
+						<td><%= fly.base %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
+</div>

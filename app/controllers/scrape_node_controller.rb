@@ -1,4 +1,6 @@
 class ScrapeNodeController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_admin
+  
   def create
   	@current_node = ScrapeNode.new(scrape_node_params)
   	@current_node.save

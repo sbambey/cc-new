@@ -2,7 +2,7 @@
 
 .navbar {
   border:none;
-  background-color: #F71735;
+  background-color:rgba(247,23,53,0.8);
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
@@ -30,12 +30,12 @@
 }
 
 .navbar .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  background-color: #F71735;
+  background-color:rgba(247,23,53,0.5);
   color: #fff;
 }
 
 .navbar-nav > li {
-  margin-left:30px;
+  margin-left:20px;
 }
 
 .navbar-text {
@@ -87,7 +87,7 @@ th {
 
 .real-footer {
   border-top: 1px solid #ccc;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 /* Logo */

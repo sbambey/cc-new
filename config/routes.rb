@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/contact'
+
+  get "main/opportunities"
+
   get 'landing/show'
 
   resources :scrape_nodes, only: [:create, :destroy]

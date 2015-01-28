@@ -1,9 +1,9 @@
 module ApplicationHelper
 	def full_title(title)
 		if title.present?
-			"CockpitCareers | #{title}"
+			"flightcrew.io | #{title}"
 		else
-			"CockpitCareers"
+			"flightcrew.io"
 		end
 	end
 

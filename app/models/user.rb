@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
   has_many :admin_notices
 
   def self.checkbox_params
-    [:high_school_diploma, :post_secondary_degree]
+    [:high_school_diploma, :post_secondary_degree].concat(FLIGHT_EXPERIENCE.keys)
   end
 
   def self.permissible_params
-    [:full_name, :nationality, :language, :birthdate, :high_school_diploma, :post_secondary_degree, :rating, :medical_license]
+    [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :rating, :medical_license]
       .concat(FLIGHT_HOUR_TYPES.keys)
       .concat(FLIGHT_EXPERIENCE.keys)
   end
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
   ## validations
-  [:full_name, :nationality, :language, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|
+  [:full_name, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|
     validates_presence_of param
   end
 

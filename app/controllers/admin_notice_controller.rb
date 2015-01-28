@@ -1,4 +1,6 @@
 class AdminNoticeController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_admin
+  
   def create
   	@notice = AdminNotice.new(admin_notice_params)
   	@notice.save

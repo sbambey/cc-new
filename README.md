@@ -1,4 +1,4 @@
-# CockpitCareers
+# flightcrew.io
 
 A job board of major US airlines, planning to expand in the future.
 

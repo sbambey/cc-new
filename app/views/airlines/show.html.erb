@@ -24,6 +24,7 @@
 			<p>This airline currently has no opportunities</p>
 		<% end %>
 
+		<%= link_to("Add Opportunity", new_airline_fly_path(@airline), class: "btn btn-default") if current_user.try(:admin?) %>
+
 	</div>
 </div>
-

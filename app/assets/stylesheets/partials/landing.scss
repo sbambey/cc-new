@@ -16,7 +16,7 @@
 	}
 
 	.navbar .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-	  background-color:rgba(247,23,53,0);
+	  background-color:rgba(247,23,53,0.4);
 	  color: #fff;
 	}
 
@@ -31,8 +31,8 @@
 		margin-bottom: 0;
 		padding-bottom: 0;
 		padding-top: 1px;
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
+		border-bottom-left-radius:0;
+		border-bottom-right-radius:0;
 	  background-color:rgba(238,238,238,0.6);
 	}
 
