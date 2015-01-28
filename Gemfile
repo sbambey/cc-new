@@ -16,7 +16,6 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'friendly_id'
 gem 'devise'
-gem 'tinymce-rails'
 
 group :development, :test do
   gem 'byebug'
