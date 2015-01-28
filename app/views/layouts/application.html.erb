@@ -23,7 +23,9 @@
 	<% end %>
 	<%= yield %>
 
-	<%= render "layouts/footer" %>
+	<% if !display_landing_page? %>
+		<%= render "layouts/footer" %>
+	<% end %>
     
 </body>
 </html>
