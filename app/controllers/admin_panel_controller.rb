@@ -13,5 +13,9 @@ class AdminPanelController < ApplicationController
 	def untracked
 		@airlines = Airline.where("no_track = true").where("recruitment_overview_page IS NULL")
 	end
+
+	def user_management
+		@users = User.all
+	end
 	
 end

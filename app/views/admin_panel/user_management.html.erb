@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="col-xs-12">
+		<div class="jumbotron">
+			<h2>User count: <%= @users.count %></h2>
+			<p>
+				<% @users.each do |u| %>
+					<%= "#{u.full_name} - #{u.email}<br />".html_safe %>
+				<% end %>
+			</p>
+		</div>
+	</div>
+</div>

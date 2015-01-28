@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get "admin_panel/home"
   get "admin_panel/progress"
   get "admin_panel/untracked"
+  get "admin_panel/user_management"
   root 'landing#show'
 end
