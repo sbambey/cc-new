@@ -15,7 +15,7 @@
 <% if user_signed_in? %>
 	<div class="container">
 		<div class="col-xs-12">
-			<% if current_user.updated_at > Time.new(2015,1,29) %>
+			<% if current_user.updated_at < Time.new(2015,1,30) %>
 				<div class="alert alert-warning" role="alert">
 					<strong>Alert:</strong> We have made some changes to your account flight hour settings. Please take a look and update them if necessary.
 				</div>
