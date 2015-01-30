@@ -9,7 +9,9 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
-/lib/tasks/*
+# /lib/tasks/*
+/lib/tasks/american_airlines.rake
+/lib/tasks/wikipedia.rake
 **.orig
 rerun.txt
 pickle-email-*.html
