@@ -2,7 +2,7 @@ class Fly < ActiveRecord::Base
 	include Hstoreable
 	extend FriendlyId
 
-	friendly_id :name, use: [:slugged, :history]
+	friendly_id :slug_candidates, use: [:slugged, :history]
 
 	belongs_to :airline
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
@@ -35,4 +35,10 @@ class Fly < ActiveRecord::Base
   def should_generate_new_friendly_id?
     name_changed?
   end
+
+  def slug_candidates
+  	[
+  		:name,
+  		[:name, :id]
+  	]
 end
