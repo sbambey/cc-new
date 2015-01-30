@@ -41,4 +41,5 @@ class Fly < ActiveRecord::Base
   		:name,
   		[:name, :id]
   	]
+  end
 end
