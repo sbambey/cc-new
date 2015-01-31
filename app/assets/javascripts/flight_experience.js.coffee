@@ -4,7 +4,7 @@ jQuery ->
 		if $(this).val() == "Commercial pilot"
 			$(".checkbox, #check_instrument, #check_atp_qualifications, #check_atp_written, #check_multi_engine, #check_float").removeClass("hidden")
 		if ($(this).val() == "Restricted ATPL" || $(this).val() == "Unrestricted ATPL")
-			$(".checkbox, #check_multi_engine").removeClass("hidden")
+			$(".checkbox, #check_multi_engine, #check_float").removeClass("hidden")
 
 ready = ->
 	jQuery ->
