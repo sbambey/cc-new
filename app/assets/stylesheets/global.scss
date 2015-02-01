@@ -122,6 +122,13 @@ th {
   }
 }
 
+.table-thick-border {
+  border-width: 5px;
+}
+.bottom-thick-border {
+  border-bottom-width: 5px;
+}
+
 /* Errors */
 .error-explanation {
   color: $state-danger-text;
