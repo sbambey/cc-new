@@ -39,7 +39,7 @@ class Fly < ActiveRecord::Base
   def slug_candidates
   	[
   		:name,
-  		[:name, :id]
+  		[:name, :airline_id]
   	]
   end
 end
