@@ -7,18 +7,18 @@
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
 }
-.navbar-brand {
+.navbar-default .navbar-brand {
   color: #fff;
   font-size: 25px;
   font-family: "Geneva";
 }
 
-.nav > li > a {
+.navbar-default .nav > li > a {
   color: #fff;
 }
 
-.navbar-brand:hover,
-.navbar-brand:focus {
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
   color: #fff;
 }
 
@@ -34,20 +34,24 @@
   color: #fff;
 }
 
-.navbar-nav > li {
+.navbar-default .navbar-nav > li {
   margin-left:20px;
 }
 
-.navbar-text {
+.navbar-default .navbar-text {
   color: #fff;
 }
 
-.navbar-link {
+.navbar-default .navbar-link {
   color: #fff;
   text-decoration: underline;
   &:hover, &:focus {
     color: #fff;
   }
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
 }
 
 .btn-navbar {
