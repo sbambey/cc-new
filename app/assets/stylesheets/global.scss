@@ -10,7 +10,7 @@
 .navbar-default .navbar-brand {
   color: #fff;
   font-size: 25px;
-  font-family: "Geneva";
+  font-family: 'Signika', sans-serif;
 }
 
 .navbar-default .nav > li > a {
@@ -87,7 +87,9 @@ th {
 
 .real-footer {
   border-top: 1px solid #ccc;
-  padding: 20px 0;
+}
+.footer-text {
+  margin:15px 0 16px 0;
 }
 
 /* Logo */

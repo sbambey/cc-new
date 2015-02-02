@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   get 'static_pages/contact'
+  get "static_pages/mission"
 
   get "main/opportunities"
-
-  get 'landing/show'
 
   resources :scrape_nodes, only: [:create, :destroy]
   resources :admin_notices, only: [:create, :destroy]
@@ -21,5 +20,5 @@ Rails.application.routes.draw do
   get "admin_panel/progress"
   get "admin_panel/untracked"
   get "admin_panel/user_management"
-  root 'landing#show'
+  root 'static_pages#landing'
 end

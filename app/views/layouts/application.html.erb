@@ -3,6 +3,8 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,11 +12,8 @@
 	<%= render "layouts/google_analytics_snippet" %>
 
 	<% if !display_landing_page? %>
-		<% if user_signed_in? %>
-			<%= render "layouts/signed_in_header" %>
-		<% else %>
-			<%= render "layouts/signed_out_header" %>
-		<% end %>
+		<%= render "layouts/header" %>
+	
 		<div class="container">
 			<div class="col-xs-12">
 				<%= flash_messages %>
@@ -22,7 +21,6 @@
 		</div>
 	<% end %>
 	<%= yield %>
-
 	<% if !display_landing_page? %>
 		<%= render "layouts/footer" %>
 	<% end %>

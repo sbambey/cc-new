@@ -34,6 +34,6 @@ module ApplicationHelper
 	end
 
 	def display_landing_page?
-  	params[:controller].eql?("landing") and params[:action].eql?("show")
+  	params[:controller].eql?("static_pages") and params[:action].eql?("landing")
   end
 end
