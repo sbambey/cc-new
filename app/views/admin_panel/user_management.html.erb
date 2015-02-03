@@ -1,13 +1,23 @@
 <div class="container">
 	<div class="col-xs-12">
-		<div class="jumbotron">
-			<h2>User count: <%= @users.count %></h2>
-			<p>
-				<% @users.each do |u| %>
-					<%= "#{u.full_name} - #{u.email}" %>
-					<%= " - Updated account at: #{u.updated_at}<br />".html_safe if u.updated_at != u.created_at %>
-				<% end %>
-			</p>
-		</div>
+		<h2>User count: <%= @users.count %></h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Created at</th>
+					<th>Updated at</th>
+				</tr>
+			</thead>
+			<% @users.all.each do |u| %>
+			<tr>
+				<td><%= u.full_name %></td>
+				<td><%= u.email %></td>
+				<td><%= u.created_at.to_formatted_s(:short) %></td>
+				<td><%= u.updated_at.to_formatted_s(:short) if u.updated_at.to_formatted_s(:short) != u.created_at.to_formatted_s(:short) %></td>
+			</tr>
+			<% end %>
+		</table>
 	</div>
 </div>
