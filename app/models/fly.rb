@@ -8,7 +8,7 @@ class Fly < ActiveRecord::Base
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
 
-	default_scope { where("removed = ?", false) }
+	#default_scope { where("removed = ?", false) }
 
 	serialize :added_requirements, Array
 
