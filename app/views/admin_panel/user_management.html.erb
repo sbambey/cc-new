@@ -4,7 +4,8 @@
 			<h2>User count: <%= @users.count %></h2>
 			<p>
 				<% @users.each do |u| %>
-					<%= "#{u.full_name} - #{u.email}<br />".html_safe %>
+					<%= "#{u.full_name} - #{u.email}" %>
+					<%= " - Updated account at: #{u.updated_at}<br />".html_safe if u.updated_at != u.created_at %>
 				<% end %>
 			</p>
 		</div>
