@@ -9,7 +9,7 @@ class Fly < ActiveRecord::Base
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
 
 	scope :deleted, -> { where("deleted_at IS NOT NULL") }
-	default_scope { where("deleted_at IS NULL") }
+	#default_scope { where("deleted_at IS NULL") }
 
 	serialize :added_requirements, Array
 
