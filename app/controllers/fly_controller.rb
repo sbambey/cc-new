@@ -1,6 +1,6 @@
 class FlyController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_unless_admin, except: [:show]
+  before_action :redirect_unless_admin, except: [:index, :show]
 
   def show
     @fly = Fly.friendly.find(params[:id])

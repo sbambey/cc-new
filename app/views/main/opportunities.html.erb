@@ -10,16 +10,15 @@
 					<th>Base</th>
 				</tr>
 			</thead>
-			<% @airlines.each do |airline| %>
-				<% airline.flies.each do |fly| %>
-					<tr>
-						<td><%= display_image airline.logo %></td>
-						<td><%= link_to airline.name, airline_path(airline) %></td>
-						<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
-						<td><%= fly.base %></td>
-					</tr>
-				<% end %>
+			<% @flies.each do |fly| %>
+				<tr>
+					<td><%= display_image fly.airline.logo %></td>
+					<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
+					<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+					<td><%= fly.base %></td>
+				</tr>
 			<% end %>
 		</table>
 	</div>
 </div>
+<%= bts_will_paginate(@flies) %>

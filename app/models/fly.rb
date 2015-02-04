@@ -16,10 +16,10 @@ class Fly < ActiveRecord::Base
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
 	store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
-	#validates :rating, inclusion: [*RATINGS.values, ""]
-  #validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
+	validates :rating, inclusion: [*RATINGS.values, ""]
+  validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 
-	def requirements_by_type(type, constant)
+	def ordered_requirements_by_type(type, constant)
 		reqs = {}
 		self.send(type).each do |type, value|
 			reqs[type] = value unless value == "0"
@@ -28,7 +28,7 @@ class Fly < ActiveRecord::Base
 	end
 
 	def flight_time_requirements
-		requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)
+		ordered_requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)
 	end
 
 	def self.permissible_params

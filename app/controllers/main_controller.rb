@@ -2,15 +2,11 @@ class MainController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  	if user_signed_in?
-  		@flies = find_matched_flies
-  	else
-  		@airlines = Airline.all
-  	end
+  	@flies = find_matched_flies.paginate(page: params[:page], per_page: 15)
   end
 
   def opportunities
-    @airlines = Airline.all.order(:name => :asc)
+   @flies = Fly.joins(:airline).order("airlines.name").paginate(page: params[:page], per_page: 20)
   end
 
   private

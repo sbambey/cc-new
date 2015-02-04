@@ -3,7 +3,7 @@ class AirlinesController < ApplicationController
   before_action :redirect_unless_admin, except: [:index, :show]
 
   def index
-  	@airlines = Airline.all
+  	@airlines = Airline.all.paginate(page: params[:page], per_page: 20)
   end
 
   def show

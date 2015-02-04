@@ -36,4 +36,8 @@ module ApplicationHelper
 	def display_landing_page?
   	params[:controller].eql?("static_pages") and params[:action].eql?("landing")
   end
+
+  def bts_will_paginate(relation)
+  	return "<div class='text-center'>#{will_paginate relation, renderer: BootstrapPagination::Rails}</div>".html_safe
+  end
 end

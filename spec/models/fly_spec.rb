@@ -19,16 +19,29 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:multi_pic_time)
 		is_expected.to respond_to(:turbine_time)
 		is_expected.to respond_to(:turbine_pic_time)
-		is_expected.to respond_to(:turbofan_time)
-		is_expected.to respond_to(:turbofan_pic_time)
+		is_expected.to respond_to(:turbojet_time)
+		is_expected.to respond_to(:turbojet_pic_time)
+		is_expected.to respond_to(:turboprop_time)
+		is_expected.to respond_to(:turboprop_pic_time)
 		is_expected.to respond_to(:night_time)
-  	is_expected.to respond_to(:instrument_time)
+		is_expected.to respond_to(:night_pic_time)
   	is_expected.to respond_to(:x_country_time)
+  	is_expected.to respond_to(:x_country_pic_time)
+  	is_expected.to respond_to(:instrument_time)
+  	is_expected.to respond_to(:actual_instrument)
+  	is_expected.to respond_to(:single_float_time)
+  	is_expected.to respond_to(:multi_float_time)
 
 		is_expected.to respond_to(:rating)
 		is_expected.to respond_to(:medical_license)
 
 		is_expected.to respond_to(:added_requirements)
+
+		is_expected.to respond_to(:atp_qualifications)
+		is_expected.to respond_to(:atp_written)
+		is_expected.to respond_to(:multi_engine)
+		is_expected.to respond_to(:instrument)
+		is_expected.to respond_to(:float)
 
 		is_expected.to respond_to(:posting_date_as_string)
 		is_expected.to respond_to(:posting_expiry_as_string)
@@ -39,6 +52,8 @@ describe Fly, :type => :model do
 		is_expected.to respond_to(:no_match)
 		is_expected.to respond_to(:airline)
 		is_expected.to respond_to(:slug)
+		is_expected.to respond_to(:deleted_at)
+		is_expected.to respond_to(:updated)
 	end
 
 	describe "responds to instance methods" do
@@ -56,7 +71,36 @@ describe Fly, :type => :model do
 	end
 
 	describe "responds to class methods and scopes" do
-		
+		context "default scope" do
+			let(:flies) { [] }
+			let(:deleted_flies) { [ create(:fly, deleted_at: Time.now)] }
+			
+			before { 2.times { flies << create(:fly) } }
+				
+			it "does not show deleted records" do
+				expect(Fly.all).to eq(flies)
+			end
+		end
+
+		context "deleted scope" do
+			let(:flies) { [] }
+			let(:deleted_flies) { [create(:fly, deleted_at: Time.now)] }
+			
+			before { 2.times { flies << create(:fly) } }
+				
+			it "does not show deleted records" do
+				expect(Fly.deleted).to eq(deleted_flies)
+			end
+		end
+	end
+
+	describe "#ordered_requirements_by_type" do
+		context "when given a valid attribute and Hash" do
+			let(:fly) { build(:fly, total_pic_time: "200", total_time: "100") }
+			it "returns an ordered Hash with only non-zero values" do
+				expect(fly.ordered_requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)).to eq({total_time: "100", total_pic_time: "200"})
+			end
+		end
 	end
 
 	describe "#rating" do

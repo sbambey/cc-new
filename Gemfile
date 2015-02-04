@@ -16,6 +16,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'friendly_id'
 gem 'devise'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug'

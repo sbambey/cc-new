@@ -23,7 +23,7 @@
 					<th>Number of opportunities</th>
 				</tr>
 			</thead>
-			<% Airline.all.each do |airline| %>
+			<% @airlines.each do |airline| %>
 			<tr>
 				<td><%= image_tag("boarding6.gif", class: "boarding") if airline.has_active_recruitment? %></td>
 				<td><%= display_image airline.logo %></td>
@@ -35,3 +35,4 @@
 		</table>
 	</div>
 </div>
+<%= bts_will_paginate @airlines %>

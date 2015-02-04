@@ -1,16 +1,4 @@
 <% provide(:title, "Overview") %>
-<!--<div class="alert alert-info" role="alert">
-	<form class="form-inline" role="form">
-	  <div class="form-group">
-	  	Subscribe and be informed as soon as new opportunities become available:
-	    <div class="input-group input-email">
-	      <div class="input-group-addon">@</div>
-	      <input class="form-control" type="email" placeholder="Enter email">
-	    </div>
-	  </div>
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
-</div>-->
 
 <% if user_signed_in? %>
 	<div class="container">
@@ -54,6 +42,8 @@
 					</tbody>
 				</table>
 			<% end %>
+
+			<%= bts_will_paginate(@flies) %>
 		</div>
 	</div>
 <% end %>
