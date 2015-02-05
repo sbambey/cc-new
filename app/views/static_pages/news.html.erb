@@ -1,0 +1,30 @@
+<div class="container blog">
+	<div class="col-xs-12 col-md-6 col-md-offset-3">
+		<h2 class="text-center">Welcome to flightcrew.io <small>5 February 2015</small></h2>
+		<p>This is our first official post following the launch of flightcrew.io. I'd like to take the time to briefly talk about what we are currently working on and what you can expect in the near future.</p>
+
+		<p>Before I start, if you haven't yet done so, I encourage you to make an account (it'll take less than a minute) at <%= link_to "our registration page", new_user_registration_path %>.</p>
+
+		<p>We are very close to indexing the large majority of US airline opportunities. As we draw to the finish line, our focus is shifting to making it as easy as possible to find job opportunities for you on your <%= link_to "JobBoard", main_index_path %>.</p>
+
+		<p>Next, we are rolling out the ability to be matched by <em>location</em> and <em>type rating</em>, to make finding suitable jobs that much easier. Also, <em>flight instructors</em> will soon have the ability to be matched to flight instructor jobs.</p>
+
+		<p>Questions? Comments? We'd love to hear from you. Please <%= link_to "drop us a line", contact_path %>.</p>
+
+		<div id="disqus_thread"></div>
+	  <script type="text/javascript">
+	      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	      var disqus_shortname = 'cockpitcareers'; // required: replace example with your forum shortname
+
+	      /* * * DON'T EDIT BELOW THIS LINE * * */
+	      (function() {
+	          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	      })();
+	  </script>
+	  <noscript>
+	  	Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+	  </noscript>
+	</div>
+</div>	

@@ -21,7 +21,8 @@
             <li><%= link_to "Airlines", airlines_path %></li>
             <li><%= link_to "Opportunities", main_opportunities_path %></li>
             <li><%= link_to "Account", edit_user_registration_path %></li>
-            <li><%= link_to "Contact", static_pages_contact_path %></li>
+            <li><%= link_to "News", news_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
             <% if current_user.try(:admin?) %>
               <li><%= link_to "Admin Panel", admin_panel_home_path %></li>
             <% end %>
@@ -38,8 +39,9 @@
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Login", new_user_session_path %></li>
             <li><%= link_to "Register", new_user_registration_path %></li>
-            <li><%= link_to "Mission", static_pages_mission_path %></li>
-            <li><%= link_to "Contact", static_pages_contact_path %></li>
+            <li><%= link_to "Mission", mission_path %></li>
+            <li><%= link_to "News", news_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
           </ul>
           <div class="navbar-right">
             <%= render "shared/social" %>

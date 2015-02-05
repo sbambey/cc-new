@@ -18,6 +18,9 @@ class StaticPagesController < ApplicationController
   def mission
   end
 
+  def news
+  end
+
   private
 
   	def redirect_if_signed_in
