@@ -18,14 +18,14 @@ class StaticPagesController < ApplicationController
   def mission
   end
 
-  def news
+  def blog
   end
 
   private
 
   	def redirect_if_signed_in
   		if user_signed_in?
-  			redirect_to main_index_path
+  			redirect_to board_path
   		end
   	end
 

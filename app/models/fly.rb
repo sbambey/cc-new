@@ -10,6 +10,8 @@ class Fly < ActiveRecord::Base
 
 	default_scope { where("deleted_at IS NULL") }
 	scope :deleted, -> { unscoped.where("deleted_at IS NOT NULL") }
+	scope :active, -> { where(general_recruitment: false) }
+	scope :inactive, -> { where(general_recruitment: true) }
 
 	serialize :added_requirements, Array
 

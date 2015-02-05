@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   get "contact" => "static_pages#contact"
   get "mission" => "static_pages#mission"
-  get "news" => "static_pages#news"
+  get "blog" => "static_pages#blog"
 
-  get "main/opportunities"
+  get "jobs" => "board#all"
+  get "board" => "board#active"
+  get "general" => "board#general_recruitment"
 
   resources :scrape_nodes, only: [:create, :destroy]
   resources :admin_notices, only: [:create, :destroy]
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  resources :main, only: [:index]
   resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end

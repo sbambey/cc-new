@@ -1,0 +1,38 @@
+<% provide(:title, "General recruitment") %>
+<div class="container">
+	<div class="col-xs-12">
+
+		<%= render "board_header" %>
+		
+		<% if @flies.empty? %>
+			<div class="alert alert-warning" role="alert">
+				We were not able to find opportunities applicable to the flight hours provided.
+			</div>
+		<% else %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>Airline</th>
+						<th>Opportunity</th>
+						<th>Last updated</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @flies.each do |fly| %>
+					<tr>
+						<td><%= image_tag("boarding6.gif", class: "boarding") %></td>
+						<td><%= display_image(fly.airline.logo) %></td>
+						<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
+						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+						<td><%= "#{time_ago_in_words(fly.updated_at)} ago" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+
+		<%= bts_will_paginate(@flies) %>
+	</div>
+</div>
