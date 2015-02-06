@@ -10,7 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    super do |resource|
+      subscribe_to_mail_list
+    end
   end
 
   # GET /resource/edit
@@ -57,5 +59,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     super(resource)
+  end
+
+  def subscribe_to_mail_list
+    EmailService.new({
+      email_weekly: sign_up_params[:email_weekly],
+      email_urgent: sign_up_params[:email_urgent],
+      email: sign_up_params[:email],
+      full_name: sign_up_params[:full_name]
+    }).subscribe
   end
 end

@@ -16,7 +16,7 @@
 						<th></th>
 						<th>Airline</th>
 						<th>Opportunity</th>
-						<th>Last updated</th>
+						<th>Posted at</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,7 +26,7 @@
 						<td><%= display_image(fly.airline.logo) %></td>
 						<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
 						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
-						<td><%= "#{time_ago_in_words(fly.updated_at)} ago" %></td>
+						<td><%= "#{time_ago_in_words(fly.created_at)} ago" %></td>
 					</tr>
 					<% end %>
 				</tbody>

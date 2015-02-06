@@ -18,6 +18,7 @@ gem 'friendly_id'
 gem 'devise'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'gibbon'
 
 group :development, :test do
   gem 'byebug'
