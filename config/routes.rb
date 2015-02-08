@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
+  resources :type_ratings
+  resources :type_ratings_static
   resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end

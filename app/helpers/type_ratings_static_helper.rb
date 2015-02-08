@@ -1,0 +1,2 @@
+module TypeRatingsStaticHelper
+end

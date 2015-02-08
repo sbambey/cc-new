@@ -17,4 +17,9 @@
 	#hidden_field {
 		display: none;
 	}
+
+	select.form-control {
+		display: inline-block;
+		width: auto;
+	}
 }

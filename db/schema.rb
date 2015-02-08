@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206013414) do
+ActiveRecord::Schema.define(version: 20150207061340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,22 @@ ActiveRecord::Schema.define(version: 20150206013414) do
   end
 
   add_index "scrape_nodes", ["scrapeable_type", "scrapeable_id"], name: "index_scrape_nodes_on_scrapeable_type_and_scrapeable_id", using: :btree
+
+  create_table "type_ratings", force: :cascade do |t|
+    t.string   "designation"
+    t.datetime "issuance"
+    t.boolean  "current"
+    t.integer  "user_id"
+    t.integer  "fly_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "type_ratings_static", force: :cascade do |t|
+    t.string   "designation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

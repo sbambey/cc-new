@@ -6,13 +6,13 @@
 
       <p>Please enter all times in <em>decimal hours</em> (ie. 5.5, rather than 5:30)</p>
 
-      <table class="table table-bordered table-thick-border table-black-border standard-margin">
+      <table class="table table-bordered thick-border table-black-border standard-margin">
         <% FLIGHT_HOUR_TYPES.keys.in_groups_of(2) do |group| %>
           <% if group[1].blank? %>
 
             <% type = group[0] %>
             <tr>
-              <%= render partial: "shared/flight_time/table_cell", locals: { f: f, args: { type: type, empty_cell: true } } %>
+              <%= render "shared/flight_time/table_cell", f: f, args: { type: type, empty_cell: true } %>
             </tr>
           <% else %>
 
@@ -26,20 +26,35 @@
         <% end %>
       </table>
 
-      <h4>Ratings</h4>
+      <h4>License</h4>
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= f.select :rating, RATINGS.values, {include_blank: true}, class: "form-control rating-select" %>
+        <div class="col-xs-12 col-sm-6 col-md-4 bootstrap-select-row">
+          <%= f.select :rating, RATINGS.values, {include_blank: true}, class: "rating-select selectpicker", "data-width" => "auto" %>
         </div>
       </div>
 
       <div class="flight-experience-checkbox">
         <% FLIGHT_EXPERIENCE.each do |key, value| %>
-          <label class="block-label hidden" id="check_<%= key %>">
-            <%= f.check_box key %> <%= value %>
-          </label> 
+          <div class="checkbox hidden" id="check_<%= key %>">
+            <label class="block-label">
+              <%= f.check_box key %> <%= value %>
+            </label>
+          </div>
         <% end %>
-      </div> 
+      </div>
+      
+      <h4>Type Ratings</h4>
+
+      <div id="no-type-ratings" style="<%= "display:none;".html_safe if !f.object.type_ratings.empty? %>">
+        <p class="lead">No type ratings listed</p>
+      </div>
+      <div id="type-ratings">
+        <%= f.fields_for :type_ratings do |builder| %>
+          <%= render "shared/type_rating_fields", f: builder %>
+        <% end %>
+        <%= link_to_add_fields "[+] Add Type Rating", f, :type_ratings %>
+      </div>
+
     </div>
   </div>
 </section>

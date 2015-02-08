@@ -7,6 +7,9 @@ class Fly < ActiveRecord::Base
 	belongs_to :airline
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
+	has_many :type_ratings, dependent: :destroy
+
+	accepts_nested_attributes_for :type_ratings, allow_destroy: true
 
 	default_scope { where("deleted_at IS NULL") }
 	scope :deleted, -> { unscoped.where("deleted_at IS NOT NULL") }

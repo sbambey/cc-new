@@ -70,6 +70,9 @@ body {
 .standard-margin {
   margin-top:20px;
 }
+.standard-left-margin {
+  margin-left: 20px;
+}
 .label-margin {
   margin-top:7px;
 }
@@ -114,7 +117,7 @@ th {
 }
 
 #flight-time .checkbox {
-  margin-top:0;
+  margin:0;
 }
 
 .block-label {
@@ -124,8 +127,20 @@ th {
   }
 }
 
-.table-thick-border {
-  border-width: 5px;
+#type-ratings {
+  .checkbox {
+    display:inline-block;
+    margin: 0 0 0 20px;
+  }
+}
+#no-type-ratings {
+  height: 50px;
+  #no-type-ratings p.lead {
+    margin:0;
+  }
+}
+.thick-border {
+  border: 5px solid #ddd;
 }
 .bottom-thick-border {
   border-bottom-width: 5px;
@@ -137,8 +152,21 @@ th {
 }
 
 /* User and Fly creation */
+
+/*Deal with bootstrap-select not having bottom margin*/
+.bootstrap-select-row {
+  margin-bottom: 15px;
+}
 #flight-time select, #medical select {
   margin-bottom: 15px;
+}
+
+#flight-time .add_fields {
+  margin-bottom: 15px;
+}
+
+#flight-time .remove_fields {
+  margin-bottom: 5px;
 }
 
 /* Disqus */

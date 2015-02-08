@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :admin_notices
+  has_many :type_ratings, dependent: :destroy
+
+  accepts_nested_attributes_for :type_ratings, allow_destroy: true
 
   def self.checkbox_params
     [:high_school_diploma, :post_secondary_degree].concat(FLIGHT_EXPERIENCE.keys)
@@ -44,6 +47,7 @@ class User < ActiveRecord::Base
     [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :email_weekly, :email_urgent, :rating, :medical_license]
       .concat(FLIGHT_HOUR_TYPES.keys)
       .concat(FLIGHT_EXPERIENCE.keys)
+      .concat([type_ratings_attributes: [:id, :designation, :issuance, :current, :_destroy]])
   end
 
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys

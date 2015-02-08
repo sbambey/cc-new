@@ -5,8 +5,8 @@
       <h4>Medical Certificate</h4>
 
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-      		<%= f.select :medical_license, MEDICAL_LICENSES.values, {include_blank: true}, class: "form-control" %>
+        <div class="col-xs-12 col-sm-6 col-md-4 bootstrap-select-row">
+      		<%= f.select :medical_license, MEDICAL_LICENSES.values, {include_blank: true}, class: "selectpicker", "data-width" => "auto" %>
       	</div>
       </div>
 

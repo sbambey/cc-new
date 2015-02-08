@@ -31,7 +31,35 @@ manage_flight_experience = ->
 				  return
 
 ready = ->
-		manage_flight_experience()
+	jQuery ->
+		fe_options = [
+		  $('#check_instrument')
+		  $('#check_atp_qualifications')
+		  $('#check_atp_written')
+		  $('#check_multi_engine')
+		  $('#check_float')
+		]
+
+		atpl_options = [
+			$('#check_multi_engine')
+			$('#check_float')
+		]
+
+		$.each fe_options, ->
+			$(this).addClass 'hidden'
+			return
+
+		if $('.rating-select').val() == "Commercial pilot"
+			$.each fe_options, ->
+			  $(this).removeClass 'hidden'
+			  return
+
+		if $('.rating-select').val() == "Restricted ATPL" or $('.rating-select').val() == "Unrestricted ATPL"
+			$.each atpl_options, ->
+			  $(this).removeClass 'hidden'
+			  return
+
+	$('.selectpicker').selectpicker()
 
 manage_flight_experience()
 

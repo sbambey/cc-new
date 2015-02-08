@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  protected
+
+  def type_ratings_static
+  	@type_ratings_static = []
+  	TypeRatingStatic.all.each do |r|
+  		@type_ratings_static << r.designation
+  	end
+  end
+
   private
 
   	def redirect_unless_admin
