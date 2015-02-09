@@ -4,5 +4,4 @@ class TypeRating < ActiveRecord::Base
 
 	validates :designation, inclusion: [*TypeRatingStatic.designations, ""]
 	validates_date :issuance, :after => lambda { Datetime.new(1930) }
-	validates :current, presence: true
 end

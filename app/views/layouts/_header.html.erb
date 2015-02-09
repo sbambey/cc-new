@@ -20,7 +20,7 @@
             <li><%= link_to "JobBoard", root_path %></li>
             <li><%= link_to "Airlines", airlines_path %></li>
             <li><%= link_to "Jobs", jobs_path %></li>
-            <li><%= link_to "Account", edit_user_registration_path %></li>
+            <li><%= link_to "Profile", edit_user_registration_path %></li>
             <li><%= link_to "Blog", blog_path %></li>
             <% if current_user.try(:admin?) %>
               <li><%= link_to "Admin Panel", admin_panel_home_path %></li>
