@@ -3,7 +3,7 @@ SitemapGenerator::Sitemap.default_host = "http://flightcrew.io"
 
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 # store on S3 using Fog
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
 # inform the map cross-linking where to find the other maps
 SitemapGenerator::Sitemap.sitemaps_host = "http://#{ENV['FOG_DIRECTORY']}.s3-us-west-2.amazonaws.com/"
 # pick a namespace within your bucket to organize your maps
