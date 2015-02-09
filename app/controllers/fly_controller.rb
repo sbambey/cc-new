@@ -1,6 +1,6 @@
 class FlyController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect_unless_admin, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
+  before_action :redirect_unless_admin, except: [:show]
   before_filter :type_ratings_static, only: [:new, :create, :edit, :update]
 
   def show

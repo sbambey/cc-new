@@ -1,8 +1,8 @@
 class BoardController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:all]
 
   def all
-   @flies = Fly.joins(:airline).order("airlines.name").paginate(page: params[:page], per_page: 20)
+   @flies = Fly.joins(:airline).order("created_at DESC").paginate(page: params[:page], per_page: 20)
   end
 
   def active

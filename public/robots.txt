@@ -3,3 +3,7 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+User-Agent: *
+Disallow: /admin_panel
+Disallow: /admin
+Sitemap: http://www.flightcrew.io/sitemap.xml.gz

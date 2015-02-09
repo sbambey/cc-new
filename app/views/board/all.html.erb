@@ -5,9 +5,10 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Airlines</th>
+					<th>Airline</th>
 					<th>Opportunity</th>
 					<th>Base</th>
+					<th>Posted</th>
 				</tr>
 			</thead>
 			<% @flies.each do |fly| %>
@@ -16,6 +17,7 @@
 					<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
 					<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
 					<td><%= fly.base %></td>
+					<td><%= "#{time_ago_in_words(fly.created_at)} ago" %></td>
 				</tr>
 			<% end %>
 		</table>

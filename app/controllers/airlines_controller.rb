@@ -1,5 +1,5 @@
 class AirlinesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :redirect_unless_admin, except: [:index, :show]
 
   def index
