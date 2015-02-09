@@ -6,11 +6,13 @@ manage_flight_experience = ->
 		  $('#check_atp_written')
 		  $('#check_multi_engine')
 		  $('#check_float')
+		  $('check_float_multi')
 		]
 
 		atpl_options = [
 			$('#check_multi_engine')
 			$('#check_float')
+			$('#check_float_multi')
 		]
 
 		$("html").on "change", ".rating-select", (event) ->
@@ -38,11 +40,13 @@ ready = ->
 		  $('#check_atp_written')
 		  $('#check_multi_engine')
 		  $('#check_float')
+		  $('check_float_multi')
 		]
 
 		atpl_options = [
 			$('#check_multi_engine')
 			$('#check_float')
+			$('#check_float_multi')
 		]
 
 		$.each fe_options, ->
