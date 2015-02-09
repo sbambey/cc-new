@@ -58,10 +58,9 @@ ready = ->
 			$.each atpl_options, ->
 			  $(this).removeClass 'hidden'
 			  return
+		$('.selectpicker').selectpicker()
 
-	$('.selectpicker').selectpicker()
-
-manage_flight_experience()
+		manage_flight_experience()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

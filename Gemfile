@@ -21,6 +21,7 @@ gem 'will_paginate-bootstrap'
 gem 'gibbon'
 gem 'jquery-ui-sass-rails'
 gem 'bootstrap-select-rails'
+gem 'jc-validates_timeliness'
 
 group :development, :test do
   gem 'byebug'

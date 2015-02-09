@@ -5,8 +5,8 @@
   <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
   <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
 		
-		<div class="checkbox">
-  	<label>
+	<div class="checkbox">
+  	<label class="standard-left-margin">
     	<%= f.check_box :current %><p>Type rating is current?</p>
     </label>
   </div>

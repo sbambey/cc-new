@@ -4,8 +4,8 @@ FLIGHT_HOUR_TYPES = { total_time: "Total Time", total_pic_time: "Pilot-in-Comman
     turbojet_time: "Total Turbojet/Turbofan", turbojet_pic_time: "Turbojet/Turbofan PIC",
     turboprop_time: "Total Turboprop", turboprop_pic_time: "Turboprop PIC",
     night_time: "Night", night_pic_time: "Night PIC",
-    x_country_time: "Cross-country", x_country_pic_time: "Cross-Country PIC",
-    instrument_time: "Total Instrument", actual_instrument: "Actual flight instrument",
+    x_country_time: "Cross-Country", x_country_pic_time: "Cross-Country PIC",
+    instrument_time: "Total Instrument", actual_instrument: "Actual Instrument",
     single_float_time: "Single Engine Float", multi_float_time: "Multi Engine Float" }
 
 FLIGHT_EXPERIENCE = { atp_qualifications: "Meet all qualifications to obtain ATP or restricted ATP",

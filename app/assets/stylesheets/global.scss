@@ -116,10 +116,6 @@ th {
   margin: 0 auto;
 }
 
-#flight-time .checkbox {
-  margin:0;
-}
-
 .block-label {
   display: block;
   &:nth-of-type(n+2):not(.hidden) {
@@ -157,16 +153,25 @@ th {
 .bootstrap-select-row {
   margin-bottom: 15px;
 }
-#flight-time select, #medical select {
+#licenses select, #medical select {
   margin-bottom: 15px;
 }
 
-#flight-time .add_fields {
+#licenses .add_fields {
   margin-bottom: 15px;
 }
 
-#flight-time .remove_fields {
+#licenses .remove_fields {
   margin-bottom: 5px;
+}
+
+#licenses {
+  .checkbox {
+    margin:0;
+  }
+  .add_fields {
+    margin-bottom: 15px;
+  }
 }
 
 /* Disqus */
