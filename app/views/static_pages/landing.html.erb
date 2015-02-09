@@ -60,7 +60,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th></th>
+						<!--<th></th>-->
 						<th></th>
 						<th>Airline</th>
 						<th>Opportunity</th>
@@ -70,7 +70,7 @@
 				<tbody>
 					<% @flies.each do |fly| %>
 					<tr>
-						<td><%= image_tag("boarding6.gif", class: "boarding") %></td>
+						<!--<td><%= image_tag("boarding6.gif", class: "boarding") %></td>-->
 						<td><%= display_image(fly.airline.logo) %></td>
 						<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
 						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
