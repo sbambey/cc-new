@@ -6,7 +6,7 @@ manage_flight_experience = ->
 		  $('#check_atp_written')
 		  $('#check_multi_engine')
 		  $('#check_float')
-		  $('check_float_multi')
+		  $('#check_float_multi')
 		]
 
 		atpl_options = [
@@ -40,7 +40,7 @@ ready = ->
 		  $('#check_atp_written')
 		  $('#check_multi_engine')
 		  $('#check_float')
-		  $('check_float_multi')
+		  $('#check_float_multi')
 		]
 
 		atpl_options = [
