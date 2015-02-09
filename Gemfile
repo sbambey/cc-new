@@ -24,6 +24,7 @@ gem 'bootstrap-select-rails'
 gem 'jc-validates_timeliness'
 gem 'sitemap_generator'
 gem 'fog'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug'
