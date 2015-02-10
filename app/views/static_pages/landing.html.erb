@@ -79,6 +79,9 @@
 					<% end %>
 				</tbody>
 			</table>
+			<div class="text-center">
+				<%= link_to "See more jobs", jobs_path, class: "btn btn-lg btn-danger btn-center" %>
+			</div>
 		</div>
 	</div>
 </section>
@@ -98,7 +101,7 @@
 					<%= display_image image, "airline-heading-logo" %>
 				<% end %>
 				<p class="lead">and many more</p>
-				<%= link_to "Try it free", new_user_registration_path, class: "btn btn-lg btn-danger" %>
+				<%= link_to "Get started", new_user_registration_path, class: "btn btn-lg btn-danger btn-left-margin" %>
 			</div>
 		</div>
 	</div>

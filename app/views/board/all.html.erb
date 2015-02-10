@@ -1,6 +1,16 @@
 <% provide(:title, "Opportunities") %>
 <div class="container">
 	<div class="col-xs-12">
+
+		<% if !user_signed_in? %>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					Too many jobs to sift through? Find jobs that you can apply for right now.
+					<%= link_to "Sign up", new_user_registration_path %>, it'll only take you a minute.
+				</div>
+			</div>
+		<% end %>
+
 		<table class="table">
 			<thead>
 				<tr>

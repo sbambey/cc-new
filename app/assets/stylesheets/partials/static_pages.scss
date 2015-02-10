@@ -71,9 +71,11 @@
 		height:80px;
 		margin: 0 auto 0 auto;
 	}
-
 	#showreel {
 		text-align: center;
+		.btn-left-margin {
+			margin-left: 10px;
+		}
 	}
 	.showreel-wrapper {
 		margin: 0;
@@ -90,6 +92,7 @@
 	}
 
 	#airlines {
+		padding-bottom: 20px;
 		h2 {
 			text-align: center;
 		}
