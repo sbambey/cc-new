@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/sitemap.xml.gz" => "sitemaps#show"
+
   get "contact" => "static_pages#contact"
   get "mission" => "static_pages#mission"
   get "blog" => "static_pages#blog"
