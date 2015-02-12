@@ -210,11 +210,12 @@ th {
   background: #f8f4d3;
   font-size: 16px;
   font-weight: lighter;
-  input {
+  .form-inline .form-control {
     width: 250px;
-  }
-  input, a {
     margin-left: 10px;
+  }
+  button {
+    margin-left: 5px;
   }
 }
 
