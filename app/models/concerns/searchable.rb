@@ -5,7 +5,7 @@ module Searchable
 
 		def search(search)
 			if search
-				where("name LIKE ? OR base LIKE ?", "%#{search}%", "%#{search}%")
+				where("lower(name) LIKE ? OR lower(base) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
 			else
 				all
 			end
