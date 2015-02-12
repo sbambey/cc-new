@@ -2,14 +2,16 @@
 	<%= f.label :designation %>
 	<%= f.select :designation, @type_ratings_static, {}, class: "selectpicker", "data-live-search" =>"true" %>
 
-  <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
-  <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
-		
-	<div class="checkbox">
-  	<label class="standard-left-margin">
-    	<%= f.check_box :current %><p>Type rating is current?</p>
-    </label>
-  </div>
+  <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
+    <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
+    <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
+  		
+  	<div class="checkbox">
+    	<label class="standard-left-margin">
+      	<%= f.check_box :current %><p>Type rating is current?</p>
+      </label>
+    </div>
+  <% end %>
 
   <%= f.hidden_field :_destroy %>
   <%= link_to "[-] Remove this rating", '#', class: "remove_fields btn btn-danger btn-xs standard-left-margin" %>

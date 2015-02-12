@@ -8,7 +8,7 @@ class AdminPanelController < ApplicationController
 	end
 
 	def progress
-		@flies = Fly.where("updated = false")
+		@flies = Fly.where("no_track = true")
 	end
 
 	def untracked
