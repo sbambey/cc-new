@@ -43,7 +43,7 @@
 							<td></td>
 							<td></td>
 
-							<% fly = child.scrapeable %>
+							<% fly = child.scrapeable || Fly.deleted.find(child.scrapeable_id) %>
 							<% set = child.node_set %>
 							<% notice = child.notice %>
 
@@ -56,7 +56,7 @@
 							<td class="<%= notice.status %>">
 								<%= notice.created_at.in_time_zone("Pacific Time (US & Canada)").to_s(:db) %>
 							</td>
-							<td class="<%= notice.status %>"></td>
+							<td class="<%= notice.status %>"><%= "Deleted record" if fly.deleted_at? %></td>
 						</tr>
 
 					<% end %>
