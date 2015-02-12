@@ -5,14 +5,30 @@
   <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
     <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
     <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
-  		
-  	<div class="checkbox">
-    	<label class="standard-left-margin">
-      	<%= f.check_box :current %><p>Type rating is current?</p>
-      </label>
-    </div>
   <% end %>
 
   <%= f.hidden_field :_destroy %>
   <%= link_to "[-] Remove this rating", '#', class: "remove_fields btn btn-danger btn-xs standard-left-margin" %>
+  
+  <div>
+    <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
+    	<div class="checkbox">
+      	<label>
+        	<%= f.check_box :current %><p>Type rating is current?</p>
+        </label>
+      </div>
+    <% end %>
+
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :pic %><p>Is PIC type rating?</p>
+      </label>
+    </div>
+  </div>
+
+  
+
+  
+
+  
 </fieldset>
