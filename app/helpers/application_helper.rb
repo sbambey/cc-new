@@ -38,6 +38,10 @@ module ApplicationHelper
   	pages.has_key?(controller) && pages[controller].include?(action) ? true : false
  	end
 
+ 	def job_board_page?(controller, action)
+ 		controller == "board" && action == "matched"
+ 	end
+
   def bts_will_paginate(relation, args = {})
   	if args[:endless]
   		("<div class='text-center' id='add-records'>" +

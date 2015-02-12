@@ -203,7 +203,7 @@ th {
 
 /* Search bar, table and signup noticce */
 
-.panel-signup-notice {
+.alert-board-notice {
   display: inline-block;
   border:none;
   box-shadow: none;
@@ -217,6 +217,10 @@ th {
   button {
     margin-left: 5px;
   }
+}
+
+.glyphicon-exclamation-sign {
+  margin-right: 5px;
 }
 
 .search-bar {

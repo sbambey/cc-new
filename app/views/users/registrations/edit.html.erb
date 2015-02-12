@@ -22,6 +22,10 @@
 
   <%= render partial: "additional", locals: { f: f } %>
 
+  <% if resource.just_registered? %>
+    <%= f.hidden_field :just_registered, value: "0" %>
+  <% end %>
+
   <div class="container">
     <div class="col-xs-12">
       <%= f.submit "Save Changes", class: "btn btn-default standard-margin" %>

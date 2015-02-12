@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def self.permissible_params
-    [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :email_weekly, :email_urgent, :rating, :medical_license]
+    [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :email_weekly, :email_urgent, :rating, :medical_license, :just_registered]
       .concat(FLIGHT_HOUR_TYPES.keys)
       .concat(FLIGHT_EXPERIENCE.keys)
       .concat([type_ratings_attributes: [:id, :designation, :issuance, :current, :_destroy]])
