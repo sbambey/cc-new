@@ -1,5 +1,6 @@
 class Fly < ActiveRecord::Base
 	include Hstoreable
+	include Searchable
 	extend FriendlyId
 
 	friendly_id :slug_candidates, use: [:slugged, :history]

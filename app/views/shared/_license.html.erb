@@ -1,0 +1,35 @@
+<section id="licenses">
+  <div class="container">
+    <div class="col-xs-12">
+      <h4>License</h4>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 bootstrap-select-row">
+          <%= f.select :rating, RATINGS.values, {include_blank: true}, class: "rating-select selectpicker", "data-width" => "auto" %>
+        </div>
+      </div>
+
+      <div class="flight-experience-checkbox">
+        <% FLIGHT_EXPERIENCE.each do |key, value| %>
+          <div class="checkbox hidden" id="check_<%= key %>">
+            <label class="block-label">
+              <%= f.check_box key %> <%= value %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      
+      <h4>Type Ratings</h4>
+
+      <div id="no-type-ratings" style="<%= "display:none;".html_safe if !f.object.type_ratings.empty? %>">
+        <p class="lead">No type ratings listed</p>
+      </div>
+      <div id="type-ratings">
+        <%= f.fields_for :type_ratings do |builder| %>
+          <%= render "shared/type_rating_fields", f: builder %>
+        <% end %>
+        <%= link_to_add_fields "[+] Add Type Rating", f, :type_ratings %>
+      </div>
+
+    </div>
+  </div>
+</section>

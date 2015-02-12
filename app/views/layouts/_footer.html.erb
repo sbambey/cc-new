@@ -1,14 +1,14 @@
 <div class="real-footer">
 	<div class="container">
 		<div class="col-xs-6">
-			<p class="footer-text">&copy; 2015 flightcrew.io - <%= link_to "Contact Us", contact_path %></p>
+			<p class="footer-text">
+				&copy; 2015 flightcrew.io - <%= link_to "Contact Us", contact_path %> - <%= link_to "Our Mission", mission_path %>
+			</p>
 		</div>
 		<div class="col-xs-6">
 			<div class="pull-right">
 				<% if user_signed_in? %>
 					<%= render "shared/social" %>
-				<% else %>
-					<%= "<p class='footer-text'>Background image courtesy of <a href='https://www.flickr.com/photos/canadaq200/''>Devon Scott</a></p>".html_safe if display_landing_page? %>
 				<% end %>
 			</div>
 		</div>

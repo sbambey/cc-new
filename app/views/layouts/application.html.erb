@@ -11,19 +11,14 @@
 <body class="<%= controller.controller_name %>">
 	<%= render "layouts/google_analytics_snippet" %>
 
-	<% if !display_landing_page? %>
-		<%= render "layouts/header" %>
-	
-		<div class="container">
-			<div class="col-xs-12">
-				<%= flash_messages %>
-			</div>
+	<%= render "layouts/header" %>
+
+	<!--<div class="container">
+		<div class="col-xs-12">
+			<%= flash_messages %>
 		</div>
-	<% end %>
+	</div>-->
 	<%= yield %>
-	<% if !display_landing_page? %>
-		<%= render "layouts/footer" %>
-	<% end %>
-    
+	<%= render "layouts/footer" %>
 </body>
 </html>

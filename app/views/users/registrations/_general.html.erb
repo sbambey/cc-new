@@ -19,6 +19,13 @@
             } %>
         </div>
 
+        <div class="col-md-4 col-xs-12">
+          <div class="form-group">
+            <div><%= f.label :birthdate, class: "control-label" %></div>
+            <%= f.date_select :birthdate, {start_year: 1930}, class: "form-control selectpicker", "data-width" => "auto" %>
+          </div>
+        </div>
+
         <!--<div class="col-md-4 col-xs-12">
           <%= render partial: "shared/text_field", 
           locals: { 
@@ -44,14 +51,7 @@
         </div>-->
       </div>
 
-      <div class="row standard-margin">
-        <div class="col-md-4 col-xs-12">
-          <%= f.label :birthdate %>
-          <%= f.date_select :birthdate, {start_year: 1930}, class: "form-control selectpicker", "data-width" => "auto" %>
-        </div>
-      </div>
-
-      <div class="checkbox standard-margin">
+      <div class="checkbox">
         <label>
           <%= f.check_box :high_school_diploma %> I have a high school diploma
         </label>

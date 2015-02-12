@@ -14,10 +14,6 @@
 	  -o-background-size: cover;
 	}
 
-	.navbar-landing {
-		background-color:rgba(247,23,53,0.7);
-	}
-
 	.navbar-landing .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
 	  background-color:rgba(247,23,53,0);
 	  color: #fff;
@@ -37,10 +33,6 @@
 		border-top-left-radius:5px;
 		border-top-right-radius:5px;
 	  background-color:rgba(238,238,238,0.8);
-	}
-
-	.email-form {
-		margin-bottom: 20px;
 	}
 
 	.email-field {

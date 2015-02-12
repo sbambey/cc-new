@@ -5,7 +5,7 @@
 			<%= form_for board_path, method: 'get', html: { id: "jobs-search" } do %>
 				<%= text_field_tag :search, params[:search], class: "form-control search-input", 
 				placeholder: 'i.e. "Empire Airlines", "First Officer" or "Cessna 208"' %>
-				Search <em><%= @job_count %> pilot jobs</em> from <em><%= @airline_count %> airlines</em> across the United States
+				Search <em><%= @jobs.count %> pilot jobs</em> you are currently eligible for
 			<% end %>
 		</div>
 	</div>

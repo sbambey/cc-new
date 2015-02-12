@@ -1,0 +1,15 @@
+<% if @jobs.present? %>
+	<% @jobs.each_with_index do |job, index| %>
+		<tr>
+			<td class="col-md-1<%= " strong-cell" if index == 0 %>"><div><%= display_image job.airline.logo, "jobs-table-logo" %></div></td>
+			<td class="col-md-2<%= " strong-cell" if index == 0 %>"><div><%= link_to job.airline.name, airline_path(job.airline) %></div></td>
+			<td class="col-md-4<%= " strong-cell" if index == 0 %>"><div><%= link_to job.name, airline_fly_path(job.airline, job) %></div></td>
+			<td class="col-md-2<%= " strong-cell" if index == 0 %>"><div><%= job.base %></div></td>
+			<td class="col-md-2<%= " strong-cell" if index == 0 %>"><div><%= "#{time_ago_in_words(job.created_at)} ago" %></div></td>
+		</tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="5">There are no jobs matching your criteria</td>
+	</tr>
+<% end %>

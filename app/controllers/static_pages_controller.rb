@@ -2,13 +2,12 @@ class StaticPagesController < ApplicationController
 	before_action :redirect_if_signed_in, only: [:landing]
 
 	def landing
-		@flies = Fly.all.order("id desc").limit(5)
-    @airlines_count = Airline.count
-    @flies_count = Fly.count
-    @airline_images = []
-    airlines = %w(envoy-air spirit-airlines expressjet commutair island-air mesa-airlines american-airlines allegiant-air empire-airlines delta-air-lines horizon-air)
-    airlines.each do |a|
-      @airline_images << Airline.friendly.find(a).logo
+    @jobs = Fly.search(params[:search]).order("created_at DESC").paginate(per_page: 10, page: params[:page])
+    @job_count = Fly.all.count
+    @airline_count = Airline.all.count
+    respond_to do |format|
+      format.js { render "shared/jobs.js.erb" }
+      format.html
     end
 	end
 

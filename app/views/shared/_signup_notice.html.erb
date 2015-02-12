@@ -1,0 +1,17 @@
+<% if !user_signed_in? %>
+	<div class="text-center">
+		<div class="panel panel-signup-notice">
+		  <div class="panel-body">
+				<%= form_tag new_user_registration_path, method: :get, class: "form-inline email-form" do %>
+					Get personalized job offers matching your flight hours and experience
+					<%= text_field_tag "email", nil, class: "form-control email-field", placeholder: "E-Mail Address" %>
+					<%= button_tag "Get started", name: nil, class: "btn btn-md btn-danger" %>
+				<% end %>
+		  </div>
+		</div>
+	</div>
+<% else %>
+	<div class="text-center">
+  	<%= display_image("ac_logo.png", "jobs-table-ad-logo") %>
+	</div>
+<% end %>

@@ -33,12 +33,20 @@ module ApplicationHelper
 	  end
 	end
 
-	def display_landing_page?
-  	params[:controller].eql?("static_pages") and params[:action].eql?("landing")
-  end
+  def search_bar_page?(controller, action)
+  	pages = {"static_pages" =>  ["landing"], "board" => ["matched", "all"]}
+  	pages.has_key?(controller) && pages[controller].include?(action) ? true : false
+ 	end
 
-  def bts_will_paginate(relation)
-  	return "<div class='text-center'>#{will_paginate relation, renderer: BootstrapPagination::Rails}</div>".html_safe
+  def bts_will_paginate(relation, args = {})
+  	if args[:endless]
+  		("<div class='text-center' id='add-records'>" +
+  			"<a href='#'><div>Show more</div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></a>" +
+  			"<div class='hidden'>#{will_paginate relation, renderer: BootstrapPagination::Rails}</div>" +
+  		"</div>").html_safe
+  	else
+  		"<div class='text-center'>#{will_paginate relation, renderer: BootstrapPagination::Rails}</div>".html_safe
+  	end
   end
 
   def link_to_add_fields(name, f, association)

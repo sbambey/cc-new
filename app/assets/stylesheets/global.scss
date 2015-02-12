@@ -1,61 +1,73 @@
 /* Header */
 
+.navbar-default {
+  background-color: #fff;
+}
 .navbar {
-  border:none;
-  background-color:rgba(247,23,53,0.8);
+  border: none;
+  border-bottom: 1px solid #4A6FA5;
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
+  margin-bottom: 0;
 }
 .navbar-default .navbar-brand {
-  color: #fff;
-  font-size: 25px;
+  color: #F71735;
+  font-size: 28px;
   font-family: 'Signika', sans-serif;
 }
 
 .navbar-default .nav > li > a {
-  color: #fff;
+  color: #666;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #fff;
+  color: #F71735;
 }
 
 .nav > li > a:hover,
 .nav > li > a:focus {
-  color: #fff;
+  color: #F71735;
   text-decoration: none;
   cursor: pointer;
 }
 
 .navbar .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   background-color:rgba(247,23,53,0);
-  color: #fff;
+  color: #000;
 }
 
 .navbar-default .navbar-nav > li {
   margin-left:20px;
+  font-size: 14px;
 }
 
 .navbar-default .navbar-text {
-  color: #fff;
+  color: #666;
 }
 
 .navbar-default .navbar-link {
-  color: #fff;
+  color: #666;
   text-decoration: underline;
   &:hover, &:focus {
-    color: #fff;
+    color: #666;
   }
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff;
+  background-color: #F71735;
 }
 
 .btn-navbar {
   margin:10px 0 10px 0;
+}
+
+.lower-navbar {
+  width:100%;
+  height:5px;
+  background-color: #8fa3cc;
+  border-bottom: 1px solid #4A6FA5;
 }
 
 html,
@@ -85,7 +97,7 @@ th {
 }
 
 .btn-submit {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .real-footer {
@@ -102,6 +114,21 @@ th {
   max-width: 200px;
   display: block;
   margin: 0 auto;
+}
+
+.jobs-table-logo {
+  max-height:100%;
+  max-width:100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.jobs-table-ad-logo {
+  max-height:100%;
+  max-width:100%;
+  display: block;
+  margin: 0 auto 10px auto;
+  border-radius:4px;
 }
 
 .airline-heading-logo {
@@ -173,6 +200,64 @@ th {
     margin-bottom: 15px;
   }
 }
+
+/* Search bar, table and signup noticce */
+
+.panel-signup-notice {
+  display: inline-block;
+  border:none;
+  box-shadow: none;
+  background: #f8f4d3;
+  font-size: 16px;
+  font-weight: lighter;
+  input {
+    width: 250px;
+  }
+  input, a {
+    margin-left: 10px;
+  }
+}
+
+.search-bar {
+  display:table;
+  width:100%;
+  height:36px;
+  background-color: #8fa3cc;
+  border-bottom: 1px solid #4A6FA5;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: lighter;
+  .search-input {
+    width: 500px;
+    margin: 0 auto 5px auto;
+    border-color: #4A6FA5;
+    box-shadow: none;
+  }
+}
+
+#jobs td > div, #added-jobs td > div {
+  height: 21px;
+  overflow: hidden;
+}
+
+td > div.form-group {
+  margin-bottom: 0;
+}
+
+.table > tbody > tr > td.strong-cell {
+  border-top-width: 3px;
+}
+
+#add-records {
+  margin-bottom: 20px;
+  font-size: 20px;
+  a, a:hover, a:focus {
+    display: inline-block;
+    color: #999;
+  }
+}
+
+
 
 /* Disqus */
 #disqus_thread {
