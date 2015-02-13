@@ -10,16 +10,13 @@ SitemapGenerator::Sitemap.sitemaps_host = "http://#{ENV['FOG_DIRECTORY']}.s3-us-
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 SitemapGenerator::Sitemap.create do
-  add "/landing", changefreq: "daily", priority: 1.0
   add jobs_path, changefreq: "daily", priority: 1.0
-  add mission_path, priority: 0.6
   add blog_path, priority: 0.7
+  add mission_path, priority: 0.6
   add contact_path, priority: 0.5
-  add board_path
-  add general_path
-  add airlines_path, priority: 0.8
+  add airlines_path, priority: 0.7
   Airline.find_each do |airline|
-    add airline_path(airline), priority: 0.9, lastmod: airline.updated_at
+    add airline_path(airline), priority: 0.8, lastmod: airline.updated_at
     airline.flies.each do |fly|
       add airline_fly_path(airline, fly), priority: 0.9, lastmod: fly.updated_at
     end

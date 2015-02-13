@@ -27,5 +27,11 @@ Rails.application.routes.draw do
   get "admin_panel/untracked"
   get "admin_panel/user_management"
 
-  root 'board#matched'
+  authenticated :user do
+    root to: "board#matched", as: "authenticated_root"
+  end
+
+  unauthenticated do
+    root to: "board#all"
+  end
 end

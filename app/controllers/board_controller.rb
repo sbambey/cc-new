@@ -1,6 +1,6 @@
 class BoardController < ApplicationController
-  before_action :redirect_if_not_signed_in, only: [:matched]
   before_action :authenticate_user!, except: [:all]
+  before_action :redirect_if_not_signed_in, except: [:all]
   
   def matched
     @jobs = find_matched_flies.active.includes(:airline).search(params[:search]).order("flies.created_at DESC").paginate(per_page: 10, page: params[:page])
