@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212224724) do
+ActiveRecord::Schema.define(version: 20150213082006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150212224724) do
     t.datetime "logo_updated_at"
   end
 
+  add_index "airlines", ["name"], name: "index_airlines_on_name", using: :btree
   add_index "airlines", ["slug"], name: "index_airlines_on_slug", using: :btree
 
   create_table "flies", force: :cascade do |t|
@@ -96,6 +97,10 @@ ActiveRecord::Schema.define(version: 20150212224724) do
     t.boolean  "general_recruitment",      default: false
   end
 
+  add_index "flies", ["airline_id"], name: "index_flies_on_airline_id", using: :btree
+  add_index "flies", ["base"], name: "index_flies_on_base", using: :btree
+  add_index "flies", ["equipment"], name: "index_flies_on_equipment", using: :btree
+  add_index "flies", ["name"], name: "index_flies_on_name", using: :btree
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -140,6 +145,9 @@ ActiveRecord::Schema.define(version: 20150212224724) do
     t.datetime "updated_at",  null: false
     t.boolean  "pic"
   end
+
+  add_index "type_ratings", ["fly_id"], name: "index_type_ratings_on_fly_id", using: :btree
+  add_index "type_ratings", ["user_id"], name: "index_type_ratings_on_user_id", using: :btree
 
   create_table "type_ratings_static", force: :cascade do |t|
     t.string   "designation"

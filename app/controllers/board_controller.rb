@@ -3,7 +3,8 @@ class BoardController < ApplicationController
   before_action :authenticate_user!, except: [:all]
   
   def matched
-    @jobs = find_matched_flies.active.search(params[:search]).order("created_at DESC").paginate(per_page: 10, page: params[:page])
+    @jobs = find_matched_flies.active.includes(:airline).search(params[:search]).order("flies.created_at DESC").paginate(per_page: 10, page: params[:page])
+    #@jobs = find_matched_flies.active.search(params[:search]).order("created_at DESC").paginate(per_page: 10, page: params[:page])
     #@flies = Fly.joins(:airline).order("created_at DESC").paginate(page: params[:page], per_page: 20)
     #@flies = Fly.joins(:airline).order("created_at DESC").paginate(page: params[:page], per_page: 20)
     respond_to do |format|
@@ -13,7 +14,7 @@ class BoardController < ApplicationController
   end
 
   def all
-    @jobs = Fly.search(params[:search]).order("created_at DESC").paginate(per_page: 10, page: params[:page])
+    @jobs = Fly.includes(:airline).search(params[:search]).order("flies.created_at DESC").paginate(per_page: 10, page: params[:page])
     @job_count = Fly.all.count
     @airline_count = Airline.all.count
     respond_to do |format|
