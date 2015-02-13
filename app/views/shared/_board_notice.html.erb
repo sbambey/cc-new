@@ -1,6 +1,6 @@
 <% if !user_signed_in? %>
 	<div class="text-center">
-		<div class="alert alert-signup-notice">
+		<div class="alert alert-board-notice">
 			<%= form_tag new_user_registration_path, method: :get, class: "form-inline email-form" do %>
 				Get personalized job offers matching your flight hours and experience
 				<%= text_field_tag "email", nil, class: "form-control email-field", placeholder: "E-Mail Address" %>
