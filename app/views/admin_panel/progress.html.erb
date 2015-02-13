@@ -2,21 +2,28 @@
 <div class="container">
 	<div class="col-xs-12">
 
-		<h2>Unfinished flies</h2>
+		<h2>Untracked airlines (<%= @airlines.count %>)</h2>
 
-		<% if @flies.any? %>
+		<% if @airlines.any? %>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Airline</th>
-						<th>Fly</th>
+						<th>Airline Profile</th>
+						<th>Airline Website</th>
 					</tr>
 				</thead>
-				<% @flies.each do |fly| %>
+				<% @airlines.each do |airline| %>
 					<tr>
-						<td><%= link_to fly.airline.name, airline_path(fly.airline) %></td>
-
-						<td><%= link_to fly.name, airline_fly_path(fly.airline, fly) %></td>
+						<td>
+							<%= link_to airline.name, airline_path(airline) %>
+						</td>
+						<td>
+							<% if airline.recruitment_overview_page.present? %>
+								<%= link_to airline.recruitment_overview_page, airline.recruitment_overview_page %>
+							<% else %>
+								<%= airline.name %>
+							<% end %>
+						</td>
 					</tr>
 				<% end %>
 			</table>
