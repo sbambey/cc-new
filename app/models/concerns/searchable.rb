@@ -5,7 +5,7 @@ module Searchable
 
 		def search(search)
 			if search
-				where("lower(flies.name) LIKE :q OR lower(flies.base) LIKE :q OR lower(flies.equipment) LIKE :q OR lower(airlines.name) LIKE :q", {q: "%#{search.downcase}%"}).references(:airlines)
+				where("lower(flies.name) LIKE :q OR lower(flies.base) LIKE :q OR lower(flies.equipment) LIKE :q OR lower(airlines.name) LIKE :q OR lower(type_ratings.designation) LIKE :q", {q: "%#{search.downcase}%"}).references(:airlines, :type_ratings)
 			else
 				all
 			end

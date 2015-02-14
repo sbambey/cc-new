@@ -1,6 +1,8 @@
 <fieldset class="bootstrap-select-row">
-	<%= f.label :designation %>
-	<%= f.select :designation, @type_ratings_static, {}, class: "selectpicker", "data-live-search" =>"true" %>
+	<%= f.label :type_rating %>
+	<%= f.select :type_rating_id, 
+    options_from_collection_for_select(TypeRating.all, :id, :designation, f.object[:type_rating_id]), 
+    {}, class: "selectpicker", "data-live-search" =>"true" %>
 
   <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
     <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
@@ -25,10 +27,4 @@
       </label>
     </div>
   </div>
-
-  
-
-  
-
-  
 </fieldset>

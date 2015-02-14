@@ -1,7 +1,6 @@
 class FlyController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :redirect_unless_admin, except: [:show]
-  before_filter :type_ratings_static, only: [:new, :create, :edit, :update]
 
   def show
     @fly = Fly.friendly.find(params[:id])
@@ -49,7 +48,7 @@ class FlyController < ApplicationController
 
   private
 
-  	def fly_params
-  		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :rating, :medical_license, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, *Fly.permissible_params, :general_recruitment, :type_ratings, {:added_requirements => []}, {type_ratings_attributes: [:id, :designation, :issuance, :current, :pic, :_destroy]})
-    end
+	def fly_params
+		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :rating, :medical_license, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, *Fly.permissible_params, :general_recruitment, :type_ratings, {:added_requirements => []}, {fly_user_type_ratings_attributes: [:id, :user_id, :type_rating_id, :issuance, :current, :pic, :_destroy]})
+  end
 end

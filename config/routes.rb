@@ -9,15 +9,10 @@ Rails.application.routes.draw do
   get "jobs" => "board#all"
   get "general" => "board#general_recruitment"
 
-  #resources :scrape_nodes, only: [:create, :destroy]
-  #resources :admin_notices, only: [:create, :destroy]
-
-  #devise_for :admins
-
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :type_ratings, only: [:index]
-  #resources :type_ratings_static
+
   resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end

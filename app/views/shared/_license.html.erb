@@ -24,10 +24,10 @@
         <p class="lead">No type ratings listed</p>
       </div>
       <div id="type-ratings">
-        <%= f.fields_for :type_ratings do |builder| %>
-          <%= render "shared/type_rating_fields", f: builder %>
+        <%= f.fields_for :fly_user_type_ratings do |builder| %>
+          <%= render "shared/fly_user_type_rating_fields", f: builder %>
         <% end %>
-        <%= link_to_add_fields "[+] Add Type Rating", f, :type_ratings %>
+        <%= link_to_add_fields "[+] Add Type Rating", f, :fly_user_type_ratings %>
       </div>
 
     </div>

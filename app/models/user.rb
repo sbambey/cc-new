@@ -1,43 +1,12 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer          not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default("0"), not null
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :inet
-#  last_sign_in_ip        :inet
-#  full_name              :string
-#  birthdate              :date
-#  nationality            :string
-#  language               :string
-#  high_school_diploma    :boolean
-#  post_secondary_degree  :boolean
-#  flight_time            :hstore
-#  rating                 :hstore
-#  medical                :hstore
-#  additional             :hstore
-#  created_at             :datetime
-#  updated_at             :datetime
-#  admin                  :boolean
-#
-
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :admin_notices
-  has_many :type_ratings, dependent: :destroy
+  has_many :fly_user_type_ratings, dependent: :destroy
+  has_many :type_ratings, through: :fly_user_type_ratings, dependent: :destroy
 
-  accepts_nested_attributes_for :type_ratings, allow_destroy: true
+  accepts_nested_attributes_for :fly_user_type_ratings, allow_destroy: true
 
   def self.checkbox_params
     [:high_school_diploma, :post_secondary_degree].concat(FLIGHT_EXPERIENCE.keys)
@@ -47,7 +16,7 @@ class User < ActiveRecord::Base
     [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :email_weekly, :email_urgent, :rating, :medical_license, :just_registered]
       .concat(FLIGHT_HOUR_TYPES.keys)
       .concat(FLIGHT_EXPERIENCE.keys)
-      .concat([type_ratings_attributes: [:id, :designation, :issuance, :current, :pic, :_destroy]])
+      .concat([fly_user_type_ratings_attributes: [:id, :user_id, :type_rating_id, :issuance, :current, :pic, :_destroy]])
   end
 
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys

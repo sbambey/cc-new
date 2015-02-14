@@ -33,6 +33,14 @@
   cursor: pointer;
 }
 
+.navbar-default .navbar-nav > .active > a {
+  background-color: #fff;
+  border-bottom:5px solid #4A6FA5;
+  &:hover, &:focus {
+    background-color: #fff;
+  }
+}
+
 .navbar .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   background-color:rgba(247,23,53,0);
   color: #000;

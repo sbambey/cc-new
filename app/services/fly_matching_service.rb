@@ -6,10 +6,11 @@ class FlyMatchingService
 		@medical_license = params[:medical_license]
 		@rating = params[:rating]
 		@flight_experience = params[:flight_experience]
+		@type_ratings = params[:type_ratings]
 	end
 
 	def flies
-		@flies ||= find_flies.order(updated_at: :desc)
+		@flies ||= find_flies.order(created_at: :desc)
 	end
 
 	private
@@ -28,20 +29,20 @@ class FlyMatchingService
 			@flight_time.each do |category, time|
 				query = query.where("(flight_time -> ?)::int <= ?", category, time.to_i)
 			end
-			query = query.where("no_match = false")
+			query = query.where("flies.no_match = false")
 
 			if @medical_license == MEDICAL_LICENSES[:two]
-				query = query.where("medical_license != ?", MEDICAL_LICENSES[:one])
+				query = query.where("flies.medical_license != ?", MEDICAL_LICENSES[:one])
 			elsif @medical_license != MEDICAL_LICENSES[:one]
-				query = query.where("medical_license != ? AND medical_license != ?", MEDICAL_LICENSES[:one], MEDICAL_LICENSES[:two])
+				query = query.where("flies.medical_license != ? AND flies.medical_license != ?", MEDICAL_LICENSES[:one], MEDICAL_LICENSES[:two])
 			end
 
 			if @rating == RATINGS[:atpl_restricted]
-				query = query.where("rating != ?", RATINGS[:atpl_unrestricted])
+				query = query.where("flies.rating != ?", RATINGS[:atpl_unrestricted])
 			elsif @rating == RATINGS[:commercial]
-				query = query.where("rating != ? AND rating != ?", RATINGS[:atpl_unrestricted], RATINGS[:atpl_restricted])
+				query = query.where("flies.rating != ? AND flies.rating != ?", RATINGS[:atpl_unrestricted], RATINGS[:atpl_restricted])
 			elsif @rating != RATINGS[:atpl_unrestricted]
-				query = query.where("rating != ? AND rating != ? AND rating != ?", 
+				query = query.where("flies.rating != ? AND flies.rating != ? AND flies.rating != ?", 
 					RATINGS[:atpl_unrestricted], RATINGS[:atpl_restricted], RATINGS[:commercial])
 			end
 
@@ -56,6 +57,10 @@ class FlyMatchingService
 					query = query.where("(flight_experience -> ?) != ?", :multi_engine, "1")
 				end
 			end
+
+			query = query.reject { |r| !(r.type_ratings - @type_ratings == []) }
+
+			query = Fly.where(id: query.map(&:id))
 
 			query
 		end

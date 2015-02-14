@@ -1,7 +1,5 @@
 class TypeRating < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :fly
-
-	validates :designation, inclusion: [*TypeRatingStatic.designations, ""]
-	#validates_date :issuance, :after => lambda { Datetime.new(1930) }
+	has_many :fly_user_type_rating, dependent: :destroy
+	has_many :users, through: :fly_user_type_rating
+	has_many :flies, through: :fly_user_type_rating
 end

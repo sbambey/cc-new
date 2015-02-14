@@ -7,6 +7,18 @@ module ApplicationHelper
 		end
 	end
 
+	def active_link(controller, action = nil)
+		if action
+			if(params[:controller] == controller && params[:action] == action)
+				return " class='active'".html_safe
+			end
+		else
+			if(params[:controller] == controller)
+				return " class='active'".html_safe
+			end
+		end
+	end
+
 	def convert_if_devise_key(key)
 		if key == "notice"
 			"success"

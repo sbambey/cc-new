@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213082006) do
+ActiveRecord::Schema.define(version: 20150214010254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(version: 20150213082006) do
   add_index "flies", ["name"], name: "index_flies_on_name", using: :btree
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree
 
+  create_table "fly_user_type_ratings", force: :cascade do |t|
+    t.integer  "fly_id"
+    t.integer  "user_id"
+    t.integer  "type_rating_id"
+    t.datetime "issuance"
+    t.boolean  "current"
+    t.boolean  "pic"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -136,20 +147,6 @@ ActiveRecord::Schema.define(version: 20150213082006) do
   add_index "scrape_nodes", ["scrapeable_type", "scrapeable_id"], name: "index_scrape_nodes_on_scrapeable_type_and_scrapeable_id", using: :btree
 
   create_table "type_ratings", force: :cascade do |t|
-    t.string   "designation"
-    t.datetime "issuance"
-    t.boolean  "current"
-    t.integer  "user_id"
-    t.integer  "fly_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "pic"
-  end
-
-  add_index "type_ratings", ["fly_id"], name: "index_type_ratings_on_fly_id", using: :btree
-  add_index "type_ratings", ["user_id"], name: "index_type_ratings_on_user_id", using: :btree
-
-  create_table "type_ratings_static", force: :cascade do |t|
     t.string   "designation"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

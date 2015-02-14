@@ -17,11 +17,11 @@
 
         <% if user_signed_in? %>
           <ul class="nav navbar-nav">
-            <li><%= link_to "My JobBoard", root_path %></li>
-            <li><%= link_to "All Jobs", jobs_path %></li>
-            <li><%= link_to "Blog", blog_path %></li>
+            <li<%= active_link("board", "matched") %>><%= link_to "My JobBoard", root_path %></li>
+            <li<%= active_link("board", "all") %>><%= link_to "All Jobs", jobs_path %></li>
+            <li<%= active_link("static_pages", "blog") %>><%= link_to "Blog", blog_path %></li>
             <% if current_user.try(:admin?) %>
-              <li><%= link_to "Admin Panel", admin_panel_home_path %></li>
+              <li<%= active_link("admin_panel") %>><%= link_to "Admin Panel", admin_panel_home_path %></li>
             <% end %>
           </ul>
           <div class="navbar-right">
@@ -33,8 +33,8 @@
 
         <% else %>
           <ul class="nav navbar-nav">
-            <li><%= link_to "Log in", new_user_session_path %></li>
-            <li><%= link_to "Blog", blog_path %></li>
+            <li<%= active_link("devise/sessions", "new") %>><%= link_to "Log in", new_user_session_path %></li>
+            <li<%= active_link("static_pages", "blog") %>><%= link_to "Blog", blog_path %></li>
           </ul>
           <div class="navbar-right">
             <p class="navbar-text">
