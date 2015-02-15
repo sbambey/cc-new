@@ -3,7 +3,7 @@ class BlogPostsController < ApplicationController
   before_action :redirect_unless_admin, except: [:index, :show]
 
   def index
-  	@blog_posts = BlogPost.all	
+  	@blog_posts = BlogPost.all.order(created_at: :desc)
   end
 
   def show
