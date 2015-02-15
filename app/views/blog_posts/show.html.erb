@@ -8,7 +8,7 @@
 
 		<%= markdown(@blog_post.content) %>
 
-		<p class="back"><%= link_to "< Back to overview", blog_path %></p>
+		<%= link_to "Back to Overview", blog_path, class: "post-link" %>
 
 		<div id="disqus_thread"></div>
 	  <script type="text/javascript">

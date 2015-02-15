@@ -10,7 +10,7 @@
 
 				<%= abbreviated_content(markdown(post.content)) %>
 
-				<p><%= link_to "Read More...", show_blog_post_path(post) %></p>
+				<%= link_to "Read More", show_blog_post_path(post), class: "post-link" %>
 			</div>
 		<% end %>
 
