@@ -6,7 +6,7 @@
 		<% @blog_posts.each do |post| %>
 			<div class="post">
 				<h2><%= post.title %> <small><%= post.subtitle %></small></h2>
-				<p class="post-info">Posted by <%= post.user.full_name %> on <%= post.created_at %></p>
+				<p class="post-info">Posted by <%= post.user.full_name %> on <%= header_time(post.created_at) %></p>
 
 				<%= abbreviated_content(markdown(post.content)) %>
 

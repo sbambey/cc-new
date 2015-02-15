@@ -9,4 +9,8 @@ module BlogPostHelper
 		doc = Nokogiri::HTML(content)
 		return doc.css("p")[0..1].map(&:to_html).join("").html_safe
 	end
+
+	def header_time(time)
+		time.strftime("%e %B %Y")
+	end
 end

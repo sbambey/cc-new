@@ -4,7 +4,7 @@
 	<div class="col-xs-12 col-md-6 col-md-offset-3">
 
 		<h1 class="text-center"><%= @blog_post.title %> <small><%= @blog_post.subtitle %></small></h1>
-		<p class="post-info text-center">Posted by <em><%= @blog_post.user.full_name %></em> on <%= @blog_post.created_at.strftime("%e %B %Y") %></p>
+		<p class="post-info text-center">Posted by <em><%= @blog_post.user.full_name %></em> on <%= header_time(@blog_post.created_at) %></p>
 
 		<%= markdown(@blog_post.content) %>
 
