@@ -15,8 +15,4 @@ describe FlyMatchingService do
 			expect(service.flies).to eq([])
 		end
 	end
-
-	context "when " do
-
-	end
 end

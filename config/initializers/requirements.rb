@@ -11,7 +11,8 @@ FLIGHT_HOUR_TYPES = { total_time: "Total Time", total_pic_time: "Pilot-in-Comman
 FLIGHT_EXPERIENCE = { atp_qualifications: "Meet all qualifications to obtain ATP or restricted ATP",
 	atp_written: "Completed the ATP written exam", instrument: "Instrument rating",
     multi_engine: "Multi Engine Land (MEL) rating",
-	float: "Single Engine Sea (SES) rating", float_multi: "Multi Engine Sea (MES) rating" }
+	float: "Single Engine Sea (SES) rating", float_multi: "Multi Engine Sea (MES) rating",
+    cfi: "Certified Flight Instructor (CFI)", cfii: "Certified Flight Instructor Instrument (CFII)" }
 
 RATINGS = { student: "Student pilot", sport: "Sport pilot", recreational: "Recreational pilot", 
 	private_unrestricted: "Private pilot", commercial: "Commercial pilot",

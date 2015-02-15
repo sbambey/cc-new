@@ -71,12 +71,16 @@ ready = ->
 	  $('#check_multi_engine')
 	  $('#check_float')
 	  $('#check_float_multi')
+	  $('#check_cfi')
+	  $('#check_cfii')
 	]
 
 	atpl_options = [
 		$('#check_multi_engine')
 		$('#check_float')
 		$('#check_float_multi')
+		$('#check_cfi')
+	  $('#check_cfii')
 	]
 
 	manage_flight_experience(fe_options, atpl_options)
