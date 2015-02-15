@@ -21,6 +21,10 @@ SitemapGenerator::Sitemap.create do
       add airline_fly_path(airline, fly), priority: 0.9, lastmod: fly.updated_at
     end
   end
+
+  BlogPost.find_each do |post|
+    add show_blog_post_path(post), priority: 0.9, lastmod: post.updated_at
+  end
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.
