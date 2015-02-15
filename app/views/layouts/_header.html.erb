@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav">
             <li<%= active_link("board", "matched") %>><%= link_to "My JobBoard", root_path %></li>
             <li<%= active_link("board", "all") %>><%= link_to "All Jobs", jobs_path %></li>
-            <li<%= active_link("static_pages", "blog") %>><%= link_to "Blog", blog_path %></li>
+            <li<%= active_link("blog_posts", "index") %>><%= link_to "Blog", blog_path %></li>
             <% if current_user.try(:admin?) %>
               <li<%= active_link("admin_panel") %>><%= link_to "Admin Panel", admin_panel_home_path %></li>
             <% end %>

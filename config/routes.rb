@@ -3,15 +3,20 @@ Rails.application.routes.draw do
 
   get "contact" => "static_pages#contact"
   get "mission" => "static_pages#mission"
-  get "blog" => "static_pages#blog"
 
   get "board" => "board#matched"
   get "jobs" => "board#all"
   get "general" => "board#general_recruitment"
 
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations" }, :path => 'accounts'
 
-  resources :type_ratings, only: [:index]
+  resources :users do
+    resources :blog_posts, only: [:create]
+  end
+
+  resources :blog_posts, only: [:new, :destroy]
+  get "blog" => "blog_posts#index"
+  get "blog/:id" => "blog_posts#show", as: :show_blog_post
 
   resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
