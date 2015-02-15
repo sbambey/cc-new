@@ -7,7 +7,7 @@ class BlogPostsController < ApplicationController
   end
 
   def show
-  	@blog_post = BlogPost.find(params[:id])
+  	@blog_post = BlogPost.friendly.find(params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class BlogPostsController < ApplicationController
   end
 
   def edit
-  	@blog_post = BlogPost.find(params[:id])
+  	@blog_post = BlogPost.friendly.find(params[:id])
   end
 
   def update
-  	@blog_post = BlogPost.find(params[:id])
+  	@blog_post = BlogPost.friendly.find(params[:id])
   	@blog_post.update_attributes(blog_post_params)
   end
 

@@ -3,7 +3,7 @@ class BoardController < ApplicationController
   before_action :redirect_if_not_signed_in, except: [:all]
   
   def matched
-    @jobs = find_matched_flies.active.includes(:airline, :type_ratings).search(params[:search]).paginate(per_page: 10, page: params[:page])
+    @jobs = find_matched_flies.active.includes(:airline, :type_ratings).search(params[:search]).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
     respond_to do |format|
       format.js { render "shared/jobs.js.erb" }
       format.html
@@ -11,7 +11,7 @@ class BoardController < ApplicationController
   end
 
   def all
-    @jobs = Fly.includes(:airline, :type_ratings).search(params[:search]).paginate(per_page: 10, page: params[:page])
+    @jobs = Fly.includes(:airline, :type_ratings).search(params[:search]).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
     @job_count = Fly.all.count
     @airline_count = Airline.all.count
     respond_to do |format|
