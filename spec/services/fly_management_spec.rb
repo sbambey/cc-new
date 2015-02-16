@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe FlyMatchingService do
+
+	
+	
 	user = FactoryGirl.build(:user, total_time: "100")
 	let(:service) { 
 		FlyMatchingService.new(flight_time: user.flight_time, medical_license: user.medical_license, rating: user.rating,

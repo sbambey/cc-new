@@ -12,7 +12,8 @@ FLIGHT_EXPERIENCE = { atp_qualifications: "Meet all qualifications to obtain ATP
 	atp_written: "Completed the ATP written exam", instrument: "Instrument rating",
     multi_engine: "Multi Engine Land (MEL) rating",
 	float: "Single Engine Sea (SES) rating", float_multi: "Multi Engine Sea (MES) rating",
-    cfi: "Certified Flight Instructor (CFI)", cfii: "Certified Flight Instructor Instrument (CFII)" }
+    cfi: "Certified Flight Instructor (CFI)", cfii: "Certified Flight Instructor Instrument (CFII)",
+    mei: "Multi Engine Instructor (MEI)" }
 
 RATINGS = { student: "Student pilot", sport: "Sport pilot", recreational: "Recreational pilot", 
 	private_unrestricted: "Private pilot", commercial: "Commercial pilot",
