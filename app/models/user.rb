@@ -24,15 +24,15 @@ class User < ActiveRecord::Base
   store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
   ## validations
-  [:full_name, :birthdate].concat(FLIGHT_HOUR_TYPES.keys).each do |param|
+  [:full_name, :birthdate].each do |param|
     validates_presence_of param
   end
 
   validates :full_name, length: { maximum: 50 }
 
-  FLIGHT_HOUR_TYPES.keys.each do |type|
-    validates_numericality_of type
-  end
+  #FLIGHT_HOUR_TYPES.keys.each do |type|
+  #  validates_numericality_of type
+  #end
 
   validates :rating, inclusion: [*RATINGS.values, ""]
   validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]

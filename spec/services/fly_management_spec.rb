@@ -3,6 +3,8 @@ require 'rails_helper'
 describe FlyMatchingService do
 
 	
+
+	
 	
 	user = FactoryGirl.build(:user, total_time: "100")
 	let(:service) { 

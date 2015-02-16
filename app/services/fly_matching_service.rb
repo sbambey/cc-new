@@ -26,10 +26,13 @@ class FlyMatchingService
 		def find_flies
 			query = Fly
 
-			@flight_time.each do |category, time|
-				query = query.where("(flight_time -> ?)::int <= ?", category, time.to_i)
-			end
 			query = query.where("flies.no_match = false")
+
+			if @flight_time.present?
+				@flight_time.each do |category, time|
+					query = query.where("(flight_time -> ?)::int <= ?", category, time.to_i)
+				end
+			end
 
 			if @medical_license == MEDICAL_LICENSES[:two]
 				query = query.where("flies.medical_license != ?", MEDICAL_LICENSES[:one])

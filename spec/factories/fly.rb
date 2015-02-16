@@ -1,31 +1,3 @@
-# == Schema Information
-#
-# Table name: flies
-#
-#  id                       :integer          not null, primary key
-#  name                     :string
-#  position                 :string
-#  website                  :string
-#  equipment                :string
-#  base                     :string
-#  intro                    :text
-#  content                  :text
-#  flight_time              :hstore
-#  rating                   :hstore
-#  medical                  :hstore
-#  additional               :hstore
-#  posting_date_as_string   :string
-#  posting_expiry_as_string :string
-#  posting_date_as_date     :date
-#  posting_expiry_as_date   :date
-#  content_selector         :text
-#  untracked                :boolean
-#  airline_id               :integer
-#  slug                     :string
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
-#
-
 FactoryGirl.define do
   factory :fly, class: Fly do
     name "Test Opportunity"
@@ -48,13 +20,14 @@ FactoryGirl.define do
 	  posting_expiry_as_string "10th of Feb 2080"
 	  posting_expiry_as_date Date.today
 	  content_selector ".someCLass"
-	  flight_experience { { "atp_qualifications" => "0", "atp_written" => "0", "multi_engine" => "0", "instrument" => "0",
-	  	"float" => "0" } }
+	  flight_experience { { "cfi" => "0", "cfii" => "0", "float" => "0", "instrument" => "0", "atp_written" => "0",
+	  	"float_multi" => "0", "multi_engine" => "0", "atp_qualifications" => "0" } }
 	  no_track true
 	  no_match false
 	  airline
 	  deleted_at nil
 	  updated false
+	  general_recruitment false
   end
 
   factory :fly_without_requirements, class: Fly do
