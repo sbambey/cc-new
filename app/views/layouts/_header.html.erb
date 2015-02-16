@@ -34,7 +34,7 @@
         <% else %>
           <ul class="nav navbar-nav">
             <li<%= active_link("devise/sessions", "new") %>><%= link_to "Log in", new_user_session_path %></li>
-            <li<%= active_link("static_pages", "blog") %>><%= link_to "Blog", blog_path %></li>
+            <li<%= active_link("blog_posts", "index") %>><%= link_to "Blog", blog_path %></li>
           </ul>
           <div class="navbar-right">
             <p class="navbar-text">
