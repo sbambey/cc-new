@@ -19,12 +19,14 @@
             } %>
         </div>
 
-        <div class="col-md-4 col-xs-12">
-          <div class="form-group">
-            <div><%= f.label :birthdate, class: "control-label" %></div>
-            <%= f.date_select :birthdate, {start_year: 1930}, class: "form-control selectpicker", "data-width" => "auto" %>
+        <% if params[:controller] == "users/registrations" && params[:action] == "edit" %>
+          <div class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <div><%= f.label :birthdate, class: "control-label" %></div>
+              <%= f.date_select :birthdate, {start_year: 1930}, class: "form-control selectpicker", "data-width" => "auto" %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
         <!--<div class="col-md-4 col-xs-12">
           <%= render partial: "shared/text_field", 
@@ -59,7 +61,7 @@
 
       <div class="checkbox">
         <label>
-          <%= f.check_box :post_secondary_degree %> I have a post secondary degree
+          <%= f.check_box :post_secondary_degree %> I have a completed college/university degree
         </label>
       </div>
     </div>

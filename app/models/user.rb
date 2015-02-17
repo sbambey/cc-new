@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
   ## validations
-  [:full_name, :birthdate].each do |param|
+  [:full_name].each do |param|
     validates_presence_of param
   end
 
