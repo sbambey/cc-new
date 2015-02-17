@@ -84,6 +84,13 @@ body {
   width: 100%;
 }
 
+.flash-messages {
+  margin-top: 20px;
+  .col-xs-12 {
+    min-height: 0;
+  }
+}
+
 
 /* Misc */
 

@@ -1,10 +1,6 @@
 class AirlinesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :redirect_unless_admin, except: [:index, :show]
-
-  def index
-  	@airlines = Airline.all.paginate(page: params[:page], per_page: 20)
-  end
+  before_action :authenticate_user!, except: [:show]
+  before_action :redirect_unless_admin, except: [:show]
 
   def show
     @airline = Airline.friendly.find(params[:id])

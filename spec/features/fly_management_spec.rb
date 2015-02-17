@@ -1,31 +1,3 @@
-# == Schema Information
-#
-# Table name: flies
-#
-#  id                       :integer          not null, primary key
-#  name                     :string
-#  position                 :string
-#  website                  :string
-#  equipment                :string
-#  base                     :string
-#  intro                    :text
-#  content                  :text
-#  flight_time              :hstore
-#  rating                   :hstore
-#  medical                  :hstore
-#  additional               :hstore
-#  posting_date_as_string   :string
-#  posting_expiry_as_string :string
-#  posting_date_as_date     :date
-#  posting_expiry_as_date   :date
-#  content_selector         :text
-#  untracked                :boolean
-#  airline_id               :integer
-#  slug                     :string
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
-#
-
 require "rails_helper"
 
 feature "Creating a fly" do
@@ -48,12 +20,12 @@ feature "Creating a fly" do
 		fill_in "Website", with: fly.website
 
 		fill_in "Total Time", with: fly.total_time
-		fill_in "Total Multi-Engine", with: fly.multi_time
-		fill_in "Total Multi-Engine PIC", with: fly.multi_pic_time
-		fill_in "Total Turbine", with: fly.turbine_time
-		fill_in "Total Turbine PIC", with: fly.turbine_pic_time
-		fill_in "Total Turbofan/Turboprop", with: fly.turbofan_time
-		fill_in "Total Turbofan/Turboprop PIC", with: fly.turbofan_pic_time
+		#fill_in "Total Multi-Engine", with: fly.multi_time
+		#fill_in "Total Multi-Engine PIC", with: fly.multi_pic_time
+		#fill_in "Total Turbine", with: fly.turbine_time
+		#fill_in "Total Turbine PIC", with: fly.turbine_pic_time
+		#fill_in "Total Turbofan/Turboprop", with: fly.turbofan_time
+		#fill_in "Total Turbofan/Turboprop PIC", with: fly.turbofan_pic_time
 
 		select fly.rating, from: "fly_rating"
 

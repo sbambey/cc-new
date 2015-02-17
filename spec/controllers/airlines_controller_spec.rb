@@ -5,10 +5,10 @@ RSpec.describe AirlinesController, :type => :controller do
 	context "when unauthenticated" do
 		let(:airline) { FactoryGirl.create(:airline) }
 
-		it "lets user interact with index" do
-			get :index
-			expect(response).to render_template :index
-		end
+		#it "lets user interact with index" do
+		#	get :index
+		#	expect(response).to render_template :index
+		#end
 
 		it "lets user interact with show" do
 			get :show, id: airline.id
@@ -28,6 +28,7 @@ RSpec.describe AirlinesController, :type => :controller do
 		end
 	end
 
+=begin
 	describe "GET #index" do
 		let(:airline) { FactoryGirl.create(:airline) }
 
@@ -40,7 +41,7 @@ RSpec.describe AirlinesController, :type => :controller do
 			end
 		end
 	end
-
+=end
 	describe "GET #show" do
 		let(:airline) { FactoryGirl.create(:airline) }
 

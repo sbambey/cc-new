@@ -20,8 +20,8 @@ FactoryGirl.define do
 	  posting_expiry_as_string "10th of Feb 2080"
 	  posting_expiry_as_date Date.today
 	  content_selector ".someCLass"
-	  flight_experience { { "cfi" => "0", "cfii" => "0", "float" => "0", "instrument" => "0", "atp_written" => "0",
-	  	"float_multi" => "0", "multi_engine" => "0", "atp_qualifications" => "0" } }
+	  flight_experience { { "mei" => "0", "cfi" => "0", "cfii" => "0", "float" => "0", "instrument" => "0", "atp_written" => "0", 
+	  	"float_multi" => "0", "multi_engine" => "0", "atp_qualifications" => "0" } }
 	  no_track true
 	  no_match false
 	  airline

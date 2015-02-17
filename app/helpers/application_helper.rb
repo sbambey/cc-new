@@ -37,6 +37,11 @@ module ApplicationHelper
 		text[0...20] + "..."
 	end
 
+	def no_flash?(action)
+		no_flash = ["board#matched", "board#all", "board#general_recruitment", "blog_posts#index", "blog_posts#show"]
+		no_flash.include?(action)
+	end
+
 	def flash_messages
 		return "" if flash.empty?
 		flash.each do |key, value|

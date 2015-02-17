@@ -1,33 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer          not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  manual_sign_in_count          :integer          default("0"), not null
-#  current_manual_sign_in_at     :datetime
-#  last_manual_sign_in_at        :datetime
-#  current_manual_sign_in_ip     :inet
-#  last_manual_sign_in_ip        :inet
-#  full_name              :string
-#  birthdate              :date
-#  nationality            :string
-#  language               :string
-#  high_school_diploma    :boolean
-#  post_secondary_degree  :boolean
-#  flight_time            :hstore
-#  rating                 :hstore
-#  medical                :hstore
-#  additional             :hstore
-#  created_at             :datetime
-#  updated_at             :datetime
-#  admin                  :boolean
-#
-
 require "rails_helper"
 
 feature "Creating a user" do
@@ -37,22 +7,64 @@ feature "Creating a user" do
 	before { visit new_user_registration_path }
 
 	scenario "with correct credentials" do
-		fill_in "Email", with: user.email
-		fill_in "Password", with: user.password
-		fill_in "Password confirmation", with: user.password_confirmation
-		fill_in "Full name", with: user.full_name
-		fill_in "Nationality", with: user.nationality
-		fill_in "Language", with: user.language
-		select user.birthdate.year, from: "user_birthdate_1i"
-		select user.birthdate.strftime("%B"), from: "user_birthdate_2i"
-		select user.birthdate.day, from: "user_birthdate_3i"
+		fill_in_sign_up_fields
+		#fill_in "Nationality", with: user.nationality
+		#fill_in "Language", with: user.language
+		#select user.birthdate.year, from: "user_birthdate_1i"
+		#select user.birthdate.strftime("%B"), from: "user_birthdate_2i"
+		#select user.birthdate.day, from: "user_birthdate_3i"
 
 		click_button "Sign up"
 		expect(page).to have_content "Welcome! You have signed up successfully."
+		expect(page).to have_content "For the most accurate matching, modify your flight hours in your profile."
 	end
 
-	##more found in controller tests
+	scenario "with no email" do
+		fill_in_sign_up_fields
 
+		fill_in "Email", with: ""
+
+		click_button "Sign up"
+		expect(page).to have_content "Email can't be blank"
+	end
+
+	scenario "with incorrect email" do
+		fill_in_sign_up_fields
+
+		fill_in "Email", with: "invalid.com"
+
+		click_button "Sign up"
+		expect(page).to have_content "Email is invalid"
+	end
+
+	scenario "with no password" do
+		fill_in_sign_up_fields
+
+		fill_in "Password", with: ""
+		fill_in "Password confirmation", with: ""
+
+		click_button "Sign up"
+		expect(page).to have_content "Password can't be blank"
+	end
+
+	scenario "with non matching passwords" do
+		fill_in_sign_up_fields
+
+		fill_in "Password", with: "password11"
+		fill_in "Password confirmation", with: "password22"
+
+		click_button "Sign up"
+		expect(page).to have_content "Password confirmation doesn't match Password"
+	end
+
+	scenario "with no full name" do
+		fill_in_sign_up_fields
+
+		fill_in "Full name", with: ""
+
+		click_button "Sign up"
+		expect(page).to have_content "Full name can't be blank"
+	end
 end
 
 feature "Signing in a user" do
@@ -88,15 +100,38 @@ feature "Editing a user" do
 	end
 
 	scenario "with correct credentials" do
+		updated_name = "New name"
 		fill_in "Current password", with: user.password
-		click_button "Edit information"
+		fill_in "Full name", with: updated_name
+		click_button "Save changes"
 
 		expect(page).to have_content "Your account has been updated successfully."
+
+		visit root_path
+
+		expect(page).to_not have_content "For the most accurate matching, modify your flight hours in your profile."
+
+		click_link updated_name
+
+		expect(page).to have_xpath("//input[@value='#{updated_name}']")
 	end
 
 	scenario "with incorrect credentials" do
-		click_button "Edit information"
+		click_button "Save changes"
 
 		expect(page).to have_content "Oh snap! There seem to be some errors in your form."
+	end
+end
+
+feature "Logging out a user" do
+
+	given(:user) { create(:user) }
+
+	before { manual_sign_in user }
+
+	scenario "clicking the logout button" do
+		click_link "Logout"
+
+		expect(page).to have_content "Signed out successfully."
 	end
 end

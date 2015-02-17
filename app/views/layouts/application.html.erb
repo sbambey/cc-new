@@ -13,11 +13,9 @@
 
 	<%= render "layouts/header" %>
 
-	<!--<div class="container">
-		<div class="col-xs-12">
-			<%= flash_messages %>
-		</div>
-	</div>-->
+	<% unless no_flash?("#{params[:controller]}##{params[:action]}") %>
+		<%= render "layouts/flash_messages" %>
+	<% end %>
 	<%= yield %>
 	<%= render "layouts/footer" %>
 </body>

@@ -1,3 +1,4 @@
+=begin
 require 'rails_helper'
 
 RSpec.describe "airlines/show", :type => :view do
@@ -14,3 +15,4 @@ RSpec.describe "airlines/show", :type => :view do
   	expect(rendered).to have_content(fly.name)
   end
 end
+=end

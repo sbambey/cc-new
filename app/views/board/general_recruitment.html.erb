@@ -4,6 +4,8 @@
 
 		<%= render "board_header" %>
 
+		<%= render "layouts/flash_messages" %>
+
 		<% if @flies.empty? %>
 			<div class="alert alert-warning" role="alert">
 				We were not able to find opportunities applicable to the flight hours provided.

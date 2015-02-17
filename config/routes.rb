@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "blog" => "blog_posts#index"
   get "blog/:id" => "blog_posts#show", as: :show_blog_post
 
-  resources :airlines, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :airlines, only: [:show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end
 

@@ -1,3 +1,4 @@
+=begin
 require 'rails_helper'
 
 RSpec.describe "fly/show", :type => :view do
@@ -33,3 +34,4 @@ RSpec.describe "fly/show", :type => :view do
 	  end
 	end
 end
+=end
