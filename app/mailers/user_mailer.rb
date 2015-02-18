@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
 		@user = user
 		@flies = flies
 
-		mail(to: "#{user.full_name} <#{user.email}>", subject: "Your most recent pilot jobs")
+		mail(to: @user.email, subject: "Your most recent pilot jobs")
 	end
 
 	def weekly_jobs(user)
