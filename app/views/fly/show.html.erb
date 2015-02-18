@@ -57,6 +57,35 @@
 			</table>
 		<% end %>
 
+		<% if @fly.type_ratings.any? %>
+			<h3>Required type ratings</h3>
+
+			<table class="table table-bordered standard-margin">
+				<% @fly.fly_user_type_ratings.each do |tr| %>
+					<tr>
+						<td><%= "Current " if tr.current? %><%= tr.type_rating.designation %> <%= "(PIC)" if tr.pic? %> rating</td>
+						<td><%= tr.time_in_type %> hrs in type</td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+
+		<h3>Required flight time</h3>
+		<% if @fly.fly_user_type_ratings.any? %>
+			<table class="table table-bordered standard-margin">
+				<% @fly.flight_time_requirements.each do |key, value| %>
+					<tr>
+						<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
+						<td><%= value %> hrs</td>
+					</tr>
+				<% end %>
+			</table>
+		<% else %>
+			<table class="table table-bordered standard-margin">
+				<tr><td>As required by rating</td></tr>
+			</table>
+		<% end %>
+
 		<h3>Required medical license</h3>
 		<table class="table table-bordered standard-margin">
 			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
