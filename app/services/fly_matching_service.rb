@@ -55,6 +55,7 @@ class FlyMatchingService
 						query = query.where("(flight_experience -> ?) != ?", category, "1")
 					end
 				end
+
 			elsif @rating == RATINGS[:atpl_unrestricted] || @rating == RATINGS[:atpl_restricted]
 				if @flight_experience["multi_engine"] != "1"
 					query = query.where("(flight_experience -> ?) != ?", :multi_engine, "1")

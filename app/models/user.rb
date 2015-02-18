@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :fly_user_type_ratings, dependent: :destroy
   has_many :type_ratings, through: :fly_user_type_ratings, dependent: :destroy
   has_many :blog_posts
+  has_many :matched_flies
 
   accepts_nested_attributes_for :fly_user_type_ratings, allow_destroy: true
 

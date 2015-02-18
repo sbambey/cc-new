@@ -83,4 +83,14 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV["app33057013@heroku.com"],
+    :password => ENV["g1isom6c"],
+    :domain => 'www.flightcrew.io',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
