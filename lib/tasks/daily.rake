@@ -4,7 +4,7 @@ task :daily => :environment do
 
   User.where("email = ?", "simon@flightcrew.io").each do |u|
 
-    previous_matched_fly = u.matched_flies.last
+    previous_matched_fly = u.matched_flies.last || MatchedFly.create(id: u.id, matched: [])
 
     matched_fly = MatchedFly.new
 
@@ -27,9 +27,7 @@ task :daily => :environment do
     if(matched_fly.matched - previous_matched_fly.matched != [])
       difference = matched_fly.matched - previous_matched_fly.matched
 
-      to_email = difference[0..2]
-
-      to_email.map { |id| Fly.find(id) }
+      to_email = difference[0..2].map { |id| Fly.find(id) }
 
       UserMailer.daily_jobs(u, to_email).deliver
     end
