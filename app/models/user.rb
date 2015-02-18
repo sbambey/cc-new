@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     [:full_name, :birthdate, :high_school_diploma, :post_secondary_degree, :email_weekly, :email_urgent, :rating, :medical_license, :just_registered]
       .concat(FLIGHT_HOUR_TYPES.keys)
       .concat(FLIGHT_EXPERIENCE.keys)
-      .concat([fly_user_type_ratings_attributes: [:id, :user_id, :type_rating_id, :issuance, :current, :pic, :_destroy]])
+      .concat([fly_user_type_ratings_attributes: [:id, :user_id, :type_rating_id, :issuance, :time_in_type, :current, :pic, :_destroy]])
   end
 
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys

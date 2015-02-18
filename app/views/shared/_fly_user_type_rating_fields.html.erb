@@ -1,16 +1,29 @@
 <fieldset class="bootstrap-select-row">
-	<%= f.label :type_rating %>
-	<%= f.select :type_rating_id, 
-    options_from_collection_for_select(TypeRating.all, :id, :designation, f.object[:type_rating_id]), 
-    {}, class: "selectpicker", "data-live-search" =>"true" %>
+  <div class="form-inline">
+  	<%= f.label :type_rating %>
+  	<%= f.select :type_rating_id, 
+      options_from_collection_for_select(TypeRating.all, :id, :designation, f.object[:type_rating_id]), 
+      {}, class: "selectpicker", "data-live-search" =>"true" %>
 
-  <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
-    <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
-    <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
-  <% end %>
+    <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
+      <%= f.label :issuance, "Issued on", class: "standard-left-margin" %>
+      <%= f.date_select :issuance, {start_year: 1930}, class: "selectpicker", "data-width" => "auto" %>
+    <% end %>
 
-  <%= f.hidden_field :_destroy %>
-  <%= link_to "[-] Remove this rating", '#', class: "remove_fields btn btn-danger btn-xs standard-left-margin" %>
+    <%= render partial: "shared/text_field", 
+      locals: { 
+        f: f, 
+        attribute: :time_in_type, 
+        args: {
+          placeholder: "Time in type", 
+          label_class: "control-label standard-left-margin",
+          field_class: "form-control time-in-type"
+        } 
+      } %>
+
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "[-] Remove this rating", '#', class: "remove_fields btn btn-danger btn-xs standard-left-margin" %>
+  </div>
   
   <div>
     <% if !(params[:controller] == "fly" && (params[:action] == "new" || params[:action] == "edit")) %>
