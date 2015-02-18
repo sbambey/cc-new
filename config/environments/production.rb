@@ -85,8 +85,8 @@ Rails.application.configure do
   }
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV["app33057013@heroku.com"],
-    :password => ENV["g1isom6c"],
+    :user_name => ENV["SENDGRID_USERNAME"],
+    :password => ENV["SENDGRID_PASSWORD"],
     :domain => 'www.flightcrew.io',
     :address => 'smtp.sendgrid.net',
     :port => 587,
