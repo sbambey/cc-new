@@ -947,29 +947,23 @@ a:hover{color:#30495c !important}.wrapper .logo div{color:#41637e}.wrapper .logo
 <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">&nbsp;</p><h2 style="Margin-top: 0;color: #555;font-style: italic;font-weight: normal;font-size: 26px;line-height: 32px;Margin-bottom: 20px;font-family: Georgia,serif"><%= f.name %></h2>
 
 	<p><strong style="font-weight: bold">Required rating</strong></p>
-	<table style="border: 1px solid gray; margin-bottom: 20px;">
-		<tr>
-			<td><%= f.rating %></td>
-		</tr>
-	</table>
+	<p><%= f.rating %></p>
 
 	<p><strong style="font-weight: bold;">Required flight time</strong></p>
 	<% if f.flight_time_requirements.any? %>
-		<table style="border: 1px solid gray; margin-bottom: 20px;">
+		<table style="border: 1px solid gray;margin-bottom: 20px;font-size: 16px;border-collapse: collapse;">
 			<% f.flight_time_requirements.each do |key, value| %>
 				<tr>
-					<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
-					<td><%= value %> hrs</td>
+					<td style="border: 1px solid gray;"><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
+					<td style="border: 1px solid gray;"><%= value %> hrs</td>
 				</tr>
 			<% end %>
 		</table>
 	<% else %>
-		<table style="border: 1px solid gray; margin-bottom: 20px;">
-			<tr><td>As required by rating</td></tr>
-		</table>
+		<p>As required by rating</p>
 	<% end %>
 
-	<p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px"><a style="text-decoration: underline;transition: all .2s;color: #41637e" data-emb-href-display="www.flightcrew.io" href="http://www.flightcrew.io">Click to view</a></p>
+	<p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px"><a style="text-decoration: underline;transition: all .2s;color: #41637e" data-emb-href-display="<%= airline_fly_url(f.airline, f) %>" href="<%= airline_fly_url(f.airline, f) %>">Click to view</a></p>
 
 
 <!--<p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">Add new pieces of content like text, images and buttons to your email by dragging the tiles on the left where you want them to go.</p><p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">Add different layouts to your email by 
@@ -1056,7 +1050,7 @@ clicking on the green <strong style="font-weight: bold">Add layout</strong> butt
                   <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%">
                     <tbody><tr>
                       <td class="padded" style="padding: 0;vertical-align: top;padding-left: 10px;padding-right: 0;font-size: 12px;line-height: 20px;color: #999;font-family: Georgia,serif;text-align: right">
-                        <div>You &nbsp;are receiving this email because you signed up for daily job notifications .</div>
+                        <div>You &nbsp;are receiving this email because you signed up for daily job notifications.</div>
                         <div>
                           
                           <span class="block"><unsubscribe style="font-weight:bold;text-decoration:none;">Unsubscribe</unsubscribe></span>
