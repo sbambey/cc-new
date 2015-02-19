@@ -94,4 +94,5 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp
+  Rails.application.routes.default_url_options[:host] = 'www.flightcrew.io'
 end
