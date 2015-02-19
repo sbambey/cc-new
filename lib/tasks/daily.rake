@@ -2,7 +2,7 @@ desc "Send out daily mails"
 
 task :daily => :environment do
 
-  User.where("email = ?", "simon@flightcrew.io").each do |u|
+  User.where("email = ?", "sbambey@gmail.com").each do |u|
 
     previous_matched_fly = u.matched_flies.last || MatchedFly.create(id: u.id, matched: [])
 
