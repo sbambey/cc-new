@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FlyController, :type => :controller do
 
 	context "when unauthenticated" do
-		let(:fly) { FactoryGirl.create(:fly) }
+		let(:fly) { create(:fly) }
 
 		it "lets user interact with show" do
 			get :show, id: fly, airline_id: fly.airline

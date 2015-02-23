@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
-# directories %w(app lib config test spec feature)
+# directories %w(app lib config test spec features)
 
 ## Uncomment to clear the screen before every task
 # clearing :on
@@ -14,8 +14,8 @@
 ##  $ while bundle exec guard; do echo "Restarting Guard..."; done
 ##
 ## Note: if you are using the `directories` clause above and you are not
-## watching the project directory ('.'), the you will want to move the Guardfile
-## to a watched dir and symlink it back, e.g.
+## watching the project directory ('.'), then you will want to move
+## the Guardfile to a watched dir and symlink it back, e.g.
 #
 #  $ mkdir config
 #  $ mv Guardfile config/
@@ -32,8 +32,10 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "bundle exec rspec" do
+#guard :rspec, cmd: "bundle exec rspec" do
+guard :rspec, cmd: "spring rspec" do
   require "guard/rspec/dsl"
+  require 'active_support/inflector'
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
@@ -74,4 +76,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+
+  # Factories
+  watch(%r{^spec/factories/(.+)_factory\.rb$})      { |m| ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"] }
 end

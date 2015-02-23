@@ -8,7 +8,7 @@ class Fly < ActiveRecord::Base
 	belongs_to :airline
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
-	has_many :fly_user_type_ratings, dependent: :destroy
+	has_many :fly_user_type_ratings
 	has_many :type_ratings, through: :fly_user_type_ratings, dependent: :destroy
 
 	accepts_nested_attributes_for :fly_user_type_ratings, allow_destroy: true

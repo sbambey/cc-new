@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '4.2.0'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -12,7 +12,7 @@ gem 'sdoc', group: :doc
 gem 'pg'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem 'paperclip'
+gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
 gem 'friendly_id'
 gem 'devise'
@@ -32,13 +32,22 @@ group :development, :test do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails', :require => false
-  gem 'capybara'
+  gem 'rspec-rails'
   gem 'yaml_db'
   gem 'annotate', '~> 2.6.5'
+  gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'simplecov', :require => false
   gem 'launchy'
-  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'shoulda-matchers', require: false
 end
 
 #group :test do

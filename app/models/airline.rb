@@ -4,7 +4,6 @@ class Airline < ActiveRecord::Base
 	friendly_id :name, use: [:slugged, :history]
 
 	has_many :flies
-
 	has_many :notices, class_name: "AdminNotice", as: :listable, dependent: :destroy
 	has_many :node_sets, class_name: "ScrapeNodeSet", dependent: :destroy
 	has_many :nodes, class_name: "ScrapeNode", as: :scrapeable, dependent: :destroy
@@ -15,15 +14,11 @@ class Airline < ActiveRecord::Base
     medium: '300x300>'
   }
 
-  scope :untracked, -> { where(no_track: false) }
-
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
-	validates :name, presence: true
+  validates :name, presence: true
 
-	def has_active_recruitment?
-		self.flies.where("no_match = ?", false).any?
-	end
+  scope :untracked, -> { where(no_track: false) }
 
 	def should_generate_new_friendly_id?
     name_changed?

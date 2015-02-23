@@ -6,102 +6,39 @@ describe Fly, :type => :model do
 
 	subject { fly }
 
-	it "responds to attributes" do
-		is_expected.to respond_to(:name)
-		is_expected.to respond_to(:position)
-		is_expected.to respond_to(:website)
-		is_expected.to respond_to(:equipment)
-		is_expected.to respond_to(:base)
+	# Associations
 
-		is_expected.to respond_to(:total_time)
-		is_expected.to respond_to(:total_pic_time)
-		is_expected.to respond_to(:multi_time)
-		is_expected.to respond_to(:multi_pic_time)
-		is_expected.to respond_to(:turbine_time)
-		is_expected.to respond_to(:turbine_pic_time)
-		is_expected.to respond_to(:turbojet_time)
-		is_expected.to respond_to(:turbojet_pic_time)
-		is_expected.to respond_to(:turboprop_time)
-		is_expected.to respond_to(:turboprop_pic_time)
-		is_expected.to respond_to(:night_time)
-		is_expected.to respond_to(:night_pic_time)
-  	is_expected.to respond_to(:x_country_time)
-  	is_expected.to respond_to(:x_country_pic_time)
-  	is_expected.to respond_to(:instrument_time)
-  	is_expected.to respond_to(:actual_instrument)
-  	is_expected.to respond_to(:single_float_time)
-  	is_expected.to respond_to(:multi_float_time)
+	it { is_expected.to belong_to(:airline) }
+	it { is_expected.to have_many(:notices) }
+	it { is_expected.to have_many(:nodes) }
+	it { is_expected.to have_many(:fly_user_type_ratings) }
+	it { is_expected.to have_many(:type_ratings) }
 
-		is_expected.to respond_to(:rating)
-		is_expected.to respond_to(:medical_license)
-
-		is_expected.to respond_to(:added_requirements)
-
-		is_expected.to respond_to(:atp_qualifications)
-		is_expected.to respond_to(:atp_written)
-		is_expected.to respond_to(:multi_engine)
-		is_expected.to respond_to(:instrument)
-		is_expected.to respond_to(:float)
-
-		is_expected.to respond_to(:posting_date_as_string)
-		is_expected.to respond_to(:posting_expiry_as_string)
-		is_expected.to respond_to(:posting_date_as_date)
-		is_expected.to respond_to(:posting_expiry_as_date)
-		is_expected.to respond_to(:content_selector)
-		is_expected.to respond_to(:no_track)
-		is_expected.to respond_to(:no_match)
-		is_expected.to respond_to(:airline)
-		is_expected.to respond_to(:slug)
-		is_expected.to respond_to(:deleted_at)
-		is_expected.to respond_to(:updated)
-	end
-
-	describe "responds to instance methods" do
-
-		describe "#flight_time_requirements" do
-			context "with some non-zero flight time requirements" do
-				it "shows only non-zero requirements" do
-					fly = create(:fly, flight_time: {"total_time" => "100", "total_pic_time" => "0", "multi_time" => "0", "multi_pic_time" => "10", 
-	  	"turbine_time" => "10", "turbine_pic_time" => "0", "turbofan_time" => "0", "turbofan_pic_time" => "0"})
-					expect(fly.flight_time_requirements).to eq({total_time: "100", multi_pic_time: "10", turbine_time: "10"})
-				end
-			end
-		end
-		
-	end
-
-	describe "responds to class methods and scopes" do
-		context "default scope" do
-			let(:flies) { [] }
-			let(:deleted_flies) { [ create(:fly, deleted_at: Time.now)] }
-			
-			before { 2.times { flies << create(:fly) } }
-				
-			it "does not show deleted records" do
-				expect(Fly.all).to eq(flies)
-			end
+	it { is_expected.to accept_nested_attributes_for(:fly_user_type_ratings) }
+	context "#fly_user_type_ratings, #type_ratings - dependent: destroy" do
+		before do
+			fly.save
+			type_rating = create(:type_rating)
+			create(:fly_user_type_rating, user: nil, fly: fly, type_rating: type_rating)
 		end
 
-		context "deleted scope" do
-			let(:flies) { [] }
-			let(:deleted_flies) { [create(:fly, deleted_at: Time.now)] }
-			
-			before { 2.times { flies << create(:fly) } }
-				
-			it "does not show deleted records" do
-				expect(Fly.deleted).to eq(deleted_flies)
-			end
+		it "destroys dependent records" do
+			expect{fly.destroy}.to change(FlyUserTypeRating, :count).by(-1).and change(TypeRating, :count).by(0)
 		end
 	end
 
-	describe "#ordered_requirements_by_type" do
-		context "when given a valid attribute and Hash" do
-			let(:fly) { build(:fly, total_pic_time: "200", total_time: "100") }
-			it "returns an ordered Hash with only non-zero values" do
-				expect(fly.ordered_requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)).to eq({total_time: "100", total_pic_time: "200"})
-			end
+	##
+
+	it { should serialize(:added_requirements) }
+
+	context "#slug" do
+		it do
+			fly.save
+			expect(subject.attributes["slug"]).to_not be_nil
 		end
 	end
+
+	# Validations
 
 	describe "#rating" do
 		context "when given a value other than RATINGS or ''" do
@@ -115,7 +52,7 @@ describe Fly, :type => :model do
 		end
 	end
 
-	describe "#medical_license" do
+	context "#medical_license" do
 		context "when given a value other than MEDICAL_LICENSES" do
 			before { fly.medical_license = "foo" }
 			it { is_expected.to_not be_valid }
@@ -127,4 +64,62 @@ describe Fly, :type => :model do
 		end
 	end
 
+	# Class methods and scopes
+
+	context "default scope" do
+		let!(:existing_fly) { create(:fly) }
+		let!(:deleted_fly) { create(:fly, deleted_at: Time.now) }
+				
+		it "selects existing flies" do
+			expect(Fly.all).to eq([existing_fly])
+		end
+	end
+
+	context ".deleted" do
+		let!(:existing_fly) { create(:fly) }
+		let!(:deleted_fly) { create(:fly, deleted_at: Time.now) }
+						
+		it "selects deleted flies" do
+			expect(Fly.deleted).to eq([deleted_fly])
+		end
+	end
+
+	context ".active" do
+		let!(:active_fly) { create(:fly) }
+		let!(:inactive_fly) { create(:fly, general_recruitment: true)}
+
+		it "selects active flies" do
+			expect(Fly.active).to eq([active_fly])
+		end
+	end
+
+	context ".inactive" do
+		let!(:active_fly) { create(:fly) }
+		let!(:inactive_fly) { create(:fly, general_recruitment: true)}
+
+		it "selects inactive flies" do
+			expect(Fly.inactive).to eq([inactive_fly])
+		end
+	end
+
+	# Instance methods and accessors
+
+	context "responds to added accessors" do
+		it { is_expected.to respond_to(:total_time) }
+		it { is_expected.to respond_to(:atp_qualifications) }
+	end
+
+	context "#flight_time_requirements" do
+		it "returns only non-zero requirements" do
+			fly = build(:fly, total_time: "100", multi_pic_time: "10")
+			expect(fly.flight_time_requirements).to eq({total_time: "100", multi_pic_time: "10"})
+		end
+	end
+
+	context "#ordered_requirements_by_type" do
+		let(:fly) { build(:fly, total_pic_time: "200", total_time: "100") }
+		it "returns an ordered Hash with only non-zero values" do
+			expect(fly.ordered_requirements_by_type(:flight_time, FLIGHT_HOUR_TYPES)).to eq({total_time: "100", total_pic_time: "200"})
+		end
+	end
 end
