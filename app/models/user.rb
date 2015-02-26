@@ -42,4 +42,26 @@ class User < ActiveRecord::Base
     validates attribute, inclusion: ["1", "0", true, false]
   end
 
+  def access_token
+    User.create_access_token(self)
+  end
+
+  # Verifier based on our application secret
+  def self.verifier
+    ActiveSupport::MessageVerifier.new(ENV["SECRET_KEY_BASE"])
+  end
+
+  # Get a user from a token
+  def self.read_access_token(signature)
+    id = verifier.verify(signature)
+    User.find_by_id id
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  # Class method for token generation
+  def self.create_access_token(user)
+    verifier.generate(user.id)
+  end
+
 end

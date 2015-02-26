@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :fly, only: [:show, :new, :create, :edit, :update]
   end
 
+  devise_scope :user do
+    get "/accounts/unsubscribe/:signature", to: "users/registrations#unsubscribe", as: "unsubscribe"
+  end
+
   get "admin_panel/home"
   get "admin_panel/progress"
   get "admin_panel/untracked"

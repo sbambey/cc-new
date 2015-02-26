@@ -48,6 +48,7 @@ group :test do
   gem 'launchy'
   gem 'capybara'
   gem 'shoulda-matchers', require: false
+  gem 'fuubar'
 end
 
 #group :test do

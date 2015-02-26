@@ -39,6 +39,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def unsubscribe
+    if user = User.read_access_token(params[:signature])
+      user.update_attributes(email_urgent: false, email_weekly: false)
+      render html: "You have been unsubscribed from all emails. If you were receiving daily reminders, you can always opt for weekly emails instead by modifying your <a href='http://flightcrew.io/accounts/edit'>settings</a>.".html_safe
+    else
+      render text: "Invalid Link"
+    end
+  end
+
   protected
 
   # You can put the params you want to permit in the empty array.

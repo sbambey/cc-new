@@ -29,7 +29,7 @@ task :daily => :environment do
 
       to_email = difference[0..2].map { |id| Fly.find(id) }
 
-      UserMailer.daily_jobs(u, to_email).deliver
+      UserMailer.daily_jobs(u, to_email).deliver_now
     end
   end
 end
