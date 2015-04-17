@@ -11,9 +11,6 @@
 		tr > td:nth-child(2n) {
 			/*width of input +16px from input padding*/
 			max-width:136px;
-			.form-group {
-				margin-bottom:0;
-			}
 			.form-control-feedback {
 				top:0;
 			}
