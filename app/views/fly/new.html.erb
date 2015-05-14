@@ -4,8 +4,7 @@
 		<h1>Add an opportunity</h1>
 	</div>
 </div>
-<%= form_for([@airline, @fly], url: airline_fly_index_path(@airline, @fly), :html => {role: "form"}) do |f| %>
-  
+<%= form_for([@airline, @fly], url: airline_fly_index_path(@fly.airline, @fly), :html => {role: "form"}) do |f| %>
   <div class="container">
   	<div class="col-xs-12">
 			
@@ -13,34 +12,6 @@
 
 			<h4>Head Table</h4>
 			<%= render "shared/general_information", f: f %>
-		  <!--<table class="table table-bordered thick-border standard-margin">
-		  	<tr>
-		  		<td>
-						<%= f.select :operation, OPERATIONS.values, {}, class: "selectpicker", "data-width" => "100%" %>
-				    <%= f.label :operation, class: "sr-only" %>
-					</td>
-					<td>
-						<%= f.select :position, POSITIONS.values, {}, class: "selectpicker", "data-width" => "100%" %>
-				    <%= f.label :position, class: "sr-only" %>
-					</td>
-					<td>
-			    	<%= f.text_field :equipment, class: "form-control", placeholder: "Equipment" %>
-			    	<%= f.label :equipment, class: "sr-only" %>
-				  </td>
-				  <td>
-			    	<%= f.text_field :base, class: "form-control", placeholder: "Base" %>
-			    	<%= f.label :base, class: "sr-only" %>
-				  </td>
-					<td>
-				    <%= f.text_field :posting_expiry_as_string, class: "form-control", placeholder: "Expires" %>
-				    <%= f.label :posting_expiry_as_string, class: "sr-only" %>
-					</td>
-					<td>
-				    <%= f.text_field :website, class: "form-control", placeholder: "Website" %>
-				    <%= f.label :website, class: "sr-only" %>
-					</td>
-		  	</tr>
-		  </table>-->
 
 		</div>
 	</div>
