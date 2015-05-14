@@ -61,8 +61,12 @@ class Fly < ActiveRecord::Base
   private
 
   def set_names
-  	self.short_name = "#{(self.equipment) if self.equipment.present?} #{self.position}"
-  	self.name = "#{self.short_name}#{(" in " + self.base) if self.base.present?}"
+  	self.short_name = ""
+  	if self.equipment.present? && self.equipment != "Various"
+  		self.short_name += equipment
+  	end
+  	self.short_name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : self.operation} #{self.position}"
+  	self.name = "#{self.short_name}#{(" in " + self.base) if self.base.present? && self.base != "Various"}"
   end
 
   def set_medical
