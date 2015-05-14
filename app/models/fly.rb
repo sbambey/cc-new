@@ -29,7 +29,7 @@ class Fly < ActiveRecord::Base
 	#validates :operation, inclusion: [*OPERATIONS.values]
 	#validates :position, inclusion: [*POSITIONS.values]
 	validates :rating, inclusion: [*RATINGS.values, ""]
-  validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
+  #validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 
 	def ordered_requirements_by_type(type, constant)
 		reqs = {}
@@ -70,10 +70,10 @@ class Fly < ActiveRecord::Base
   end
 
   def set_medical
-  	if self.operation == "Part 121"
-  		self.medical_license = "Class 1"
+  	if self.operation == OPERATIONS[:part121]
+  		self.medical_license = MEDICAL_LICENSES[:one]
   	else
-  		self.medical_license = "Class 2"
+  		self.medical_license = MEDICAL_LICENSES[:two]
   	end
   end
 end
