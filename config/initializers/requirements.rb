@@ -20,3 +20,7 @@ RATINGS = { student: "Student pilot", sport: "Sport pilot", recreational: "Recre
 	atpl_restricted: "Restricted ATPL", atpl_unrestricted: "Unrestricted ATPL" }
 
 MEDICAL_LICENSES = { one: "Class 1", two: "Class 2", three: "Class 3", four: "Class 4", five: "Class 5" }
+
+OPERATIONS = { part_121: "Part 121", part_125: "Part 125", part_135: "Part 135" }
+
+POSITIONS = { single_pilot: "Single pilot", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer" }

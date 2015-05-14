@@ -8,49 +8,11 @@
   
   <div class="container">
   	<div class="col-xs-12">
-			<h4>General</h4>
-			<div class="form-group">
-				<%= f.text_field :name, class: "form-control", placeholder: "Opportunity name" %>
-		  	<%= f.label :name, class: "sr-only" %>
-		  </div>
-
-		  <div class="checkbox standard-margin">
-      	<label>
-        	<%= f.check_box :general_recruitment %><p>General recruitment?</p>
-        </label>
-      </div>
-
-		  <div class="checkbox standard-margin">
-      	<label>
-        	<%= f.check_box :no_match %><p>Do not match to users</p>
-        </label>
-      </div>
+			
+			<%= render "shared/basic_information", f: f %>
 
 			<h4>Head Table</h4>
-		  <table class="table table-bordered thick-border standard-margin">
-		  	<tr>
-					<td>
-				    <%= f.text_field :position, class: "form-control", placeholder: "Position" %>
-				    <%= f.label :position, class: "sr-only" %>
-					</td>
-					<td>
-			    	<%= f.text_field :equipment, class: "form-control", placeholder: "Equipment" %>
-			    	<%= f.label :equipment, class: "sr-only" %>
-				  </td>
-				  <td>
-			    	<%= f.text_field :base, class: "form-control", placeholder: "Base" %>
-			    	<%= f.label :base, class: "sr-only" %>
-				  </td>
-					<td>
-				    <%= f.text_field :posting_expiry_as_string, class: "form-control", placeholder: "Expires" %>
-				    <%= f.label :posting_expiry_as_string, class: "sr-only" %>
-					</td>
-					<td>
-				    <%= f.text_field :website, class: "form-control", placeholder: "Website" %>
-				    <%= f.label :website, class: "sr-only" %>
-					</td>
-		  	</tr>
-		  </table>
+		  <%= render "shared/general_information", f: f %>
 
 		</div>
 	</div>
@@ -59,7 +21,7 @@
 
   <%= render partial: "shared/license", locals: { f: f, resource: @fly } %>
 
-  <%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>
+  <!--<%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>-->
 
   <div class="container">
   	<div class="col-xs-12 col-md-12">

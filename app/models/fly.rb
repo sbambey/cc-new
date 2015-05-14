@@ -20,9 +20,14 @@ class Fly < ActiveRecord::Base
 
 	serialize :added_requirements, Array
 
+	before_save :determine_name
+	before_save :determine_medical
+
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
 	store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
+	validates :operation, inclusion: [*OPERATIONS.values]
+	validates :position, inclusion: [*POSITIONS.values]
 	validates :rating, inclusion: [*RATINGS.values, ""]
   validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 
@@ -51,5 +56,19 @@ class Fly < ActiveRecord::Base
   		:name,
   		[:name, :airline_id]
   	]
+  end
+
+  private
+
+  def determine_name
+  	self.name = "#{(self.equipment + " ") if self.equipment.present?}#{self.position}#{(" in " + self.base) if self.base.present?}"
+  end
+
+  def determine_medical
+  	if self.operation == "Part 121"
+  		self.medical_license = "Class 1"
+  	else
+  		self.medical_license = "Class 2"
+  	end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218203208) do
+ActiveRecord::Schema.define(version: 20150514194704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150218203208) do
     t.boolean  "updated"
     t.datetime "deleted_at"
     t.boolean  "general_recruitment",      default: false
+    t.string   "operation"
   end
 
   add_index "flies", ["airline_id"], name: "index_flies_on_airline_id", using: :btree

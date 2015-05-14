@@ -9,18 +9,19 @@
 		<table class="table table-bordered thick-border standard-margin">
 			<thead>
 				<tr>
+					<th>Operation</th>
 					<th>Position</th>
 					<th>Equipment</th>
 					<th>Base</th>
-					<th>Expires</th>
 					<th>Website</th>
 				</tr>
 			</thead>
 			<tr>
+				<td><%= @fly.operation %></td>
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
-				<td><%= @fly.posting_expiry_as_string ? @fly.posting_expiry_as_string : "When filled" %></td>
+				<!--<td><%= @fly.posting_expiry_as_string ? @fly.posting_expiry_as_string : "When filled" %></td>-->
 				<td><%= link_to abbreviate(@fly.website), @fly.website, target: "_blank" %></td>
 			</tr>
 		</table>
