@@ -23,4 +23,4 @@ MEDICAL_LICENSES = { one: "Class 1", two: "Class 2", three: "Class 3", four: "Cl
 
 OPERATIONS = { part_121: "Part 121", part_125: "Part 125", part_135: "Part 135" }
 
-POSITIONS = { captain_sp: "Captain (SP)", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot" }
+POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot" }
