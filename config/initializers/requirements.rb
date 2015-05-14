@@ -21,6 +21,6 @@ RATINGS = { student: "Student pilot", sport: "Sport pilot", recreational: "Recre
 
 MEDICAL_LICENSES = { one: "Class 1", two: "Class 2", three: "Class 3", four: "Class 4", five: "Class 5" }
 
-OPERATIONS = { part121: "Part 121", part125: "Part 125", part135: "Part 135" }
+OPERATIONS = { part_121: "Part 121", part_125: "Part 125", part_135: "Part 135" }
 
-POSITIONS = { single_pilot: "Single Pilot", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot" }
+POSITIONS = { captain_sp: "Captain (SP)", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot" }

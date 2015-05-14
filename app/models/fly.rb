@@ -70,7 +70,7 @@ class Fly < ActiveRecord::Base
   end
 
   def set_medical
-  	if self.operation == OPERATIONS[:part121]
+  	if self.operation == OPERATIONS[:part_121]
   		self.medical_license = MEDICAL_LICENSES[:one]
   	else
   		self.medical_license = MEDICAL_LICENSES[:two]
