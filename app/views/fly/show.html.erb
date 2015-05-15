@@ -17,7 +17,7 @@
 				</tr>
 			</thead>
 			<tr>
-				<td><%= @fly.operation %></td>
+				<td class="<%= OPERATIONS.key(@fly.operation).to_s %>"><%= @fly.operation %></td>
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
@@ -58,6 +58,8 @@
 			</table>
 		<% end %>
 
+
+
 		<% if @fly.type_ratings.any? %>
 			<h3>Required type ratings</h3>
 
@@ -76,12 +78,12 @@
 			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
 		</table>
 
-		<% if @fly.added_requirements.present? %>
+		<!--<% if @fly.added_requirements.present? %>
 			<h3>Other requirements</h3>
 			<% @fly.added_requirements.each do |req| %>
 				<%= with_glyph(req) %>
 			<% end %>
-		<% end %>
+		<% end %>-->
 
 	</div>
 </div>

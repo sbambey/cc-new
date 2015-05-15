@@ -8,7 +8,7 @@ class AdminPanelController < ApplicationController
 	end
 
 	def progress
-		@airlines = Airline.where("no_track = true")
+		@airlines = Airline.all
 	end
 
 	def untracked

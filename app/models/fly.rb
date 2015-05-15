@@ -3,6 +3,8 @@ class Fly < ActiveRecord::Base
 	include Searchable
 	extend FriendlyId
 
+	# Order is important here because the name needs to be set before the friendly ID is updated
+	before_validation :set_names
 	friendly_id :slug_candidates, use: [:slugged, :history]
 
 	belongs_to :airline
@@ -20,7 +22,6 @@ class Fly < ActiveRecord::Base
 
 	serialize :added_requirements, Array
 
-	before_save :set_names
 	before_save :set_medical
 
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
@@ -48,20 +49,19 @@ class Fly < ActiveRecord::Base
   end
 
   def should_generate_new_friendly_id?
-    name_changed?
+  	true
   end
 
   def slug_candidates
   	[
-  		:name,
+  		[:name, :base],
   		[:name, :airline_id]
   	]
   end
 
-  private
-
   def set_names
   	self.name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : self.operation} #{self.position}"
+  	return self.name
   end
 
   def set_medical

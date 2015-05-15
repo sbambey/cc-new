@@ -2,31 +2,32 @@
 <div class="container">
 	<div class="col-xs-12">
 
-		<h2>Untracked airlines (<%= @airlines.count %>)</h2>
+		<h2>Airline (<%= @airlines.count %>)</h2>
 
-		<% if @airlines.any? %>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Airline Profile</th>
-						<th>Airline Website</th>
-					</tr>
-				</thead>
-				<% @airlines.each do |airline| %>
-					<tr>
-						<td>
-							<%= link_to airline.name, airline_path(airline) %>
-						</td>
-						<td>
-							<% if airline.recruitment_overview_page.present? %>
-								<%= link_to airline.recruitment_overview_page, airline.recruitment_overview_page %>
-							<% else %>
-								<%= airline.name %>
-							<% end %>
-						</td>
-					</tr>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Airline</th>
+					<th>Opportunity</th>
+					<th>Scraped Page</th>
+				</tr>
+			</thead>
+			<% @airlines.each do |airline| %>
+				<tr>
+					<td>
+						<%= link_to airline.name, airline_path(airline) %>
+					</td>
+					<td></td>
+					<td><%= link_to(abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page) if airline.recruitment_overview_page.present? %></td>
+				</tr>
+				<% airline.flies.each do |fly| %>
+				<tr>
+					<td></td>
+					<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
+					<td><%= link_to(abbreviate(fly.website), fly.website) if fly.website.present? %></td>
+				</tr>
 				<% end %>
-			</table>
-		<% end %>
+			<% end %>
+		</table>
 	</div>
 </div>

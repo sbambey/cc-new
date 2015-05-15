@@ -5,7 +5,7 @@
 }
 .navbar {
   border: none;
-  border-bottom: 1px solid #4A6FA5;
+  border-bottom: 1px solid $navbar-border-color;
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
@@ -35,7 +35,7 @@
 
 .navbar-default .navbar-nav > .active > a {
   background-color: #fff;
-  border-bottom:5px solid #4A6FA5;
+  border-bottom:5px solid $navbar-border-color;
   &:hover, &:focus {
     background-color: #fff;
   }
@@ -75,7 +75,7 @@
   width:100%;
   height:5px;
   background-color: #8fa3cc;
-  border-bottom: 1px solid #4A6FA5;
+  border-bottom: 1px solid $navbar-border-color;
 }
 
 html,
@@ -264,6 +264,10 @@ th {
   overflow: hidden;
 }
 
+table, table th, table td {
+  border-color: #999 !important;
+}
+
 td > div.form-group {
   margin-bottom: 0;
 }
@@ -279,6 +283,21 @@ td > div.form-group {
     display: inline-block;
     color: #999;
   }
+}
+
+/* Airline operations */
+
+.part_121 {
+  background: #c7ebd0;
+}
+.part_125 {
+  background: #FFD3B5;
+}
+.part_135 {
+  background: #FFAAA6;
+}
+.part_135c {
+  background: #C5E0DC;
 }
 
 
