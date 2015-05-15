@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			<% @airlines.each do |airline| %>
-				<tr>
+				<tr class="<%= airline.no_track? ? "danger" : "success" %>">
 					<td>
 						<%= link_to airline.name, airline_path(airline) %>
 					</td>
@@ -21,7 +21,7 @@
 					<td><%= link_to(abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page) if airline.recruitment_overview_page.present? %></td>
 				</tr>
 				<% airline.flies.each do |fly| %>
-				<tr>
+				<tr class="<%= fly.no_track? ? "danger" : "success" %>">
 					<td></td>
 					<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
 					<td><%= link_to(abbreviate(fly.website), fly.website) if fly.website.present? %></td>
