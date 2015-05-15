@@ -42,8 +42,9 @@
 			</div>
 		<% end %>
 		
-		<h3>Flight time</h3>
+		
 		<% if @fly.flight_time_requirements.any? %>
+			<h3>Flight time</h3>
 			<table class="table table-bordered standard-margin">
 				<% @fly.flight_time_requirements.each do |key, value| %>
 					<tr>
@@ -78,12 +79,12 @@
 			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
 		</table>
 
-		<!--<% if @fly.added_requirements.present? %>
+		<% if @fly.added_requirements.present? %>
 			<h3>Other requirements</h3>
 			<% @fly.added_requirements.each do |req| %>
 				<%= with_glyph(req) %>
 			<% end %>
-		<% end %>-->
+		<% end %>
 
 	</div>
 </div>
