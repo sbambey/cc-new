@@ -1,7 +1,7 @@
 <table class="table table-bordered thick-border standard-margin">
 	<tr>
 		<td>
-			<%= f.select :operation, OPERATIONS.values, {}, class: "selectpicker", "data-width" => "100%" %>
+			<%= f.select :operation, OPERATIONS.values, {include_blank: true}, class: "selectpicker", "data-width" => "100%" %>
 	    <%= f.label :operation, class: "sr-only" %>
 		</td>
 		<td>
