@@ -62,7 +62,13 @@
 				<% @fly.fly_user_type_ratings.each do |tr| %>
 					<tr>
 						<td><%= "Current " if tr.current? %><%= tr.type_rating.designation %> <%= "(PIC)" if tr.pic? %> rating</td>
-						<td><%= tr.time_in_type %> hrs in type</td>
+						<td>
+							<% if tr.time_in_type.present? %>
+							<%= tr.time_in_type %> hrs in type
+							<% else %>
+							No time in type requirement
+							<% end %>
+						</td>
 					</tr>
 				<% end %>
 			</table>
