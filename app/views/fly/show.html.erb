@@ -1,10 +1,15 @@
 <% provide(:title, "#{@fly.name}") %>
 <div class="container">
 	<div class="col-xs-12">
-		<h2>
-			<%= display_image @fly.airline.logo, "airline-heading-logo" %><%= "#{@fly.name}" %> <small><%= "Posted #{time_ago_in_words(@fly.created_at)} ago" %></small>
-			<%= link_to("Edit", edit_airline_fly_path(@fly.airline, @fly), class: "btn btn-default") if current_user.try(:admin?) %>
-		</h2>
+
+		<div class="title-header">
+			<h2>
+				<%= display_image @fly.airline.logo, "airline-heading-logo" %><%= "#{@fly.name}" %> <small><%= "Posted #{time_ago_in_words(@fly.created_at)} ago" %></small>
+				<%= link_to("Edit", edit_airline_fly_path(@fly.airline, @fly), class: "btn btn-default") if current_user.try(:admin?) %>
+			</h2>
+		</div>
+
+		
 
 		<table class="table table-bordered thick-border standard-margin">
 			<thead>

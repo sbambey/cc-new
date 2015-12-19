@@ -10,6 +10,7 @@
 					<th>Airline</th>
 					<th>Opportunity</th>
 					<th>Scraped Page</th>
+					<th>Part</th>
 				</tr>
 			</thead>
 			<% @airlines.each do |airline| %>
@@ -19,12 +20,14 @@
 					</td>
 					<td></td>
 					<td><%= link_to(abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page) if airline.recruitment_overview_page.present? %></td>
+					<td></td>
 				</tr>
 				<% airline.flies.each do |fly| %>
 				<tr class="<%= fly.no_track? ? "danger" : "success" %>">
 					<td></td>
 					<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
 					<td><%= link_to(abbreviate(fly.website), fly.website) if fly.website.present? %></td>
+					<td><%= fly.operation %></td>
 				</tr>
 				<% end %>
 			<% end %>
