@@ -10,7 +10,7 @@ task :determine_consistency => :environment do
 
       puts "# Start - #{airline.name}"
 
-      set = ScrapeNodeSet.create(airline: airline)
+      
   	   
       #scrape overview page
 
@@ -22,6 +22,8 @@ task :determine_consistency => :environment do
         puts ex
         next
       end
+
+      set = ScrapeNodeSet.create(airline: airline)
 
       html_set = doc.css(airline.content_selector)
 
@@ -50,7 +52,13 @@ task :determine_consistency => :environment do
       		#scrape fly page
 
       		opportunity_url = URI(fly.website)
-      		doc = Nokogiri::HTML(open(opportunity_url))
+
+          begin
+      		  doc = Nokogiri::HTML(open(opportunity_url))
+          rescue => ex
+            puts ex
+            next
+          end
 
           html_set = doc.css(fly.content_selector)
 
