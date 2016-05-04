@@ -16,7 +16,7 @@ task :determine_consistency => :environment do
 
     	overview_url = URI(airline.recruitment_overview_page)
 
-    	begin do
+    	begin
         doc = Nokogiri::HTML(open(overview_url))
       rescue => ex
         puts ex
