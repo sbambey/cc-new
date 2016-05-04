@@ -25,3 +25,5 @@ MEDICAL_LICENSES = { one: "Class 1", two: "Class 2", three: "Class 3", four: "Cl
 OPERATIONS = { part_121: "Part 121", part_121c: "Part 121 Cargo", part_125: "Part 125", part_129: "Part 129", part_129c: "Part 129 Cargo", part_135: "Part 135", part_135c: "Part 135 Cargo" }
 
 POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot", chief_pilot: "Chief Pilot" }
+
+PAY = { hourly: "Hourly", pay_scale: "Pay Scale", aircraft_type: "Aircraft Type" }

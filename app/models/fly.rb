@@ -26,6 +26,7 @@ class Fly < ActiveRecord::Base
 
 	store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
 	store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
+	store_accessor :pay, *PAY.keys
 
 	#validates :operation, inclusion: [*OPERATIONS.values]
 	#validates :position, inclusion: [*POSITIONS.values]
@@ -45,7 +46,7 @@ class Fly < ActiveRecord::Base
 	end
 
 	def self.permissible_params
-		FLIGHT_HOUR_TYPES.keys.concat(FLIGHT_EXPERIENCE.keys)
+		FLIGHT_HOUR_TYPES.keys.concat(FLIGHT_EXPERIENCE.keys).concat(PAY.keys)
   end
 
   def should_generate_new_friendly_id?

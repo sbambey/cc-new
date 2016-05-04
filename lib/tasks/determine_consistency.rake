@@ -15,7 +15,13 @@ task :determine_consistency => :environment do
       #scrape overview page
 
     	overview_url = URI(airline.recruitment_overview_page)
-    	doc = Nokogiri::HTML(open(overview_url))
+
+    	begin do
+        doc = Nokogiri::HTML(open(overview_url))
+      rescue => ex
+        puts ex
+        break
+      end
 
       html_set = doc.css(airline.content_selector)
 
