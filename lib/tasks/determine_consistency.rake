@@ -20,7 +20,7 @@ task :determine_consistency => :environment do
         doc = Nokogiri::HTML(open(overview_url))
       rescue => ex
         puts ex
-        break
+        next
       end
 
       html_set = doc.css(airline.content_selector)
