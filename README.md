@@ -6,7 +6,7 @@ A job board of major US airlines, planning to expand in the future.
 
 Developer(s): [@sbambey](https://github.com/sbambey)
 
-The most recent version is currently maintained at [http://www.flightcrew.io](http://www.flightcrew.io).
+The most recent version is currently maintained at [https://safe-forest-2459.herokuapp.com/](https://safe-forest-2459.herokuapp.com/).
 
 Feel free to make an account. If you would like admin access, drop me a line at <a href="mailto:sbambey@gmail.com">sbambey@gmail.com</a>
 
