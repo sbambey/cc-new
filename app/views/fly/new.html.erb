@@ -17,10 +17,14 @@
 		</div>
 	</div>
 
-	<%= f.label :content %>
-	<div id="wmd-button-bar-description-teaser"></div>
-	<%= render "shared/text_area", f: f, attribute: :content, args: { placeholder: "Content", field_class: "wmd-input form-control new-mission-teaser",
-      field_id: "wmd-input-description-teaser" } %>
+	<div class="container">
+  	<div class="col-xs-12 col-md-10 col-md-offset-1">
+  		<h4>Content</h4>
+			<div id="wmd-button-bar-description-content"></div>
+			<%= render "shared/text_area", f: f, attribute: :content, args: { placeholder: "Content", field_class: "wmd-input form-control new-mission-teaser",
+		      field_id: "wmd-input-description-content" } %>
+    </div>
+  </div>
 
   <!--<div class="container">
   	<div class="col-xs-12">
