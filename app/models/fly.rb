@@ -4,7 +4,7 @@ class Fly < ActiveRecord::Base
 	extend FriendlyId
 
 	# Order is important here because the name needs to be set before the friendly ID is updated
-	#before_validation :set_names
+	before_validation :set_names
 	friendly_id :slug_candidates, use: [:slugged, :history]
 
 	belongs_to :airline
@@ -61,10 +61,10 @@ class Fly < ActiveRecord::Base
   	]
   end
 
-  #def set_names
-  #	self.name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : self.operation} #{self.position}"
-  #	return self.name
-  #end
+  def set_names
+  	self.name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : self.operation} #{self.position}"
+  	return self.name
+  end
 
   #def set_medical
   #	if self.operation == OPERATIONS[:part_121]
