@@ -8,7 +8,7 @@ class AdminPanelController < ApplicationController
 	end
 
 	def progress
-		@airlines = Airline.all
+		@airlines = Airline.order('name ASC')
 	end
 
 	def untracked
