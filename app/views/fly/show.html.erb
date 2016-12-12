@@ -1,6 +1,6 @@
 <% provide(:title, "#{@fly.name}") %>
 <div class="container">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
 
 		<div class="title-header">
 			<h2>
@@ -14,88 +14,39 @@
 		<table class="table table-bordered thick-border standard-margin">
 			<thead>
 				<tr>
-					<th>Operation</th>
+					<th>Job Type</th>
+					<th>Airline</th>
 					<th>Position</th>
-					<th>Equipment</th>
+					<th>Aircraft</th>
 					<th>Base</th>
-					<th>Website</th>
 				</tr>
 			</thead>
 			<tr>
-				<td class="<%= OPERATIONS.key(@fly.operation).to_s %>"><%= @fly.operation %></td>
+				<td>Low Time</td>
+				<td><%= "#{@fly.airline.name}" %></td>
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
-				<!--<td><%= @fly.posting_expiry_as_string ? @fly.posting_expiry_as_string : "When filled" %></td>-->
-				<td><%= link_to abbreviate(@fly.website), @fly.website, target: "_blank" %></td>
 			</tr>
 		</table>
 
 	</div>
 
-	<div class="col-xs-12 col-md-6">
-		<h3>Rating</h3>
-		<table class="table table-bordered standard-margin">
-			<tr><td><%= @fly.rating.present? ? @fly.rating : "Not specified" %></td></tr>
-		</table>
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
 
-		<% if @fly.flight_experience.present? %>
-			<div class="standard-margin" id="flight-experience">
-				<% @fly.flight_experience.each do |key, value| %>
-					<%= with_glyph(FLIGHT_EXPERIENCE[key.to_sym]) if value == "1" %>
-				<% end %>
-			</div>
-		<% end %>
+		<h3>Posting</h3>
+
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
 		
-		
-		<% if @fly.flight_time_requirements.any? %>
-			<h3>Flight time</h3>
-			<table class="table table-bordered standard-margin">
-				<% @fly.flight_time_requirements.each do |key, value| %>
-					<tr>
-						<td><%= FLIGHT_HOUR_TYPES[key.to_sym] %></td>
-						<td><%= value %> hrs</td>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-
-		<% if @fly.type_ratings.any? %>
-			<h3>Required type ratings</h3>
-
-			<table class="table table-bordered standard-margin">
-				<% @fly.fly_user_type_ratings.each do |tr| %>
-					<tr>
-						<td><%= "Current " if tr.current? %><%= tr.type_rating.designation %> <%= "(PIC)" if tr.pic? %> rating</td>
-						<td>
-							<% if tr.time_in_type.present? %>
-							<%= tr.time_in_type %> hrs in type
-							<% else %>
-							No time in type requirement
-							<% end %>
-						</td>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-
-		<h3>Medical license</h3>
-		<table class="table table-bordered standard-margin">
-			<tr><td><%= @fly.medical_license.present? ? @fly.medical_license : "As required by rating" %></td></tr>
-		</table>
-
-		<% if @fly.added_requirements.present? %>
-			<h3>Other requirements</h3>
-			<% @fly.added_requirements.each do |req| %>
-				<%= with_glyph(req) %>
-			<% end %>
-		<% end %>
 
 	</div>
 </div>
 
+<hr>
+
 <div class="container">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
 		<div id="disqus_thread"></div>
 	  <script type="text/javascript">
 	      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

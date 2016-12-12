@@ -27,7 +27,7 @@
   <% end %>
 
   <div class="container">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
       <%= f.submit "Save changes", class: "btn btn-default standard-margin" %>
     </div>
   </div>
@@ -35,7 +35,7 @@
 <% end %>
 
 <div class="container">
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
     <%= button_to "Cancel my account", registration_path(resource_name), 
         data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default standard-margin btn-submit" %>
   </div>

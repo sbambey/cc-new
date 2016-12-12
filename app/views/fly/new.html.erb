@@ -17,20 +17,19 @@
 		</div>
 	</div>
 
-  <%= render partial: "shared/flight_time", locals: { f: f, resource: @fly } %>
+	<%= f.label :content %>
+	<div id="wmd-button-bar-description-teaser"></div>
+	<%= render "shared/text_area", f: f, attribute: :content, args: { placeholder: "Content", field_class: "wmd-input form-control new-mission-teaser",
+      field_id: "wmd-input-description-teaser" } %>
 
-  <%= render partial: "shared/license", locals: { f: f, resource: @fly } %>
-
-  <!--<%= render partial: "shared/medical", locals: { f: f, resource: @fly } %>-->
-
-  <div class="container">
+  <!--<div class="container">
   	<div class="col-xs-12">
   		<h4>Additional requirements</h4>
 	  	<div id="to-append"></div>
 	  	<a href="#" class="add-field">[+] Add a requirement</a>
 	  	<a href="#" class="remove-field">[-] Remove selected</a>
 	  </div>
-	</div>
+	</div>-->
 
   <div class="container">
   	<div class="col-md-4">
