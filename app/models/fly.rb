@@ -29,7 +29,8 @@ class Fly < ActiveRecord::Base
 	#store_accessor :pay, *PAY.keys
 
 	#validates :operation, inclusion: [*OPERATIONS.values]
-	#validates :position, inclusion: [*POSITIONS.values]
+	validates :position, inclusion: [*POSITIONS.values]
+	validates :job_type, inclusion: [*JOB_TYPE.values]
 	#validates :rating, inclusion: [*RATINGS.values, ""]
   #validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 

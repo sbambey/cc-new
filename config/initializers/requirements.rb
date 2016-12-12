@@ -27,3 +27,5 @@ OPERATIONS = { part_121: "Part 121", part_121c: "Part 121 Cargo", part_125: "Par
 POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", first_officer: "First Officer", second_officer: "Second Officer", pilot: "Pilot", chief_pilot: "Chief Pilot" }
 
 PAY = { hourly: "Hourly", pay_scale: "Pay Scale", aircraft_type: "Aircraft Type" }
+
+JOB_TYPE = { low_time: "Low Time Pilots", mid_time: "Mid Time Pilots", high_time: "Experienced Pilots" }

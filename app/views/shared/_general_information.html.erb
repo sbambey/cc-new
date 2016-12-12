@@ -1,6 +1,10 @@
 <table class="table table-bordered thick-border standard-margin">
 	<tr>
 		<td>
+			<%= f.select :job_type, JOB_TYPE.values, {}, class: "selectpicker", "data-width" => "100%" %>
+	    <%= f.label :job_type, class: "sr-only" %>
+		</td>
+		<td>
 			<%= f.select :position, POSITIONS.values, {}, class: "selectpicker", "data-width" => "100%" %>
 	    <%= f.label :position, class: "sr-only" %>
 		</td>
