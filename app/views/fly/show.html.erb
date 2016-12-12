@@ -19,6 +19,7 @@
 					<th>Position</th>
 					<th>Aircraft</th>
 					<th>Base</th>
+					<th>Website</th>
 				</tr>
 			</thead>
 			<tr>
@@ -27,6 +28,7 @@
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
+				<td><a href="<%= "#{@fly.website}" %>" target="_blank"><strong>Apply Here</strong></a></td>
 			</tr>
 		</table>
 
