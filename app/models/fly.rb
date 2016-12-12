@@ -62,7 +62,7 @@ class Fly < ActiveRecord::Base
   end
 
   def set_names
-  	self.name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : ""} #{self.position}"
+  	self.name = "#{self.equipment.present? && self.equipment != "Various" ? self.equipment : ""} #{self.position} #{self.general_recruitment ? " - General Recruitment" : ""}"
   	return self.name
   end
 
