@@ -35,6 +35,8 @@
 			</table>
 		<% end %>
 
-		<%= bts_will_paginate(@flies) %>
+		<% if @jobs.next_page %>
+			<%= bts_will_paginate(@jobs, {endless: true}) %>
+		<% end %>
 	</div>
 </div>

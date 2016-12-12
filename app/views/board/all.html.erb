@@ -34,7 +34,8 @@
 		<table class="table added-jobs-table">
 			<tbody id="added-jobs"></tbody>
 		</table>
-
-		<%= bts_will_paginate(@jobs, {endless: true}) %>
+		<% if @jobs.next_page %>
+			<%= bts_will_paginate(@jobs, {endless: true}) %>
+		<% end %>
 	</div>
 </div>
