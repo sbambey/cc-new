@@ -28,4 +28,4 @@ POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", first_of
 
 PAY = { hourly: "Hourly", pay_scale: "Pay Scale", aircraft_type: "Aircraft Type" }
 
-JOB_TYPE = { low_time: "Low Time Pilots", mid_time: "Mid Time Pilots", high_time: "Experienced Pilots" }
+JOB_TYPE = { low_time: "Low Time Pilots", high_time: "Experienced Pilots" }
