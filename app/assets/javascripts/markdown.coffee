@@ -1,4 +1,4 @@
-ready = ->
+markdown = ->
   $('textarea.wmd-input').each (i, input) ->
     attr = $(input).attr('id').split('wmd-input')[1]
     converter = new Markdown.Converter()
@@ -10,3 +10,6 @@ ready = ->
       title: "<%= I18n.t('components.markdown_editor.help', default: 'Markdown Editing Help') %>"
     editor = new Markdown.Editor(converter, attr, help)
     editor.run()
+
+$(document).ready(markdown)
+$(document).on('page:load', markdown)
