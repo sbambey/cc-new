@@ -19,7 +19,6 @@
 					<th>Position</th>
 					<th>Aircraft</th>
 					<th>Base</th>
-					<th>Website</th>
 				</tr>
 			</thead>
 			<tr>
@@ -28,33 +27,27 @@
 				<td><%= @fly.position %></td>
 				<td><%= @fly.equipment %></td>
 				<td><%= @fly.base %></td>
-				<td><a href="<%= "#{@fly.website}" %>" target="_blank"><strong>Apply Here</strong></a></td>
 			</tr>
 		</table>
 
 	</div>
 
-	<div class="col-xs-12 col-md-10 col-md-offset-1">
-
-		<h3>Posting</h3>
-
-		<p><%= markdown(@fly.content) %></p>
-
+	<div class="col-xs-12 col-md-10 col-md-offset-1 standard-margin">
 		
+		<a href="<%= @fly.posting_website %>" target="_blank" class="btn btn-success btn-lg">Apply Here</a>
+		<a href="<%= @fly.company_website %>" target="_blank" class="btn btn-info btn-lg">Company Website</a>
 
 	</div>
 </div>
 
-<hr>
-
 <div class="container">
-	<div class="col-xs-12 col-md-10 col-md-offset-1">
-		<h3>Discuss this job posting</h3>
+	<div class="col-xs-12 col-md-10 col-md-offset-1 standard-margin">
+		<hr>
 	</div>
 </div>
 
 <div class="container">
-	<div class="col-xs-12 col-md-10 col-md-offset-1">
+	<div class="col-xs-12 col-md-8 col-md-offset-2 standard-margin">
 		<div id="disqus_thread"></div>
 	  <script type="text/javascript">
 	      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

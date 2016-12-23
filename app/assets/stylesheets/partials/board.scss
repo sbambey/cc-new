@@ -22,4 +22,27 @@
 	tbody > tr > td {
     vertical-align: middle;
 	}
+
+	table {
+		tr.airline-desc:hover {
+			background:#f5f5f5;
+		}
+		tr.job-desc {
+			background:#f5f5f5;
+			&:hover {
+				background: #cccccc;
+			}
+		}
+		td.no-border  {
+			border: none;
+		}
+	}
+
+	.text-red {
+		color: #D70230;
+	}
+
+	.text-green {
+		color: #78BC61;
+	}
 }

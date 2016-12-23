@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212032133) do
+ActiveRecord::Schema.define(version: 20161222150634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20161212032133) do
   create_table "flies", force: :cascade do |t|
     t.string   "name"
     t.string   "position"
-    t.string   "website"
+    t.string   "posting_website"
     t.string   "equipment"
     t.string   "base"
     t.string   "posting_date_as_string"
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20161212032133) do
     t.boolean  "general_recruitment",      default: false
     t.text     "content"
     t.string   "job_type"
+    t.string   "company_website"
+    t.boolean  "ongoing"
   end
 
   add_index "flies", ["airline_id"], name: "index_flies_on_airline_id", using: :btree

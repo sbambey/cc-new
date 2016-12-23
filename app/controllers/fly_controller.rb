@@ -47,6 +47,6 @@ class FlyController < ApplicationController
   private
 
 	def fly_params
-		params.require(:fly).permit(:name, :position, :website, :equipment, :base, :website, :job_type, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, :general_recruitment, :deleted_at, :updated)
+		params.require(:fly).permit(:name, :position, :posting_website, :company_website, :equipment, :base, :website, :job_type, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, :general_recruitment, :deleted_at, :updated)
   end
 end

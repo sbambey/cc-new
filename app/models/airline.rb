@@ -23,4 +23,8 @@ class Airline < ActiveRecord::Base
 	def should_generate_new_friendly_id?
     name_changed?
   end
+
+  def has_active_recruitment?
+    #TODO
+  end
 end
