@@ -5,28 +5,25 @@
 	    <%= f.label :job_type, class: "sr-only" %>
 		</td>
 		<td>
-			<%= f.select :position, POSITIONS.values, {}, class: "selectpicker", "data-width" => "100%" %>
-	    <%= f.label :position, class: "sr-only" %>
-		</td>
-		<td>
-    	<%= f.text_field :equipment, class: "form-control", placeholder: "Equipment" %>
-    	<%= f.label :equipment, class: "sr-only" %>
-	  </td>
-	  <td>
-    	<%= f.text_field :base, class: "form-control", placeholder: "Base" %>
-    	<%= f.label :base, class: "sr-only" %>
-	  </td>
-		<!--<td>
-	    <%= f.text_field :posting_expiry_as_string, class: "form-control", placeholder: "Expires" %>
-	    <%= f.label :posting_expiry_as_string, class: "sr-only" %>
-		</td>-->
-		<td>
 	    <%= f.text_field :posting_website, class: "form-control", placeholder: "Posting website" %>
 	    <%= f.label :posting_website, class: "sr-only" %>
 		</td>
-		<td>
-	    <%= f.text_field :company_website, class: "form-control", placeholder: "Company website" %>
-	    <%= f.label :company_website, class: "sr-only" %>
-		</td>
 	</tr>
 </table>
+
+<div class="checkbox standard-margin">
+	<label>
+  	<%= f.check_box :ongoing %><p>Ongoing</p>
+  </label>
+</div>
+
+<h4>Name</h4>
+<div class="form-group">
+  <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+  <%= f.label :name, class: "sr-only" %>
+</div>
+
+<h4>Content</h4>
+<div id="wmd-button-bar-description-content"></div>
+<%= render "shared/text_area", f: f, attribute: :content, args: { placeholder: "Content", field_class: "wmd-input form-control new-mission-teaser",
+    field_id: "wmd-input-description-content" } %>

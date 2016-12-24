@@ -24,7 +24,7 @@
 				<tr class="<%= fly.no_track? ? "danger" : "success" %>">
 					<td></td>
 					<td><%= link_to fly.name, airline_fly_path(airline, fly) %></td>
-					<td><%= link_to(abbreviate(fly.website), fly.website) if fly.website.present? %></td>
+					<td><%= link_to(abbreviate(fly.posting_website), fly.posting_website) if fly.posting_website.present? %></td>
 				</tr>
 				<% end %>
 			<% end %>

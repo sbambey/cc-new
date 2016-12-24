@@ -1,8 +1,8 @@
 <% if @airlines.present? %>
 	<% @airlines.each_with_index do |airline, index| %>
-		<tr id="airline-desc-<%= index %>" class="airline-desc">
+		<tr id="airline-desc-<%= index %>" class="airline-desc <%= airline.flies.any? ? "job-active" : "" %>">
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= display_image airline.logo, "jobs-table-logo" %></div></td>
-			<td class="col-xs-6<%= " strong-cell" if index == 0 %>"><div><%= link_to airline.name, airline_path(airline) %></div></td>
+			<td class="col-xs-6<%= " strong-cell" if index == 0 %>"><div><span class="airline-name"><%= airline.name %></span></div></td>
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= airline.flies.any? ? "<strong class=\"text-green\">Open</strong>".html_safe : "<span class=\"text-red\">Closed</span>".html_safe %></div></td>
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= airline.flies.any? ? "#{time_ago_in_words(airline.flies.order(created_at: :desc).first.created_at)} ago" : "" %></div></td>
 		</tr>
@@ -10,7 +10,7 @@
 			<% airline.flies.each_with_index do |fly, i| %>
 				<tr id="job-desc-hidden-<%= "#{index}-#{i}" %>" class="job-desc hidden">
 					<td class="col-xs-2 no-border"></td>
-					<td class="col-xs-6 no-border"><%= "<strong>#{i+1}. #{fly.name}</strong>".html_safe %> - Requires: 1000hrs total time, 300hrs PIC</td>
+					<td class="col-xs-6 no-border"><%= "<strong>#{i+1}. #{fly.name}</strong>".html_safe %><br><span class="lead medium">Requires: 1000hrs total time, 300hrs PIC</span></td>
 					<td class="col-xs-2 no-border"><a href="<%= fly.posting_website %>" target="_blank" class="btn btn-primary btn-sm">Apply</a></td>
 					<td class="col-xs-2 no-border"><%= "#{time_ago_in_words(fly.created_at)} ago" %></td>
 				</tr>

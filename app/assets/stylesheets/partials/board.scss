@@ -33,9 +33,19 @@
 				background: #cccccc;
 			}
 		}
+		tr.job-active:hover {
+			cursor:pointer;
+		}
+		.airline-name {
+			color: #4A6FA5;
+		}
 		td.no-border  {
 			border: none;
 		}
+	}
+
+	span.medium {
+		font-size: 14px;
 	}
 
 	.text-red {

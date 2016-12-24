@@ -11,5 +11,5 @@ markdown = ->
     editor = new Markdown.Editor(converter, attr, help)
     editor.run()
 
-$(document).ready(markdown)
+#$(document).ready(markdown)
 $(document).on('page:load', markdown)

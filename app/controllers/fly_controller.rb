@@ -1,6 +1,8 @@
 class FlyController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :redirect_unless_admin, except: [:show]
+  #before_action :authenticate_user!, except: [:show]
+  #before_action :redirect_unless_admin, except: [:show]
+  before_action :authenticate_user!
+  before_action :redirect_unless_admin
 
   def show
     @fly = Fly.friendly.find(params[:id])
@@ -47,6 +49,6 @@ class FlyController < ApplicationController
   private
 
 	def fly_params
-		params.require(:fly).permit(:name, :position, :posting_website, :company_website, :equipment, :base, :website, :job_type, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, :general_recruitment, :deleted_at, :updated)
+		params.require(:fly).permit(:name, :title, :position, :posting_website, :company_website, :equipment, :base, :website, :ongoing, :active, :job_type, :content, :posting_expiry_as_string, :posting_expiry_as_date, :posting_date_as_string, :posting_date_as_date, :content_selector, :no_track, :no_match, :airline_id, :general_recruitment, :deleted_at, :updated)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222150634) do
+ActiveRecord::Schema.define(version: 20161224071149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,33 +84,22 @@ ActiveRecord::Schema.define(version: 20161222150634) do
 
   create_table "flies", force: :cascade do |t|
     t.string   "name"
-    t.string   "position"
     t.string   "posting_website"
-    t.string   "equipment"
-    t.string   "base"
     t.string   "posting_date_as_string"
-    t.string   "posting_expiry_as_string"
     t.date     "posting_date_as_date"
-    t.date     "posting_expiry_as_date"
     t.text     "content_selector"
-    t.boolean  "no_track",                 default: false
-    t.boolean  "no_match",                 default: false
+    t.boolean  "no_track",               default: false
     t.integer  "airline_id"
     t.string   "slug"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.boolean  "updated"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.datetime "deleted_at"
-    t.boolean  "general_recruitment",      default: false
     t.text     "content"
     t.string   "job_type"
-    t.string   "company_website"
     t.boolean  "ongoing"
   end
 
   add_index "flies", ["airline_id"], name: "index_flies_on_airline_id", using: :btree
-  add_index "flies", ["base"], name: "index_flies_on_base", using: :btree
-  add_index "flies", ["equipment"], name: "index_flies_on_equipment", using: :btree
   add_index "flies", ["name"], name: "index_flies_on_name", using: :btree
   add_index "flies", ["slug"], name: "index_flies_on_slug", using: :btree
 

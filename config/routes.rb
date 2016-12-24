@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get "contact" => "static_pages#contact"
   get "mission" => "static_pages#mission"
 
-  get "board" => "board#matched"
-  get "jobs" => "board#all"
-  get "general" => "board#general_recruitment"
+  #get "board" => "board#matched"
+  get "board" => "board#all"
+  #get "general" => "board#general_recruitment"
 
   devise_for :users, controllers: { registrations: "users/registrations" }, :path => 'accounts'
 
@@ -31,11 +31,11 @@ Rails.application.routes.draw do
   get "admin_panel/untracked"
   get "admin_panel/user_management"
 
-  authenticated :user do
-    root to: "board#matched", as: "authenticated_root"
-  end
+  #authenticated :user do
+  #  root to: "board#matched", as: "authenticated_root"
+  #end
 
-  unauthenticated do
-    root to: "board#all"
-  end
+  #unauthenticated do
+  root to: "board#all"
+  #end
 end

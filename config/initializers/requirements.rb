@@ -28,4 +28,4 @@ POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", pic: "PI
 
 PAY = { hourly: "Hourly", pay_scale: "Pay Scale", aircraft_type: "Aircraft Type" }
 
-JOB_TYPE = { low_time: "1000hr- Experience", mid_time: "1000-3000hr Experience", high_time: "Experienced Pilots", legacy: "Legacy Carrier" }
+JOB_TYPE = { low_time: "1000hr- Experience", mid_time: "1000-3000hr Experience", high_time: "Experienced Pilots" }
