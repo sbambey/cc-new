@@ -34,11 +34,7 @@ class FlyController < ApplicationController
     @airline = Airline.friendly.find(params[:airline_id])
     @fly = @airline.flies.friendly.find(params[:id])
 
-    to_update = fly_params
-
-    to_update[:updated] = true
-
-    if @fly.update_attributes(to_update)
+    if @fly.update_attributes(fly_params)
       flash[:success] = "Updated opportunity successfully"
       redirect_to airline_fly_path(@airline, @fly)
     else
