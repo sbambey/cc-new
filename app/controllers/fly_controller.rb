@@ -36,7 +36,8 @@ class FlyController < ApplicationController
 
     if @fly.update_attributes(fly_params)
       flash[:success] = "Updated opportunity successfully"
-      redirect_to airline_fly_path(@airline, @fly)
+      #redirect_to airline_fly_path(@airline, @fly)
+      redirect_to root_path
     else
       render "edit"
     end
