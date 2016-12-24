@@ -1,4 +1,5 @@
 class Airline < ActiveRecord::Base
+  include Searchable
 	extend FriendlyId
 
 	friendly_id :name, use: [:slugged, :history]

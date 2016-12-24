@@ -11,10 +11,10 @@ class BoardController < ApplicationController
   #end
 
   def all
-    @jobs = Fly.includes(:airline).search(params[:search]).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
+    @jobs = Fly.includes(:airline).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
     @job_count = Fly.all.count
     @airline_count = Airline.all.count
-    @airlines = Airline.all.order(updated_at: :desc).paginate(per_page: 10, page: params[:page])
+    @airlines = Airline.joins(:flies).search(params[:search]).order(updated_at: :desc).paginate(per_page: 10, page: params[:page])
     respond_to do |format|
       format.js { render "shared/jobs.js.erb" }
       format.html
