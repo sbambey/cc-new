@@ -11,7 +11,7 @@
 				<tr id="job-desc-hidden-<%= "#{index}-#{i}" %>" class="job-desc hidden">
 					<td class="col-xs-2 no-border"></td>
 					<td class="col-xs-6 no-border"><%= "<strong>#{i+1}. #{fly.name}</strong>".html_safe %>
-					<%= "<br><span class=\"lead medium\">Requires: #{fly.content}</span>" if fly.content.present? %></td>
+					<%= "<br><span class=\"lead medium\">Requires: #{fly.content}</span>".html_safe if fly.content.present? %></td>
 					<td class="col-xs-2 no-border"><a href="<%= fly.posting_website %>" target="_blank" class="btn btn-primary btn-sm">Apply</a></td>
 					<td class="col-xs-2 no-border"><%= "#{time_ago_in_words(fly.created_at)} ago" %></td>
 				</tr>
