@@ -11,7 +11,7 @@
 				<tr id="job-desc-hidden-<%= "#{index}-#{i}" %>" class="job-desc hidden">
 					<td class="col-xs-2 no-border"></td>
 					<td class="col-xs-6 no-border"><%= "<strong>#{i+1}. #{fly.name}</strong>".html_safe %>
-					<%= "<br><span class=\"lead medium\">Requires: #{fly.content}</span>".html_safe if fly.content.present? %></td>
+					<%= "<br><span class=\"lead medium\"><span class=\"underline\">Requires</span>: #{fly.content}</span>".html_safe if fly.content.present? %></td>
 					<td class="col-xs-2 no-border">
 						<a href="<%= fly.posting_website %>" target="_blank" class="btn btn-primary btn-sm">Apply</a>
 						<%= link_to("Edit", edit_airline_fly_path(fly.airline, fly), class: "btn btn-primary btn-sm") if signed_in? && current_user.admin? %>
