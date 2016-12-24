@@ -4,8 +4,8 @@
 	$("#jobs").html('<%=j render("shared/jobs") %>');
 	$("#added-jobs").html('')
 <% end %>
-<% if @jobs.next_page %>
-  $('.pagination').replaceWith('<%=j bts_will_paginate(@jobs, {endless: true}) %>');
+<% if @airlines.next_page %>
+  $('.pagination').replaceWith('<%=j bts_will_paginate(@airlines, {endless: true}) %>');
   $('#add-records').show();
 <% else %>
   $('#add-records').hide();
