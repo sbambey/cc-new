@@ -10,7 +10,7 @@
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= airline.flies.any? ? "#{time_ago_in_words(airline.flies.order(created_at: :desc).first.created_at)} ago" : "" %></div></td>
 		</tr>
 		<% if airline.flies.present? %>
-			<% airline.flies.order(updated_at: :desc).each_with_index do |fly, i| %>
+			<% airline.flies.order(created_at: :desc).each_with_index do |fly, i| %>
 				<tr id="job-desc-hidden-<%= "#{index}-#{i}" %>" class="job-desc hidden">
 					<td class="col-xs-2 no-border"></td>
 					<td class="col-xs-6 no-border"><%= "<strong>#{fly.name}</strong>".html_safe %>
