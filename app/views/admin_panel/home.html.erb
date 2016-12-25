@@ -23,6 +23,7 @@
 					<% parent = node_set.parent %>
 					<% notice = parent.notice %>
 
+					<% if airline.present? %>
 					<tr class="<%= notice.status %>">
 						<td>></td>
 						<td><%= link_to(display_image(airline.logo), airline_path(airline)) %></td>
@@ -58,6 +59,8 @@
 							</td>
 							<td class="<%= notice.status %>"><%= "Deleted record" if fly.deleted_at? %></td>
 						</tr>
+
+					<% end %>
 
 					<% end %>
 
