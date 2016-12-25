@@ -15,6 +15,8 @@ class Airline < ActiveRecord::Base
     medium: '300x300>'
   }
 
+  default_scope { where("deleted_at IS NULL") }
+
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
   validates :name, presence: true
