@@ -1,9 +1,12 @@
 <% if @airlines.present? %>
 	<% @airlines.each_with_index do |airline, index| %>
-		<tr id="airline-desc-<%= index %>" class="airline-desc <%= airline.flies.any? ? "job-active" : "" %>">
+		<tr id="airline-desc-<%= index %>" class="airline-desc<%= airline.flies.any? ? " job-active" : "" %>">
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= display_image airline.logo, "jobs-table-logo" %></div></td>
 			<td class="col-xs-6<%= " strong-cell" if index == 0 %>"><div><span class="airline-name"><%= airline.name %></span></div></td>
-			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= airline.flies.any? ? "<strong class=\"text-green\">Open</strong>".html_safe : "<span class=\"text-red\">Closed</span>".html_safe %></div></td>
+			<td class="col-xs-2<%= " strong-cell" if index == 0 %>">
+					<%= airline.flies.any? ? "<strong class=\"text-green\">Open</strong>".html_safe : "<span class=\"text-red\">Closed</span>".html_safe %>
+					<%= "<span class=\"admin\">&nbsp;</span>".html_safe if signed_in? && current_user.admin? %>
+			</td>
 			<td class="col-xs-2<%= " strong-cell" if index == 0 %>"><div><%= airline.flies.any? ? "#{time_ago_in_words(airline.flies.order(created_at: :desc).first.created_at)} ago" : "" %></div></td>
 		</tr>
 		<% if airline.flies.present? %>
@@ -20,6 +23,12 @@
 				</tr>
 			<% end %>
 		<% end %>
+		<% if signed_in? && current_user.admin? %>
+			<tr class="job-desc hidden">
+				<td class="no-border"></td>
+				<td colspan="3" class="no-border"><%= link_to("Add Job", new_airline_fly_path(airline), class: "btn btn-primary btn-sm") %></td>
+			</tr>
+			<% end %>
 	<% end %>
 <% else %>
 	<tr>

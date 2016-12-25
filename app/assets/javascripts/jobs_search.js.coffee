@@ -19,7 +19,7 @@ $(document).on 'click', '#add-records a', (event) ->
 
 $(document).on 'click', "[id^=airline-desc]", (event) ->
 	active = $(event.currentTarget).hasClass("active")
-	activeRecruitment = $(event.currentTarget).find(".text-green")
+	activeRecruitment = $(event.currentTarget).find(".text-green, .admin")
 	if activeRecruitment.length != 0
 		if active
 			$(event.currentTarget).removeClass("active")
