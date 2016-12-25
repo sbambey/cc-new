@@ -28,7 +28,7 @@
 		<% if signed_in? && current_user.admin? %>
 			<tr class="job-desc hidden">
 				<td class="no-border"></td>
-				<td colspan="3" class="no-border"><%= link_to("Add Job", new_airline_fly_path(airline), class: "btn btn-primary btn-sm") %></td>
+				<td colspan="3" class="no-border"><%= link_to("Add Job", new_airline_fly_path(airline), class: "btn btn-primary btn-sm", target: "_blank") %></td>
 			</tr>
 			<% end %>
 	<% end %>
