@@ -27,3 +27,9 @@
 <div id="wmd-button-bar-description-content"></div>
 <%= render "shared/text_area", f: f, attribute: :content, args: { placeholder: "Content", field_class: "wmd-input form-control new-mission-teaser",
     field_id: "wmd-input-description-content" } %>
+
+<h4>Location</h4>
+<div class="form-group">
+  <%= f.text_field :location, class: "form-control", placeholder: "Location" %>
+  <%= f.label :location, class: "sr-only" %>
+</div>
