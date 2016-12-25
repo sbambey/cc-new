@@ -16,10 +16,11 @@
 					<td class="col-xs-6 no-border"><%= "<strong>#{fly.name}</strong>".html_safe %>
 						<%= "<br><span class=\"lead medium\"><span class=\"underline\">Requires</span>: #{fly.content}</span>".html_safe if fly.content.present? %>
 						<%= "<br><span class=\"lead medium\"><span class=\"underline\">Location</span>: #{fly.location}</span>".html_safe if fly.location.present? %>
+						<%= "<br><span class=\"lead medium\"><span class=\"underline\">Pay</span>: #{fly.pay}</span>".html_safe if fly.pay.present? %>
 					</td>
 					<td class="col-xs-2 no-border">
 						<a href="<%= fly.posting_website %>" target="_blank" class="btn btn-primary btn-sm">Apply</a>
-						<%= link_to("Edit", edit_airline_fly_path(fly.airline, fly), class: "btn btn-primary btn-sm") if signed_in? && current_user.admin? %>
+						<%= link_to("Edit", edit_airline_fly_path(fly.airline, fly), class: "btn btn-primary btn-sm", target: "_blank") if signed_in? && current_user.admin? %>
 					</td>
 					<td class="col-xs-2 no-border"><%= "#{time_ago_in_words(fly.created_at)} ago" %></td>
 				</tr>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225094203) do
+ActiveRecord::Schema.define(version: 20161225102339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20161225094203) do
     t.string   "job_type"
     t.boolean  "ongoing"
     t.string   "location"
+    t.string   "pay"
   end
 
   add_index "flies", ["airline_id"], name: "index_flies_on_airline_id", using: :btree
