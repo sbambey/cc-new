@@ -29,7 +29,7 @@
 
 						<td><%= link_to airline.name, airline_path(airline) %></td>
 
-						<td><%= link_to abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page %></td>
+						<td><%= link_to abbreviate(airline.recruitment_overview_page), airline.recruitment_overview_page, target: "_blank" %></td>
 
 						<td><%= notice.status %></td>
 						
