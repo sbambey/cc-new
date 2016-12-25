@@ -28,4 +28,4 @@ POSITIONS = { captain_sp: "Captain (Single Pilot)", captain: "Captain", pic: "PI
 
 PAY = { hourly: "Hourly", pay_scale: "Pay Scale", aircraft_type: "Aircraft Type" }
 
-JOB_TYPE = { commercial_min: "Commercial min", commerical_no_min: "Commercial", atpr: "Restricted ATP", atp: "ATP" }
+JOB_TYPE = { commercial_min: "Commercial min", commerical_no_min: "Commercial", atp: "ATP" }
