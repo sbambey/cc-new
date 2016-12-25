@@ -2,8 +2,15 @@ class AdminPanelController < ApplicationController
 	before_action :authenticate_user!, :redirect_unless_admin
 
 	def home
-		#@node_sets = ScrapeNodeSet.all.order(id: :desc).limit(90)
-		@node_sets = ScrapeNodeSet.where("created_at >= ?", ScrapeNodeSet.where(airline_id: 2).last.created_at)
+		#@node_sets = ScrapeNodeSet.all.order(id: :desc).limit(Airline.all.count-Airline.untracked.count)
+		alphabetically_first_airline = nil
+		Airline.order("name ASC").each do |a|
+			if a.created_at.present? then
+				alphabetically_first_airline = a
+				break
+			end
+		end
+		@node_sets = ScrapeNodeSet.where("created_at >= ?", ScrapeNodeSet.where(airline_id: alphabetically_first_airline.id).last.created_at)
 		#@admin_notices = AdminNotice.all.order(id: :desc).limit(30)
 	end
 

@@ -4,13 +4,11 @@ task :determine_consistency => :environment do
 	require 'nokogiri'
   require 'open-uri'
 
-  Airline.all.each do |airline|
+  Airline.order("name ASC").each do |airline|
 
     if !airline.no_track
 
       puts "# Start - #{airline.name}"
-
-      
   	   
       #scrape overview page
 
