@@ -18,7 +18,8 @@ class FlyController < ApplicationController
 
   	if @fly.save
   		flash[:success] = "Added opportunity successfully!"
-  		redirect_to airline_fly_path(@fly.airline, @fly)
+  		#redirect_to airline_fly_path(@fly.airline, @fly)
+      redirect_to root_path
   	else
   		render "new"
   	end
