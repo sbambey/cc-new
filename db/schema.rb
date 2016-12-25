@@ -171,7 +171,6 @@ ActiveRecord::Schema.define(version: 20161224071149) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "full_name"
     t.date     "birthdate"
     t.string   "nationality"
     t.string   "language"
@@ -187,6 +186,7 @@ ActiveRecord::Schema.define(version: 20161224071149) do
     t.boolean  "email_weekly",           default: false
     t.boolean  "email_urgent",           default: false
     t.boolean  "just_registered",        default: true
+    t.string   "full_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

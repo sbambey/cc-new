@@ -14,9 +14,38 @@
 
   <%= render partial: "general", locals: { f: f } %>
 
-  <%= render partial: "shared/license", locals: { f: f } %>
+  <section id="flight-time">
+    <div class="container">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <h4>Flight Time</h4>
 
-  <%= render partial: "shared/medical", locals: { f: f } %>
+        <p>Please enter all times in <em>decimal hours</em> (ie. 5.5, rather than 5:30)</p>
+
+        <table class="table table-bordered thick-border table-black-border standard-margin">
+          <tr>
+            <td><%= f.label :total_time, FLIGHT_HOUR_TYPES[:total_time], class: "control-label label-margin" %></td>
+            <td>
+              <%= content_tag :div, 
+                class: ["form-group", ("has-error has-feedback" if resource.errors.full_messages_for(:total_time).any?)] do %> 
+                
+                <%= f.text_field :total_time, value: (("0" if action_name == "new") || resource.send(:total_time)), 
+                      class: "form-control" %>
+              
+                <% if resource.errors.full_messages_for(:total_time).any? %>
+                  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                  <span class="error-explanation">
+                    <%= resource.errors[:total_time].first.capitalize %>
+                  </span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <%= render partial: "shared/license", locals: { f: f } %>
 
   <%= render partial: "additional", locals: { f: f } %>
 

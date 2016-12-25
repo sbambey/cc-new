@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   store_accessor :flight_time, *FLIGHT_HOUR_TYPES.keys
   store_accessor :flight_experience, *FLIGHT_EXPERIENCE.keys
 
-  ## validations
+  # validations
   [:full_name].each do |param|
     validates_presence_of param
   end
@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
   #end
 
   validates :rating, inclusion: [*RATINGS.values, ""]
-  validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
+  #validates :medical_license, inclusion: [*MEDICAL_LICENSES.values, ""]
 
-  checkbox_params.each do |attribute|
-    validates attribute, inclusion: ["1", "0", true, false]
-  end
+  #checkbox_params.each do |attribute|
+  #  validates attribute, inclusion: ["1", "0", true, false]
+  #end
 
   def access_token
     User.create_access_token(self)

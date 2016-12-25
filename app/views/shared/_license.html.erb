@@ -17,7 +17,7 @@
           </div>
         <% end %>
       </div>
-      
+      <% if params[:controller] == "users/registrations" && params[:action] == "edit" %>
       <h4>Type Ratings</h4>
 
       <div id="no-type-ratings" style="<%= "display:none;".html_safe if !f.object.type_ratings.empty? %>">
@@ -29,6 +29,7 @@
         <% end %>
         <%= link_to_add_fields "[+] Add Type Rating", f, :fly_user_type_ratings %>
       </div>
+      <% end %>
 
     </div>
   </div>

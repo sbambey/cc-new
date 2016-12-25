@@ -51,7 +51,7 @@ task :determine_consistency => :environment do
 
       		#scrape fly page
 
-      		opportunity_url = URI(fly.website)
+      		opportunity_url = URI(fly.posting_website)
 
           begin
       		  doc = Nokogiri::HTML(open(opportunity_url))

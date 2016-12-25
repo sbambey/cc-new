@@ -1,6 +1,6 @@
 <% provide(:title, "Contact Us") %>
 <div class="container">
-	<div class="col-xs-12">
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
 		<div class="jumbotron standard-margin">
 			<h2>Drop us a line</h2>
 			<p>
@@ -8,7 +8,7 @@
 			</p>
 			<address>
 			  <strong>Simon</strong><br>
-			  <a href="mailto:simon@flightcrew.io">simon@flightcrew.io</a>
+			  <a href="mailto:<%= CONTACT_EMAIL %>"><%= CONTACT_EMAIL %></a>
 			</address>
 			<p>
 				Some pictures on this page were graciously provided by <a href="https://www.flickr.com/photos/canadaq200/">Devon Scott</a>.

@@ -18,7 +18,7 @@ FLIGHT_EXPERIENCE = { atp_qualifications: "Meet all qualifications to obtain ATP
 
 RATINGS = { student: "Student pilot", sport: "Sport pilot", recreational: "Recreational pilot", 
 	private_unrestricted: "Private pilot", commercial: "Commercial pilot",
-	atpl_restricted: "Restricted ATPL", atpl_unrestricted: "Unrestricted ATPL" }
+	atpl_restricted: "Restricted ATP", atpl_unrestricted: "Unrestricted ATP" }
 
 MEDICAL_LICENSES = { one: "Class 1", two: "Class 2", three: "Class 3", four: "Class 4", five: "Class 5" }
 

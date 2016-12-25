@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "/sitemap.xml.gz" => "sitemaps#show"
 
   get "contact" => "static_pages#contact"
-  get "mission" => "static_pages#mission"
+  #get "mission" => "static_pages#mission"
 
   #get "board" => "board#matched"
   get "board" => "board#all"
@@ -10,13 +10,13 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }, :path => 'accounts'
 
-  resources :users do
-    resources :blog_posts, only: [:create]
-  end
+  #resources :users do
+  #  resources :blog_posts, only: [:create]
+  #end
 
-  resources :blog_posts, only: [:new, :destroy]
-  get "blog" => "blog_posts#index"
-  get "blog/:id" => "blog_posts#show", as: :show_blog_post
+  #resources :blog_posts, only: [:new, :destroy]
+  #get "blog" => "blog_posts#index"
+  #get "blog/:id" => "blog_posts#show", as: :show_blog_post
 
   resources :airlines, only: [:show, :new, :create, :edit, :update] do
     resources :fly, only: [:show, :new, :create, :edit, :update]

@@ -17,7 +17,6 @@
 
         <% if user_signed_in? %>
           <ul class="nav navbar-nav">
-            <li<%= active_link("blog_posts", "index") %>><%= link_to "Blog", blog_path %></li>
             <% if current_user.try(:admin?) %>
               <li<%= active_link("admin_panel") %>><%= link_to "Admin Panel", admin_panel_home_path %></li>
             <% end %>
@@ -32,7 +31,6 @@
         <% else %>
           <ul class="nav navbar-nav">
             <li<%= active_link("devise/sessions", "new") %>><%= link_to "Log in", new_user_session_path %></li>
-            <li<%= active_link("blog_posts", "index") %>><%= link_to "Blog", blog_path %></li>
           </ul>
           <div class="navbar-right">
             <div class="navbar-text">
