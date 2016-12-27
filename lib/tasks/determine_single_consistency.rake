@@ -39,7 +39,7 @@ task :determine_single_consistency, [:airline] => :environment do |t, args|
 
     		#scrape fly page
 
-    		opportunity_url = URI(fly.website)
+    		opportunity_url = URI(fly.posting_website)
     		doc = Nokogiri::HTML(open(opportunity_url))
 
     		html_set = doc.css(fly.content_selector)
