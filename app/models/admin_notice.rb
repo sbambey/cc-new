@@ -25,12 +25,17 @@ class AdminNotice < ActiveRecord::Base
 	STATUSES = { success: "success", warning: "warning", danger: "danger" }
 
 	def self.create_status_from_similarity(similarity)
-		if similarity[:html] && similarity[:titles]
+		#if similarity[:html] && similarity[:titles]
+		#	"success"
+		#elsif similarity[:titles]
+		#	"warning"
+		#else
+		# "danger"
+		#end
+		if similarity[:html]
 			"success"
-		elsif similarity[:titles]
-			"warning"
 		else
-			"danger"
+		 "danger"
 		end
 	end
 end

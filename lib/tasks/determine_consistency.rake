@@ -41,7 +41,7 @@ task :determine_consistency => :environment do
     	  end
       end
 
-  	  set.nodes.create(node_type: ScrapeNode::TYPES[:parent], html: html, titles: titles, scrapeable: airline)
+  	  set.nodes.create(node_type: ScrapeNode::TYPES[:parent], html: ActionController::Base.helpers.strip_tags(html).gsub(/\s+/, ""), titles: titles, scrapeable: airline)
 
     	airline.flies.all.each do |fly|
 
@@ -68,7 +68,7 @@ task :determine_consistency => :environment do
 
           html = html.encode('UTF-8', :invalid => :replace, :undef => :replace)
 
-      		set.nodes.create(node_type: ScrapeNode::TYPES[:child], html: html, scrapeable: fly)
+      		set.nodes.create(node_type: ScrapeNode::TYPES[:child], html: ActionController::Base.helpers.strip_tags(html).gsub(/\s+/, ""), scrapeable: fly)
 
         end
     	end
